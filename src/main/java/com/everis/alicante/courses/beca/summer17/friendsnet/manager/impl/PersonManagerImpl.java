@@ -1,7 +1,7 @@
 /*
  * Created at 24-ago-2017 by Fran Periago
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.manager;
+package com.everis.alicante.courses.beca.summer17.friendsnet.manager.impl;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
+import com.everis.alicante.courses.beca.summer17.friendsnet.manager.PersonManager;
 
 /**
  * The Class PersonManager.

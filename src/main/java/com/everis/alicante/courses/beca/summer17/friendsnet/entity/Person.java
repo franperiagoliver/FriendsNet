@@ -24,10 +24,7 @@ public class Person implements FNEntity {
 	private Long id;
 	
 	/** The name. */
-	private String name;
-	
-	/** The surname. */
-	private String surname;
+	private String name, surname;
 	
 	/** The picture. */
 	private byte[] picture;

@@ -5,11 +5,14 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.manager;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 
 /**
  * The Interface PersonManager.
  */
+@Service
 public interface PersonManager extends Manager<Person,Long> {
 
 	/**

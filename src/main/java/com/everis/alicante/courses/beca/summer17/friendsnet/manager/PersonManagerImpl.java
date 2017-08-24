@@ -3,37 +3,41 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager;
 
+import java.util.List;
+
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 
 /**
  * The Class PersonManager.
  */
-public class PersonManagerImpl implements PersonManager{
-	
+public class PersonManagerImpl implements PersonManager {
+
 	/** The person dao. */
 	private PersonDAO personDao;
-	
+
 	/**
 	 * Instantiates a new person manager.
 	 *
-	 * @param personDao the person dao
+	 * @param personDao
+	 *            the person dao
 	 */
 	public PersonManagerImpl(final PersonDAO personDao) {
 		super();
 		this.personDao = personDao;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#findAll()
 	 */
 	@Override
 	public Iterable<Person> findAll() {
-		return this.personDao.findAll();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#findById(java.lang.Long)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#findById(java.io.Serializable)
 	 */
 	@Override
 	public Person findById(final Long id) {
@@ -41,50 +45,59 @@ public class PersonManagerImpl implements PersonManager{
 	}
 
 	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#save(java.lang.Object)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#findByIds(java.lang.Iterable)
 	 */
 	@Override
-	public void save(final Person person) {
-		this.personDao.save(person);
+	public Iterable<Person> findByIds(final Iterable<Long> ids) {
+		return this.personDao.findByIds(ids);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#save(com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.FNEntity)
+	 */
+	@Override
+	public Person save(final Person person) {
+		return this.personDao.save(person);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#save(java.lang.Iterable)
 	 */
 	@Override
-	public void save(final Iterable<Person> persons) {
-		this.personDao.save(persons);
+	public Iterable<Person> save(final Iterable<Person> persons) {
+		return this.personDao.save(persons);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#update(java.lang.Object)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#update(com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.FNEntity)
 	 */
 	@Override
-	public void update(final Person person) {
-		this.personDao.update(person);
+	public Person update(final Person person) {
+		return this.personDao.update(person);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#update(java.lang.Iterable)
 	 */
 	@Override
-	public void update(final Iterable<Person> persons) {
-		this.personDao.update(persons);
+	public Iterable<Person> update(final Iterable<Person> persons) {
+		return this.personDao.update(persons);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#remove(java.lang.Object)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#remove(java.io.Serializable)
 	 */
 	@Override
-	public void remove(final Person person) {
-		this.personDao.remove(person);
+	public void remove(Long id) {
+		this.personDao.remove(id);
+
 	}
 
 	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.PersonManager#relatePersons(java.lang.Iterable)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.PersonManager#relatePersons(java.lang.Long, java.util.List)
 	 */
 	@Override
-	public Person relatePersons(final Iterable<Person> persons) {
-		return null;
+	public Person relatePersons(Long id, List<Long> persons) {
+		return relatePersons(id, persons);
 	}
 }

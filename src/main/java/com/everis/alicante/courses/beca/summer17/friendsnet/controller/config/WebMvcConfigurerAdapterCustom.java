@@ -40,5 +40,4 @@ public class WebMvcConfigurerAdapterCustom extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/swagger/**").addResourceLocations("classpath:/META-INF/resources/");
 	}
-
 }

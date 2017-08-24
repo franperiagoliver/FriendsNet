@@ -3,18 +3,26 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.controller;
 
+import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.PersonManager;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.PersonManagerImpl;
 
-import antlr.collections.List;
-
 /**
  * The Class PersonController.
  */
+@RestController
+@RequestMapping("/person")
 public class PersonController {
 	
 	/** The person manager. */
@@ -29,23 +37,57 @@ public class PersonController {
 		this.personManager = new PersonManagerImpl(personDao);
 	}
 	
+	/**
+	 * Gets the all.
+	 *
+	 * @return the all
+	 */
+	@GetMapping
 	public List<Person> getAll() {
-		return this.personManager.findAll();
+		return (List<Person>) this.personManager.findAll();
 	}
 	
-	public Person getById(final Long id) {
+	/**
+	 * Gets the by id.
+	 *
+	 * @param id the id
+	 * @return the by id
+	 */
+	@GetMapping("/{id}")
+	public Person getById(@RequestParam final Long id) {
 		return this.personManager.findById(id);
 	}
 	
-	public Person create(final Person person) {
+	/**
+	 * Creates the.
+	 *
+	 * @param person the person
+	 * @return the person
+	 */
+	@PostMapping
+	public Person create(@RequestBody final Person person) {
 		return this.personManager.save(person);
 	}
 	
-	public Person relate(final String person, final List<String> persons) {
-		return this.personManager.relatePersons(persons);
+	/**
+	 * Relate.
+	 *
+	 * @param id the id
+	 * @param persons the persons
+	 * @return the person
+	 */
+	@PostMapping("/{id}/relate")
+	public Person relate(@RequestParam final Long id, @RequestBody final List<Long> persons) {
+		return this.personManager.relatePersons(id, persons);
 	}
 	
-	public void remove(final Long id) {
-		this.personManager.remove(id);
+	/**
+	 * Removes the.
+	 *
+	 * @param personId the person id
+	 */
+	@DeleteMapping
+	public void remove(final Long personId) {
+		this.personManager.remove(personId);
 	}
 }

@@ -11,14 +11,12 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
  * The Class PersonDAOImpl.
  */
 public class PersonDAOImpl extends AbstractDAO<Person, Long> implements PersonDAO {
-	
+
 	/* (non-Javadoc)
 	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO#relatePersons(java.lang.Iterable)
 	 */
 	@Override
 	public Person relatePersons(Iterable<Person> person) {
-
 		return null;
 	}
-
 }

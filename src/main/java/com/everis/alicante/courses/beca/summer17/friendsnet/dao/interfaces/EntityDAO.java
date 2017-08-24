@@ -3,34 +3,75 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces;
 
-public interface EntityDAO<E, ID> {
+import java.io.Serializable;
 
+/**
+ * The Interface EntityDAO.
+ *
+ * @param <E> the element type
+ * @param <ID> the generic type
+ */
+public interface EntityDAO<E extends FNEntity, ID extends Serializable> {
+
+	/**
+	 * Find all.
+	 *
+	 * @return the iterable
+	 */
 	Iterable<E> findAll();
 
 	/**
 	 * Find by id.
 	 *
+	 * @param id the id
 	 * @return the e
 	 */
 	E findById(final ID id);
 
-	void save(final E e);
+	/**
+	 * Save.
+	 *
+	 * @param ids the ids
+	 * @return the e
+	 */
+	Iterable<E> findByIds(final Iterable<ID> ids);
+	
+	/**
+	 * Save.
+	 *
+	 * @param e the e
+	 * @return the e
+	 */
+	E save(final E e);
 
-	void save(final Iterable<E> es);
+	/**
+	 * Save.
+	 *
+	 * @param es the es
+	 * @return the iterable
+	 */
+	Iterable<E> save(final Iterable<E> es);
 
-	void update(final E e);
+	/**
+	 * Update.
+	 *
+	 * @param e the e
+	 * @return the e
+	 */
+	E update(final E e);
 
 	/**
 	 * Update.
 	 *
 	 * @param es the es
+	 * @return the iterable
 	 */
-	void update(final Iterable<E> es);
+	Iterable<E> update(final Iterable<E> es);
 
 	/**
 	 * Removes the.
 	 *
-	 * @param e the e
+	 * @param id the e
 	 */
-	void remove(final E e);
+	void remove(final ID id);
 }

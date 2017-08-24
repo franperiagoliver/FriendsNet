@@ -3,14 +3,17 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
+import java.io.Serializable;
+
+import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.FNEntity;
 
 /**
  * The Interface Manager.
  *
  * @param <E> the element type
+ * @param <ID> the generic type
  */
-public interface Manager<E> {
+public interface Manager<E extends FNEntity, ID extends Serializable> {
 	
 	/**
 	 * Find all.
@@ -22,16 +25,24 @@ public interface Manager<E> {
 	/**
 	 * Find by id.
 	 *
-	 * @param e the e
+	 * @param id the id
 	 * @return the e
 	 */
-	E findById(final Long id);
+	E findById(final ID id);
+	
+	/**
+	 * Save.
+	 *
+	 * @param id the id
+	 * @return the e
+	 */
+	Iterable<E> findByIds(final Iterable<ID> id);
 	
 	/**
 	 * Save.
 	 *
 	 * @param e the e
-	 * @return 
+	 * @return the e
 	 */
 	E save(final E e);
 	
@@ -39,27 +50,30 @@ public interface Manager<E> {
 	 * Save.
 	 *
 	 * @param es the es
+	 * @return the iterable
 	 */
-	void save(final Iterable<E> es);
+	Iterable<E> save(final Iterable<E> es);
 	
 	/**
 	 * Update.
 	 *
 	 * @param e the e
+	 * @return the e
 	 */
-	void update(final E e);
+	E update(final E e);
 	
 	/**
 	 * Update.
 	 *
 	 * @param es the es
+	 * @return the iterable
 	 */
-	void update(final Iterable<E> es) ;
+	Iterable<E> update(final Iterable<E> es) ;
 	
 	/**
 	 * Removes the.
 	 *
-	 * @param e the e
+	 * @param id the e
 	 */
-	void remove(final E e);
+	void remove(final ID id);
 }

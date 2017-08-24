@@ -12,25 +12,25 @@ public interface EntityDAO<E, ID> {
 	 *
 	 * @return the e
 	 */
-	E findById(ID id);
+	E findById(final ID id);
 
-	void save(E e);
+	void save(final E e);
 
-	void save(Iterable<E> es);
+	void save(final Iterable<E> es);
 
-	void update(E e);
+	void update(final E e);
 
 	/**
 	 * Update.
 	 *
 	 * @param es the es
 	 */
-	void update(Iterable<E> es);
+	void update(final Iterable<E> es);
 
 	/**
 	 * Removes the.
 	 *
 	 * @param e the e
 	 */
-	void remove(E e);
+	void remove(final E e);
 }

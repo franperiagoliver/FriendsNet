@@ -42,30 +42,30 @@ public abstract class AbstractDAO<E extends FNEntity, ID extends Serializable> i
 		return allQuery.getResultList();
 	}
 
-	public E findById(ID id) {
+	public E findById(final ID id) {
 		return entityManager.find(persistentClass, id);
 	}
 
-	public void save(E e) {
+	public void save(final E e) {
 		entityManager.persist(e);
 	}
 
-	public void save(Iterable<E> es) {
+	public void save(final Iterable<E> es) {
 		entityManager.persist(es);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.EntityDAO#update(java.lang.Object)
 	 */
-	public void update(E e) {
+	public void update(final E e) {
 		entityManager.merge(e);
 	}
 
-	public void update(Iterable<E> es) {
+	public void update(final Iterable<E> es) {
 		entityManager.merge(es);
 	}
 
-	public void remove(E e) {
+	public void remove(final E e) {
 		entityManager.remove(e);
 	}
 

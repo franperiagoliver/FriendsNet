@@ -1,3 +1,6 @@
+/*
+ * Created at 24-ago-2017 by Fran Periago
+ */
 package com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes;
 
 import java.io.Serializable;
@@ -51,6 +54,9 @@ public abstract class AbstractDAO<E extends FNEntity, ID extends Serializable> i
 		entityManager.persist(es);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.EntityDAO#update(java.lang.Object)
+	 */
 	public void update(E e) {
 		entityManager.merge(e);
 	}

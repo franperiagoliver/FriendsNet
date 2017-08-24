@@ -5,6 +5,8 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.manager;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 
@@ -14,18 +16,8 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 public class PersonManagerImpl implements PersonManager {
 
 	/** The person dao. */
+	@Autowired
 	private PersonDAO personDao;
-
-	/**
-	 * Instantiates a new person manager.
-	 *
-	 * @param personDao
-	 *            the person dao
-	 */
-	public PersonManagerImpl(final PersonDAO personDao) {
-		super();
-		this.personDao = personDao;
-	}
 
 	/* (non-Javadoc)
 	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#findAll()

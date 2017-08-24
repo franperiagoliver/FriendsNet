@@ -6,6 +6,7 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.manager;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
@@ -13,6 +14,7 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 /**
  * The Class PersonManager.
  */
+@Service
 public class PersonManagerImpl implements PersonManager {
 
 	/** The person dao. */

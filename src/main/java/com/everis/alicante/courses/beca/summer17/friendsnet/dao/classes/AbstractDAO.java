@@ -33,7 +33,7 @@ public abstract class AbstractDAO<E extends FNEntity, ID extends Serializable> i
 	 */
 	@SuppressWarnings("unchecked")
 	public AbstractDAO() {
-		this.persistentClass = (Class<E>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1];		
+		this.persistentClass = (Class<E>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];		
 	}
 	
 	/** The entity manager. */

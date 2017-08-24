@@ -1,3 +1,6 @@
+/*
+ * Created at 24-ago-2017 by Fran Periago
+ */
 package com.everis.alicante.courses.beca.summer17.friendsnet.controller.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +15,8 @@ public class WebMvcConfigurerAdapterCustom extends WebMvcConfigurerAdapter {
 
 	/**
 	 * The type Custom Web mvc configurer adapter.
+	 *
+	 * @param registry the registry
 	 */
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {

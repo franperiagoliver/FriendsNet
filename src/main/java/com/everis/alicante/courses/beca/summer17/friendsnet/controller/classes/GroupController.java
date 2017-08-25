@@ -1,7 +1,7 @@
 /*
- * Created at 24-ago-2017 by Fran Periago.
+ * Created at 25-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.controller;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes;
 
 import java.util.List;
 
@@ -14,19 +14,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Group;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
+import com.everis.alicante.courses.beca.summer17.friendsnet.manager.GroupManager;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.PersonManager;
 
 /**
- * The Class PersonController.
+ * The Class GroupController.
  */
 @RestController
-@RequestMapping("/person")
-public class PersonController {
+@RequestMapping("/group")
+public class GroupController {
 
-	/** The person manager. */
+	/** The manager. */
 	@Autowired
-	private PersonManager personManager;
+	private GroupManager manager;
+
+	/** The p manager. */
+	@Autowired
+	private PersonManager pManager;
 
 	/**
 	 * Gets the all.
@@ -34,8 +40,8 @@ public class PersonController {
 	 * @return the all
 	 */
 	@GetMapping
-	public List<Person> getAll() {
-		return (List<Person>) this.personManager.findAll();
+	public List<Group> getAll() {
+		return (List<Group>) this.manager.findAll();
 	}
 
 	/**
@@ -46,20 +52,32 @@ public class PersonController {
 	 * @return the by id
 	 */
 	@GetMapping("/{id}")
-	public Person getById(@RequestParam final Long id) {
-		return this.personManager.findById(id);
+	public Group getById(@RequestParam final Long id) {
+		return this.manager.findById(id);
 	}
 
 	/**
 	 * Creates the.
 	 *
-	 * @param person
-	 *            the person
-	 * @return the person
+	 * @param group
+	 *            the group
+	 * @return the group
 	 */
 	@PostMapping
-	public Person create(@RequestBody final Person person) {
-		return this.personManager.save(person);
+	public Group create(@RequestBody final Group group) {
+		return this.manager.save(group);
+	}
+
+	/**
+	 * Gets the by person id.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the by person id
+	 */
+	@GetMapping("/person/{id}/")
+	public Group getByPersonId(@RequestParam final Long id) {
+		return this.manager.findById(id);
 	}
 
 	/**
@@ -73,17 +91,17 @@ public class PersonController {
 	 */
 	@PostMapping("/{id}/relate")
 	public Person relate(@RequestParam final Long id, @RequestBody final List<Long> persons) {
-		return this.personManager.relatePersons(id, persons);
+		return this.pManager.relatePersons(id, persons);
 	}
 
 	/**
 	 * Removes the.
 	 *
-	 * @param personId
-	 *            the person id
+	 * @param id
+	 *            the id
 	 */
-	@DeleteMapping
-	public void remove(final Long personId) {
-		this.personManager.remove(personId);
+	@DeleteMapping("{id}")
+	public void remove(@RequestParam final Long id) {
+		this.manager.remove(manager.findById(id));
 	}
 }

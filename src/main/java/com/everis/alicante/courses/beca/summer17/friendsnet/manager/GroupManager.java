@@ -14,7 +14,8 @@ public interface GroupManager extends Manager<Group, Long> {
 	/**
 	 * Adds the persons.
 	 *
-	 * @param persons the persons
+	 * @param persons
+	 *            the persons
 	 * @return the group
 	 */
 	Group addPersons(final Iterable<Person> persons);

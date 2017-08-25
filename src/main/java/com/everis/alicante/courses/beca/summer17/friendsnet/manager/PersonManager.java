@@ -3,24 +3,22 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
 
 /**
  * The Interface PersonManager.
  */
-@Service
-public interface PersonManager extends Manager<Person,Long> {
+
+public interface PersonManager extends Manager<Person, Long> {
 
 	/**
 	 * Relate persons.
 	 *
-	 * @param personId the person id
-	 * @param persons the persons
+	 * @param personId
+	 *            the person id
+	 * @param ids
+	 *            the ids
 	 * @return the person
 	 */
-	Person relatePersons(final Long personId, final List<Long> persons);
+	Person relatePersons(final Long personId, final Iterable<Long> ids);
 }

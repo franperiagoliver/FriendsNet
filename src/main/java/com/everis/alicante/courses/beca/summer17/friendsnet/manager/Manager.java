@@ -10,70 +10,79 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FN
 /**
  * The Interface Manager.
  *
- * @param <E> the element type
- * @param <ID> the generic type
+ * @param <E>
+ *            the element type
+ * @param <ID>
+ *            the generic type
  */
 public interface Manager<E extends FNEntity, ID extends Serializable> {
-	
+
 	/**
 	 * Find all.
 	 *
 	 * @return the iterable
 	 */
-	Iterable<E> findAll();
-	
+	public Iterable<E> findAll();
+
 	/**
 	 * Find by id.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 * @return the e
 	 */
-	E findById(final ID id);
-	
+	public E findById(final ID id);
+
 	/**
 	 * Save.
 	 *
-	 * @param id the id
+	 * @param ids
+	 *            the ids
 	 * @return the e
 	 */
-	Iterable<E> findByIds(final Iterable<ID> id);
-	
+	public Iterable<E> findByIds(final Iterable<ID> ids);
+
 	/**
 	 * Save.
 	 *
-	 * @param e the e
+	 * @param e
+	 *            the e
 	 * @return the e
 	 */
-	E save(final E e);
-	
+	public E save(final E e);
+
 	/**
 	 * Save.
 	 *
-	 * @param es the es
+	 * @param es
+	 *            the es
 	 * @return the iterable
 	 */
-	Iterable<E> save(final Iterable<E> es);
-	
+	public Iterable<E> save(final Iterable<E> es);
+
 	/**
 	 * Update.
 	 *
-	 * @param e the e
+	 * @param e
+	 *            the e
 	 * @return the e
 	 */
-	E update(final E e);
-	
+	public E update(final E e);
+
 	/**
 	 * Update.
 	 *
-	 * @param es the es
+	 * @param es
+	 *            the es
 	 * @return the iterable
 	 */
-	Iterable<E> update(final Iterable<E> es) ;
-	
+	public Iterable<E> update(final Iterable<E> es);
+
 	/**
 	 * Removes the.
 	 *
-	 * @param id the e
+	 * @param e
+	 *            the e
 	 */
-	void remove(final ID id);
+	public void remove(final E e);
 }

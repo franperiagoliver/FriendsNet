@@ -57,7 +57,7 @@ public class Like implements FNEntity {
 	 * @param id
 	 *            the new id
 	 */
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -76,7 +76,7 @@ public class Like implements FNEntity {
 	 * @param creationDate
 	 *            the new creation date
 	 */
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(final Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
@@ -95,7 +95,7 @@ public class Like implements FNEntity {
 	 * @param type
 	 *            the new type
 	 */
-	public void setType(LikeType type) {
+	public void setType(final LikeType type) {
 		this.type = type;
 	}
 }

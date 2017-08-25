@@ -81,7 +81,7 @@ public class Post implements FNEntity {
 	 * @param id
 	 *            the new id
 	 */
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -100,7 +100,7 @@ public class Post implements FNEntity {
 	 * @param text
 	 *            the new text
 	 */
-	public void setText(String text) {
+	public void setText(final String text) {
 		this.text = text;
 	}
 
@@ -119,7 +119,7 @@ public class Post implements FNEntity {
 	 * @param creationDate
 	 *            the new creation date
 	 */
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(final Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
@@ -138,7 +138,7 @@ public class Post implements FNEntity {
 	 * @param type
 	 *            the new type
 	 */
-	public void setType(PostType type) {
+	public void setType(final PostType type) {
 		this.type = type;
 	}
 
@@ -157,7 +157,7 @@ public class Post implements FNEntity {
 	 * @param picture
 	 *            the new picture
 	 */
-	public void setPicture(byte[] picture) {
+	public void setPicture(final byte[] picture) {
 		this.picture = picture;
 	}
 
@@ -176,7 +176,7 @@ public class Post implements FNEntity {
 	 * @param events
 	 *            the new events
 	 */
-	public void setEvents(Iterable<Event> events) {
+	public void setEvents(final Iterable<Event> events) {
 		this.events = events;
 	}
 
@@ -195,7 +195,7 @@ public class Post implements FNEntity {
 	 * @param like
 	 *            the new like
 	 */
-	public void setLike(Like like) {
+	public void setLike(final Like like) {
 		this.like = like;
 	}
 }

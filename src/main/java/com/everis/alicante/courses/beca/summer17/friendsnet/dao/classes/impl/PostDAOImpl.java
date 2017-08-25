@@ -36,7 +36,7 @@ public class PostDAOImpl extends AbstractDAO<Post, Long> implements PostDAO {
 	 * Like)
 	 */
 	@Override
-	public Post addLike(Like like) {
+	public Post addLike(final Like like) {
 		return null;
 	}
 

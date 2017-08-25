@@ -59,7 +59,7 @@ public class Group implements FNEntity {
 	 * @param id
 	 *            the new id
 	 */
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -78,7 +78,7 @@ public class Group implements FNEntity {
 	 * @param name
 	 *            the new name
 	 */
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -97,7 +97,7 @@ public class Group implements FNEntity {
 	 * @param picture
 	 *            the new picture
 	 */
-	public void setPicture(byte[] picture) {
+	public void setPicture(final byte[] picture) {
 		this.picture = picture;
 	}
 
@@ -116,7 +116,7 @@ public class Group implements FNEntity {
 	 * @param person
 	 *            the new person
 	 */
-	public void setPerson(Person person) {
+	public void setPerson(final Person person) {
 		this.person = person;
 	}
 }

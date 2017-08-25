@@ -20,6 +20,6 @@ public interface PersonDAO extends EntityDAO<Person, Long> {
 	 *            the ids
 	 * @return the person
 	 */
-	public Person relatePersons(Long personId, Iterable<Long> ids);
+	public Person relatePersons(final Long personId, final Iterable<Long> ids);
 
 }

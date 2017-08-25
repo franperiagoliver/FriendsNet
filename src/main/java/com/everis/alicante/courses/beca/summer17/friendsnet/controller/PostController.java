@@ -47,7 +47,7 @@ public class PostController {
 	 * @return the by id
 	 */
 	@GetMapping("/{id}")
-	public Post getById(@RequestParam Long id) {
+	public Post getById(@RequestParam final Long id) {
 		return this.manager.findById(id);
 	}
 
@@ -59,7 +59,7 @@ public class PostController {
 	 * @return the post
 	 */
 	@PostMapping
-	public Post create(@RequestBody Post post) {
+	public Post create(@RequestBody final Post post) {
 		return this.manager.save(post);
 	}
 
@@ -71,7 +71,7 @@ public class PostController {
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}")
-	public Post getByPersonId(@RequestParam Long id) {
+	public Post getByPersonId(@RequestParam final Long id) {
 		return this.manager.findById(id);
 	}
 

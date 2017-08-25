@@ -18,6 +18,6 @@ public interface GroupDAO extends EntityDAO<Group, Long> {
 	 *            the persons
 	 * @return the group
 	 */
-	Group addPersons(Iterable<Person> persons);
+	Group addPersons(final Iterable<Person> persons);
 
 }

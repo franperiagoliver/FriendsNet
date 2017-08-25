@@ -45,7 +45,7 @@ public class EventController {
 	 * @return the by id
 	 */
 	@GetMapping("/{id}")
-	public Event getById(@RequestParam Long id) {
+	public Event getById(@RequestParam final Long id) {
 		return this.manager.findById(id);
 	}
 
@@ -57,7 +57,7 @@ public class EventController {
 	 * @return the post
 	 */
 	@PostMapping
-	public Event create(@RequestBody Event event) {
+	public Event create(@RequestBody final Event event) {
 		return this.manager.save(event);
 	}
 
@@ -69,7 +69,7 @@ public class EventController {
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}")
-	public Event getByPersonId(@RequestParam Long id) {
+	public Event getByPersonId(@RequestParam final Long id) {
 		return this.manager.findById(id);
 	}
 
@@ -94,7 +94,7 @@ public class EventController {
 	 * @return the event
 	 */
 	@PostMapping("/{id}/person/{idPerson}/add")
-	public Event addPerson(Long idPerson, Long idEvent) {
+	public Event addPerson(final Long idPerson, final Long idEvent) {
 		return this.manager.findById(idPerson);
 	}
 }

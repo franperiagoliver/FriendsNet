@@ -39,7 +39,7 @@ public class PostManagerImpl implements PostManager {
 	 * Manager#findById(java.io.Serializable)
 	 */
 	@Override
-	public Post findById(Long id) {
+	public Post findById(final Long id) {
 		return this.postDao.findById(id);
 	}
 
@@ -50,7 +50,7 @@ public class PostManagerImpl implements PostManager {
 	 * Manager#findByIds(java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Post> findByIds(Iterable<Long> ids) {
+	public Iterable<Post> findByIds(final Iterable<Long> ids) {
 		return this.postDao.findByIds(ids);
 	}
 
@@ -62,7 +62,7 @@ public class PostManagerImpl implements PostManager {
 	 * interfaces.FNEntity)
 	 */
 	@Override
-	public Post save(Post post) {
+	public Post save(final Post post) {
 		return this.postDao.save(post);
 	}
 
@@ -73,7 +73,7 @@ public class PostManagerImpl implements PostManager {
 	 * Manager#save(java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Post> save(Iterable<Post> posts) {
+	public Iterable<Post> save(final Iterable<Post> posts) {
 		return this.postDao.save(posts);
 	}
 
@@ -85,7 +85,7 @@ public class PostManagerImpl implements PostManager {
 	 * interfaces.FNEntity)
 	 */
 	@Override
-	public Post update(Post post) {
+	public Post update(final Post post) {
 		return this.postDao.update(post);
 	}
 
@@ -96,7 +96,7 @@ public class PostManagerImpl implements PostManager {
 	 * Manager#update(java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Post> update(Iterable<Post> posts) {
+	public Iterable<Post> update(final Iterable<Post> posts) {
 		return this.postDao.update(posts);
 	}
 
@@ -108,7 +108,7 @@ public class PostManagerImpl implements PostManager {
 	 * interfaces.FNEntity)
 	 */
 	@Override
-	public void remove(Post post) {
+	public void remove(final Post post) {
 		this.postDao.remove(post);
 	}
 
@@ -120,7 +120,7 @@ public class PostManagerImpl implements PostManager {
 	 * entity.classes.Like)
 	 */
 	@Override
-	public Post addLike(Like like) {
+	public Post addLike(final Like like) {
 		return this.addLike(like);
 	}
 }

@@ -86,7 +86,7 @@ public class Person implements FNEntity {
 	 * @param id
 	 *            the new id
 	 */
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -105,7 +105,7 @@ public class Person implements FNEntity {
 	 * @param name
 	 *            the new name
 	 */
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -124,7 +124,7 @@ public class Person implements FNEntity {
 	 * @param surname
 	 *            the new surname
 	 */
-	public void setSurname(String surname) {
+	public void setSurname(final String surname) {
 		this.surname = surname;
 	}
 
@@ -143,7 +143,7 @@ public class Person implements FNEntity {
 	 * @param picture
 	 *            the new picture
 	 */
-	public void setPicture(byte[] picture) {
+	public void setPicture(final byte[] picture) {
 		this.picture = picture;
 	}
 
@@ -162,7 +162,7 @@ public class Person implements FNEntity {
 	 * @param persons
 	 *            the new persons
 	 */
-	public void setPersons(Iterable<Person> persons) {
+	public void setPersons(final Iterable<Person> persons) {
 		this.persons = persons;
 	}
 
@@ -181,7 +181,7 @@ public class Person implements FNEntity {
 	 * @param groups
 	 *            the new groups
 	 */
-	public void setGroups(Iterable<Group> groups) {
+	public void setGroups(final Iterable<Group> groups) {
 		this.groups = groups;
 	}
 
@@ -200,7 +200,7 @@ public class Person implements FNEntity {
 	 * @param events
 	 *            the new events
 	 */
-	public void setEvents(Iterable<Event> events) {
+	public void setEvents(final Iterable<Event> events) {
 		this.events = events;
 	}
 
@@ -219,7 +219,7 @@ public class Person implements FNEntity {
 	 * @param post
 	 *            the new post
 	 */
-	public void setPost(Post post) {
+	public void setPost(final Post post) {
 		this.post = post;
 	}
 
@@ -238,7 +238,7 @@ public class Person implements FNEntity {
 	 * @param like
 	 *            the new like
 	 */
-	public void setLike(Like like) {
+	public void setLike(final Like like) {
 		this.like = like;
 	}
 }

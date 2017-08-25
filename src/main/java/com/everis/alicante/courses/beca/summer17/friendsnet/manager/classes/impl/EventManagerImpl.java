@@ -38,7 +38,7 @@ public class EventManagerImpl implements EventManager {
 	 * Manager#findById(java.io.Serializable)
 	 */
 	@Override
-	public Event findById(Long id) {
+	public Event findById(final Long id) {
 		return this.eventDao.findById(id);
 	}
 
@@ -49,7 +49,7 @@ public class EventManagerImpl implements EventManager {
 	 * Manager#findByIds(java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Event> findByIds(Iterable<Long> ids) {
+	public Iterable<Event> findByIds(final Iterable<Long> ids) {
 		return this.eventDao.findByIds(ids);
 	}
 
@@ -61,7 +61,7 @@ public class EventManagerImpl implements EventManager {
 	 * interfaces.FNEntity)
 	 */
 	@Override
-	public Event save(Event event) {
+	public Event save(final Event event) {
 		return this.eventDao.save(event);
 	}
 
@@ -72,7 +72,7 @@ public class EventManagerImpl implements EventManager {
 	 * Manager#save(java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Event> save(Iterable<Event> events) {
+	public Iterable<Event> save(final Iterable<Event> events) {
 		return this.eventDao.save(events);
 	}
 
@@ -84,7 +84,7 @@ public class EventManagerImpl implements EventManager {
 	 * interfaces.FNEntity)
 	 */
 	@Override
-	public Event update(Event event) {
+	public Event update(final Event event) {
 		return this.eventDao.update(event);
 	}
 
@@ -95,7 +95,7 @@ public class EventManagerImpl implements EventManager {
 	 * Manager#update(java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Event> update(Iterable<Event> events) {
+	public Iterable<Event> update(final Iterable<Event> events) {
 		return this.eventDao.update(events);
 	}
 
@@ -107,7 +107,7 @@ public class EventManagerImpl implements EventManager {
 	 * interfaces.FNEntity)
 	 */
 	@Override
-	public void remove(Event event) {
+	public void remove(final Event event) {
 		this.eventDao.remove(event);
 	}
 }

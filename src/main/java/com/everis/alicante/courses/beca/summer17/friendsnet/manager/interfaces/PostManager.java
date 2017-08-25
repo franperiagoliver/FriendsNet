@@ -18,5 +18,5 @@ public interface PostManager extends Manager<Post, Long> {
 	 *            the like
 	 * @return the post
 	 */
-	public Post addLike(Like like);
+	public Post addLike(final Like like);
 }

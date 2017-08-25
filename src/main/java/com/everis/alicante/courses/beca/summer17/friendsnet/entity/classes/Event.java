@@ -80,7 +80,7 @@ public class Event implements FNEntity {
 	 * @param id
 	 *            the new id
 	 */
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -99,7 +99,7 @@ public class Event implements FNEntity {
 	 * @param name
 	 *            the new name
 	 */
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -118,7 +118,7 @@ public class Event implements FNEntity {
 	 * @param startingDate
 	 *            the new starting date
 	 */
-	public void setStartingDate(Date startingDate) {
+	public void setStartingDate(final Date startingDate) {
 		this.startingDate = startingDate;
 	}
 
@@ -137,7 +137,7 @@ public class Event implements FNEntity {
 	 * @param endingDate
 	 *            the new ending date
 	 */
-	public void setEndingDate(Date endingDate) {
+	public void setEndingDate(final Date endingDate) {
 		this.endingDate = endingDate;
 	}
 
@@ -156,7 +156,7 @@ public class Event implements FNEntity {
 	 * @param type
 	 *            the new type
 	 */
-	public void setType(EventType type) {
+	public void setType(final EventType type) {
 		this.type = type;
 	}
 
@@ -175,7 +175,7 @@ public class Event implements FNEntity {
 	 * @param picture
 	 *            the new picture
 	 */
-	public void setPicture(byte[] picture) {
+	public void setPicture(final byte[] picture) {
 		this.picture = picture;
 	}
 
@@ -194,7 +194,7 @@ public class Event implements FNEntity {
 	 * @param post
 	 *            the new post
 	 */
-	public void setPost(Post post) {
+	public void setPost(final Post post) {
 		this.post = post;
 	}
 

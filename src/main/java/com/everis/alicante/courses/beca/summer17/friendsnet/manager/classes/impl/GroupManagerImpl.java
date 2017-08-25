@@ -41,7 +41,7 @@ public class GroupManagerImpl implements GroupManager {
 	 * (java.io.Serializable)
 	 */
 	@Override
-	public Group findById(Long id) {
+	public Group findById(final Long id) {
 		return this.groupDao.findById(id);
 	}
 
@@ -52,7 +52,7 @@ public class GroupManagerImpl implements GroupManager {
 	 * findByIds(java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Group> findByIds(Iterable<Long> ids) {
+	public Iterable<Group> findByIds(final Iterable<Long> ids) {
 		return this.groupDao.findByIds(ids);
 	}
 
@@ -64,7 +64,7 @@ public class GroupManagerImpl implements GroupManager {
 	 * .everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity)
 	 */
 	@Override
-	public Group save(Group group) {
+	public Group save(final Group group) {
 		return this.groupDao.save(group);
 	}
 
@@ -76,7 +76,7 @@ public class GroupManagerImpl implements GroupManager {
 	 * java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Group> save(Iterable<Group> groups) {
+	public Iterable<Group> save(final Iterable<Group> groups) {
 		return this.groupDao.save(groups);
 	}
 
@@ -89,7 +89,7 @@ public class GroupManagerImpl implements GroupManager {
 	 * FNEntity)
 	 */
 	@Override
-	public Group update(Group group) {
+	public Group update(final Group group) {
 		return this.groupDao.update(group);
 	}
 
@@ -101,7 +101,7 @@ public class GroupManagerImpl implements GroupManager {
 	 * java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Group> update(Iterable<Group> groups) {
+	public Iterable<Group> update(final Iterable<Group> groups) {
 		return this.groupDao.update(groups);
 	}
 
@@ -114,7 +114,7 @@ public class GroupManagerImpl implements GroupManager {
 	 * FNEntity)
 	 */
 	@Override
-	public void remove(Group group) {
+	public void remove(final Group group) {
 		this.groupDao.remove(group);
 	}
 
@@ -126,7 +126,7 @@ public class GroupManagerImpl implements GroupManager {
 	 * addPersons(java.lang.Iterable)
 	 */
 	@Override
-	public Group addPersons(Iterable<Person> persons) {
+	public Group addPersons(final Iterable<Person> persons) {
 		return this.groupDao.addPersons(persons);
 	}
 }

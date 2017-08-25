@@ -35,7 +35,7 @@ public class GroupDAOImpl extends AbstractDAO<Group, Long> implements GroupDAO {
 	 * addPersons(java.lang.Iterable)
 	 */
 	@Override
-	public Group addPersons(Iterable<Person> persons) {
+	public Group addPersons(final Iterable<Person> persons) {
 		return null;
 	}
 }

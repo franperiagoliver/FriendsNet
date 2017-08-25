@@ -112,7 +112,7 @@ public class PersonManagerImpl implements PersonManager {
 	 * FNEntity)
 	 */
 	@Override
-	public void remove(Person person) {
+	public void remove(final Person person) {
 		this.personDao.remove(person);
 	}
 
@@ -124,7 +124,7 @@ public class PersonManagerImpl implements PersonManager {
 	 * relatePersons(java.lang.Long, java.lang.Iterable)
 	 */
 	@Override
-	public Person relatePersons(Long personId, Iterable<Long> ids) {
+	public Person relatePersons(final Long personId, final Iterable<Long> ids) {
 		return this.personDao.relatePersons(personId, ids);
 	}
 }

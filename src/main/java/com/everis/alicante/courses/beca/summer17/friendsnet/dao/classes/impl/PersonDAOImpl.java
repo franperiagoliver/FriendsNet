@@ -34,7 +34,7 @@ public class PersonDAOImpl extends AbstractDAO<Person, Long> implements PersonDA
 	 * #relatePersons(java.lang.Long, java.lang.Iterable)
 	 */
 	@Override
-	public Person relatePersons(Long personId, Iterable<Long> ids) {
+	public Person relatePersons(final Long personId, final Iterable<Long> ids) {
 		return null;
 	}
 }

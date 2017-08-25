@@ -3,6 +3,8 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +18,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Getter;
 
 /**
  * The Class Person.
@@ -25,12 +30,12 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FN
  *
  */
 @Entity
-@Table(name = "Person")
+@Table(name = "person")
 public class Person implements FNEntity {
 
 	/** The id. */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	@Column(unique = true, nullable = false)
 	private Long id;
 
@@ -50,26 +55,30 @@ public class Person implements FNEntity {
 	private byte[] picture;
 
 	/** The group. */
-	@OneToMany(mappedBy = "Group", fetch = FetchType.EAGER)
-	private Iterable<Group> groups;
+	@OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
+	@JsonIgnore
+	private Set<Group> groups;
 
 	/** The persons. */
-	@OneToMany(mappedBy = "Person", fetch = FetchType.EAGER)
-	private Iterable<Person> persons;
+	@OneToMany(mappedBy = "persons", fetch = FetchType.LAZY)
+	@Getter(lazy = true)
+	@JsonIgnore
+	private Set<Person> persons;
 
 	/** The like. */
-	@OneToOne(mappedBy = "Like", fetch = FetchType.EAGER)
-	@JoinColumn(name = "id", nullable = false)
+	@OneToOne(mappedBy = "person", fetch = FetchType.EAGER)
+	@JsonIgnore
 	private Like like;
 
 	/** The post. */
-	@OneToOne(mappedBy = "Post", fetch = FetchType.EAGER)
-	@JoinColumn(name = "id", nullable = false)
+	@OneToOne(mappedBy = "person", fetch = FetchType.EAGER)
+	@JsonIgnore
 	private Post post;
 
 	/** The events. */
-	@OneToMany(mappedBy = "Event", fetch = FetchType.EAGER)
-	private Iterable<Event> events;
+	@OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
+	@JsonIgnore
+	private Set<Event> events;
 
 	/**
 	 * Gets the id.
@@ -152,7 +161,7 @@ public class Person implements FNEntity {
 	 *
 	 * @return the persons
 	 */
-	public Iterable<Person> getPersons() {
+	public Set<Person> getPersons() {
 		return persons;
 	}
 
@@ -162,7 +171,7 @@ public class Person implements FNEntity {
 	 * @param persons
 	 *            the new persons
 	 */
-	public void setPersons(final Iterable<Person> persons) {
+	public void setPersons(final Set<Person> persons) {
 		this.persons = persons;
 	}
 
@@ -171,7 +180,7 @@ public class Person implements FNEntity {
 	 *
 	 * @return the groups
 	 */
-	public Iterable<Group> getGroups() {
+	public Set<Group> getGroups() {
 		return groups;
 	}
 
@@ -181,7 +190,7 @@ public class Person implements FNEntity {
 	 * @param groups
 	 *            the new groups
 	 */
-	public void setGroups(final Iterable<Group> groups) {
+	public void setGroups(final Set<Group> groups) {
 		this.groups = groups;
 	}
 
@@ -190,7 +199,7 @@ public class Person implements FNEntity {
 	 *
 	 * @return the events
 	 */
-	public Iterable<Event> getEvents() {
+	public Set<Event> getEvents() {
 		return events;
 	}
 
@@ -200,7 +209,7 @@ public class Person implements FNEntity {
 	 * @param events
 	 *            the new events
 	 */
-	public void setEvents(final Iterable<Event> events) {
+	public void setEvents(final Set<Event> events) {
 		this.events = events;
 	}
 

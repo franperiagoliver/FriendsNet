@@ -15,17 +15,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * The Class Group.
  */
-@Entity
-@Table(name = "Group")
+@Entity(name = "grouptable")
+@Table(name = "grouptable")
 public class Group implements FNEntity {
 
 	/** The id. */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Column(unique = true, nullable = false)
 	private Long id;
 
@@ -41,7 +42,8 @@ public class Group implements FNEntity {
 
 	/** The person. */
 	@ManyToOne(cascade = { CascadeType.MERGE })
-	@JoinColumn(name = "id", nullable = false)
+	@JoinColumn(name = "person_id", nullable = false)
+	@JsonIgnore
 	private Person person;
 
 	/**

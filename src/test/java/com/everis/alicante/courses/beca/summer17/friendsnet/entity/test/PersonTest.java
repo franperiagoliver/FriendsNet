@@ -4,6 +4,7 @@
 package com.everis.alicante.courses.beca.summer17.friendsnet.entity.test;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -36,13 +37,13 @@ public class PersonTest {
 	private byte[] expectedPicture = null;
 
 	/** The expected groups. */
-	private Iterable<Group> expectedGroups = new HashSet<Group>();
+	private Set<Group> expectedGroups = new HashSet<Group>();
 
 	/** The expected persons. */
-	private Iterable<Person> expectedPersons = new HashSet<Person>();
+	private Set<Person> expectedPersons = new HashSet<Person>();
 
 	/** The expected events. */
-	private Iterable<Event> expectedEvents = new HashSet<Event>();
+	private Set<Event> expectedEvents = new HashSet<Event>();
 
 	/** The expected like. */
 	private Like expectedLike = new Like();
@@ -178,7 +179,7 @@ public class PersonTest {
 	@Test
 	public void testGetPersons() {
 		// Act
-		final Iterable<Person> result = this.expectedPerson.getPersons();
+		final Set<Person> result = this.expectedPerson.getPersons();
 		// Assert
 		Assert.assertEquals(expectedPersons, result);
 	}
@@ -202,7 +203,7 @@ public class PersonTest {
 	@Test
 	public void testGetGroups() {
 		// Act
-		final Iterable<Group> result = this.expectedPerson.getGroups();
+		final Set<Group> result = this.expectedPerson.getGroups();
 		// Assert
 		Assert.assertEquals(expectedGroups, result);
 	}
@@ -226,7 +227,7 @@ public class PersonTest {
 	@Test
 	public void testGetEvents() {
 		// Act
-		final Iterable<Event> result = this.expectedPerson.getEvents();
+		final Set<Event> result = this.expectedPerson.getEvents();
 		// Assert
 		Assert.assertEquals(expectedEvents, result);
 	}

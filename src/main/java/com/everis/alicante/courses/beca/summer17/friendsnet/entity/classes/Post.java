@@ -5,6 +5,7 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,17 +25,18 @@ import javax.persistence.TemporalType;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.PostType;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * The Class Post.
  */
 @Entity
-@Table(name = "Post")
+@Table(name = "post")
 public class Post implements FNEntity {
 
 	/** The id. */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Column(unique = true, nullable = false)
 	private Long id;
 
@@ -57,14 +60,21 @@ public class Post implements FNEntity {
 	@Column(nullable = false)
 	private byte[] picture;
 
-	/** The events. */
-	@OneToMany(mappedBy = "Event", fetch = FetchType.EAGER)
-	private Iterable<Event> events;
-
 	/** The like. */
-	@OneToOne(mappedBy = "Like", fetch = FetchType.EAGER)
-	@JoinColumn(name = "id", nullable = false)
+	@OneToOne(mappedBy = "post", fetch = FetchType.EAGER)
+	@JsonIgnore
 	private Like like;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "post_id", nullable = false)
+	@JsonIgnore
+	private Person person;
+
+	/** The event. */
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "event_id", nullable = false)
+	@JsonIgnore
+	private Event event;
 
 	/**
 	 * Gets the id.
@@ -162,22 +172,22 @@ public class Post implements FNEntity {
 	}
 
 	/**
-	 * Gets the events.
+	 * Gets the event.
 	 *
-	 * @return the events
+	 * @return the event
 	 */
-	public Iterable<Event> getEvents() {
-		return events;
+	public Event getEvent() {
+		return event;
 	}
 
 	/**
-	 * Sets the events.
+	 * Sets the event.
 	 *
-	 * @param events
-	 *            the new events
+	 * @param event
+	 *            the new event
 	 */
-	public void setEvents(final Iterable<Event> events) {
-		this.events = events;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
 	/**

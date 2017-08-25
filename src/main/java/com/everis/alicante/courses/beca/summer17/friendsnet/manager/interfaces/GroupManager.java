@@ -3,6 +3,8 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces;
 
+import java.util.List;
+
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Group;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
 
@@ -19,4 +21,10 @@ public interface GroupManager extends Manager<Group, Long> {
 	 * @return the group
 	 */
 	Group addPersons(final Iterable<Person> persons);
+	
+	public Group relate(final Long id, final List<Long> ids);
+	
+	public List<Group> getByPersonId(final Long id);
+
+	public Group addPerson(final Person person);
 }

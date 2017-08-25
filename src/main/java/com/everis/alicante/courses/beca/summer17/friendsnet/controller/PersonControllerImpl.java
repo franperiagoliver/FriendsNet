@@ -5,6 +5,8 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,15 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.interfaces.PersonController;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.PersonManager;
 
 /**
  * The Class PersonController.
  */
-@RestController
 @RequestMapping("/person")
-public class PersonController {
+@Transactional
+public class PersonControllerImpl implements PersonController  {
 
 	/** The person manager. */
 	@Autowired
@@ -33,7 +36,6 @@ public class PersonController {
 	 *
 	 * @return the all
 	 */
-	@GetMapping
 	public List<Person> getAll() {
 		return (List<Person>) this.manager.findAll();
 	}
@@ -45,7 +47,6 @@ public class PersonController {
 	 *            the id
 	 * @return the by id
 	 */
-	@GetMapping("/{id}")
 	public Person getById(@RequestParam final Long id) {
 		return this.manager.findById(id);
 	}
@@ -57,8 +58,7 @@ public class PersonController {
 	 *            the person
 	 * @return the person
 	 */
-	@PostMapping
-	public Person create(@RequestBody final Person person) {
+	public Person create(final Person person) {
 		return this.manager.save(person);
 	}
 
@@ -71,6 +71,7 @@ public class PersonController {
 	 *            the persons
 	 * @return the person
 	 */
+	@Override
 	@PostMapping("/{id}/relate")
 	public Person relate(@RequestParam final Long id, @RequestBody final List<Long> persons) {
 		return this.manager.relatePersons(id, persons);
@@ -82,8 +83,7 @@ public class PersonController {
 	 * @param id
 	 *            the id
 	 */
-	@DeleteMapping("{id}")
-	public void remove(@RequestParam final Long id) {
+	public void remove(final Long id) {
 		this.manager.remove(manager.findById(id));
 	}
 }

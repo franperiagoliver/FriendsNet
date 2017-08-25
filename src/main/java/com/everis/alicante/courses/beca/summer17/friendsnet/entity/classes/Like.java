@@ -9,9 +9,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,13 +25,13 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FN
 /**
  * The Class Like.
  */
-@Entity
-@Table(name = "Post")
+@Entity(name = "liketable")
+@Table(name = "liketable")
 public class Like implements FNEntity {
 
 	/** The id. */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Column(unique = true, nullable = false)
 	private Long id;
 
@@ -41,6 +44,14 @@ public class Like implements FNEntity {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private LikeType type;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "post_id", nullable = false)
+	private Post post;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "person_id", nullable = false)
+	private Person person;
 
 	/**
 	 * Gets the id.

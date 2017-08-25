@@ -5,6 +5,8 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,15 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.interfaces.EventController;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Event;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.EventManager;
 
 /**
  * The Class EventController.
  */
-@RestController
 @RequestMapping("/event")
-public class EventController {
+@Transactional
+public class EventControllerImpl implements EventController {
 
 	/** The manager. */
 	@Autowired
@@ -44,8 +47,7 @@ public class EventController {
 	 *            the id
 	 * @return the by id
 	 */
-	@GetMapping("/{id}")
-	public Event getById(@RequestParam final Long id) {
+	public Event getById(final Long id) {
 		return this.manager.findById(id);
 	}
 
@@ -56,8 +58,7 @@ public class EventController {
 	 *            the event
 	 * @return the post
 	 */
-	@PostMapping
-	public Event create(@RequestBody final Event event) {
+	public Event create(final Event event) {
 		return this.manager.save(event);
 	}
 
@@ -69,8 +70,8 @@ public class EventController {
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}")
-	public Event getByPersonId(@RequestParam final Long id) {
-		return this.manager.findById(id);
+	public List<Event> getByPersonId(@RequestParam final Long id) {
+		return (List<Event>) this.manager.findById(id);
 	}
 
 	/**
@@ -79,8 +80,7 @@ public class EventController {
 	 * @param id
 	 *            the id
 	 */
-	@DeleteMapping("{id}")
-	public void remove(@RequestParam final Long id) {
+	public void remove(final Long id) {
 		this.manager.remove(manager.findById(id));
 	}
 
@@ -94,7 +94,13 @@ public class EventController {
 	 * @return the event
 	 */
 	@PostMapping("/{id}/person/{idPerson}/add")
-	public Event addPerson(final Long idPerson, final Long idEvent) {
-		return this.manager.findById(idPerson);
+	public Event addPerson(@ RequestBody List<Long> ids) {
+		return this.manager.addPerson(ids);
+	}
+
+
+	@Override
+	public Event addPersons(List<Long> ids) {
+		return this.manager.addPersons(ids);
 	}
 }

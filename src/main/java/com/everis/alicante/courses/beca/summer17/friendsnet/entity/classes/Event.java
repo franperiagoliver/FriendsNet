@@ -4,34 +4,38 @@
 package com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.EventType;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * The Class Event.
  */
 @Entity
-@Table(name = "Event")
+@Table(name = "event")
 public class Event implements FNEntity {
 	/** The id. */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Column(unique = true, nullable = false)
 	private Long id;
 
@@ -60,10 +64,15 @@ public class Event implements FNEntity {
 	@Column(nullable = false)
 	private byte[] picture;
 
-	/** The post. */
-	@ManyToOne(cascade = { CascadeType.PERSIST })
-	@JoinColumn(name = "id", nullable = false)
-	private Post post;
+	/** The events. */
+	@OneToMany(mappedBy = "event", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnore
+	private Set<Post> posts;
+
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "person_id", nullable = false)
+	@JsonIgnore
+	private Person person;
 
 	/**
 	 * Gets the id.
@@ -180,22 +189,15 @@ public class Event implements FNEntity {
 	}
 
 	/**
-	 * Gets the post.
+	 * Gets the posts.
 	 *
-	 * @return the post
+	 * @return the posts
 	 */
-	public Post getPost() {
-		return post;
+	public Set<Post> getPosts() {
+		return posts;
 	}
 
-	/**
-	 * Sets the post.
-	 *
-	 * @param post
-	 *            the new post
-	 */
-	public void setPost(final Post post) {
-		this.post = post;
+	public void setPosts(Set<Post> posts) {
+		this.posts = posts;
 	}
-
 }

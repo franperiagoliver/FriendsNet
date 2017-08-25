@@ -5,24 +5,30 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.interfaces.PostController;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.PostManager;
 
 /**
  * The Class PostController.
  */
-@RestController
+
 @RequestMapping("/post")
-public class PostController {
+@Transactional
+public class PostControllerImpl implements PostController {
 
 	/** The manager. */
 	@Autowired
@@ -34,7 +40,6 @@ public class PostController {
 	 * @return the all
 	 */
 
-	@GetMapping
 	public List<Post> getAll() {
 		return (List<Post>) this.manager.findAll();
 	}
@@ -46,8 +51,8 @@ public class PostController {
 	 *            the id
 	 * @return the by id
 	 */
-	@GetMapping("/{id}")
-	public Post getById(@RequestParam final Long id) {
+	
+	public Post getById(final Long id) {
 		return this.manager.findById(id);
 	}
 
@@ -58,8 +63,8 @@ public class PostController {
 	 *            the post
 	 * @return the post
 	 */
-	@PostMapping
-	public Post create(@RequestBody final Post post) {
+	
+	public Post create(final Post post) {
 		return this.manager.save(post);
 	}
 
@@ -70,9 +75,10 @@ public class PostController {
 	 *            the id
 	 * @return the by person id
 	 */
+	@Override
 	@GetMapping("/person/{id}")
-	public Post getByPersonId(@RequestParam final Long id) {
-		return this.manager.findById(id);
+	public List<Post> getByPersonId(@PathVariable final Long id) {
+		return (List<Post>) this.manager.findById(id);
 	}
 
 	/**
@@ -81,8 +87,13 @@ public class PostController {
 	 * @param id
 	 *            the id
 	 */
-	@DeleteMapping("{id}")
-	public void remove(@RequestParam final Long id) {
+	public void remove(final Long id) {
 		this.manager.remove(manager.findById(id));
 	}
+
+	@Override
+	public Post addLike(Like like) {
+		return this.manager.addLike(like);
+	}
+
 }

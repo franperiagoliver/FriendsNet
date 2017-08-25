@@ -3,9 +3,12 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.EntityDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.GroupDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Group;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
@@ -15,118 +18,39 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.G
  * The Class GroupManagerImpl.
  */
 @Service
-public class GroupManagerImpl implements GroupManager {
+public class GroupManagerImpl extends AbstractManager<Group, Long> implements GroupManager {
 
 	/** The group dao. */
 	@Autowired
 	private GroupDAO groupDao;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#findAll(
-	 * )
-	 */
-	@Override
-	public Iterable<Group> findAll() {
-		return this.groupDao.findAll();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#findById
-	 * (java.io.Serializable)
-	 */
-	@Override
-	public Group findById(final Long id) {
-		return this.groupDao.findById(id);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#
-	 * findByIds(java.lang.Iterable)
-	 */
-	@Override
-	public Iterable<Group> findByIds(final Iterable<Long> ids) {
-		return this.groupDao.findByIds(ids);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#save(com
-	 * .everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity)
-	 */
-	@Override
-	public Group save(final Group group) {
-		return this.groupDao.save(group);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#save(
-	 * java.lang.Iterable)
-	 */
-	@Override
-	public Iterable<Group> save(final Iterable<Group> groups) {
-		return this.groupDao.save(groups);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#update(
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.
-	 * FNEntity)
-	 */
-	@Override
-	public Group update(final Group group) {
-		return this.groupDao.update(group);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#update(
-	 * java.lang.Iterable)
-	 */
-	@Override
-	public Iterable<Group> update(final Iterable<Group> groups) {
-		return this.groupDao.update(groups);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#remove(
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.
-	 * FNEntity)
-	 */
-	@Override
-	public void remove(final Group group) {
-		this.groupDao.remove(group);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.GroupManager#
-	 * addPersons(java.lang.Iterable)
-	 */
+	
 	@Override
 	public Group addPersons(final Iterable<Person> persons) {
 		return this.groupDao.addPersons(persons);
+	}
+
+
+	@Override
+	public EntityDAO<Group, Long> getEntityDAO() {
+		return this.groupDao;
+	}
+
+
+	@Override
+	public Group relate(Long id, List<Long> ids) {
+		return this.groupDao.relate(id, ids);
+	}
+
+
+	@Override
+	public List<Group> getByPersonId(Long id) {
+		return this.groupDao.getByPersonId(id);
+	}
+
+
+	@Override
+	public Group addPerson(Person person) {
+		return this.groupDao.addPerson(person);
 	}
 }

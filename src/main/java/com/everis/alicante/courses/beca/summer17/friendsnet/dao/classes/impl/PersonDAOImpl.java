@@ -18,14 +18,6 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Perso
 @Service
 public class PersonDAOImpl extends AbstractDAO<Person, Long> implements PersonDAO {
 
-	/** The entity manager. */
-	@Autowired
-	EntityManager entityManager;
-
-	/** The person. */
-	@Autowired
-	Person person;
-
 	/*
 	 * (non-Javadoc)
 	 * 

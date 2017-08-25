@@ -3,6 +3,8 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +21,6 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
 @Service
 public class PostDAOImpl extends AbstractDAO<Post, Long> implements PostDAO {
 
-	/** The entity manager. */
-	@Autowired
-	EntityManager entityManager;
-
-	/** The post. */
-	@Autowired
-	Post post;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -39,5 +33,11 @@ public class PostDAOImpl extends AbstractDAO<Post, Long> implements PostDAO {
 	public Post addLike(final Like like) {
 		return null;
 	}
+
+	@Override
+	public List<Post> getByPersonId(Long id) {
+		return null;
+	}
+	
 
 }

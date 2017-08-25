@@ -20,7 +20,7 @@ public interface PostManager extends Manager<Post, Long> {
 	 *            the like
 	 * @return the post
 	 */
-	public Post addLike(final Like like);
+	Post addLike(final Like like);
 	
-	public List<Post> getByPersonId(final Long id);
+	List<Post> getByPersonId(final Long id);
 }

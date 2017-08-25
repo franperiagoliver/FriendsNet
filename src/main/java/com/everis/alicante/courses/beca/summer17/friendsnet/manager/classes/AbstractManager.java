@@ -8,7 +8,7 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.M
 
 public abstract class AbstractManager<E extends FNEntity, ID extends Serializable> implements Manager<E, ID>{
 	
-	public abstract EntityDAO<E, ID> getEntityDAO();
+	protected abstract EntityDAO<E, ID> getEntityDAO();
 	
 	@Override
 	public Iterable<E> findAll() {

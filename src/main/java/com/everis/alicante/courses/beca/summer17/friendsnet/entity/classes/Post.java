@@ -36,7 +36,7 @@ public class Post implements FNEntity {
 
 	/** The id. */
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique = true, nullable = false)
 	private Long id;
 

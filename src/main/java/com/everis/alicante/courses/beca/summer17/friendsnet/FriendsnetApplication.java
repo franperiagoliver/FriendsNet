@@ -9,11 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * The Class FriendsnetApplication.
  */
-@SpringBootApplication(scanBasePackages = { "com.everis.alicante.courses.beca.summer17.friendsnet.controller",
-		"com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes",
-		"com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes.impl",
-		"com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.impl",
-		"com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces"})
+@SpringBootApplication
 public class FriendsnetApplication {
 
 	/**

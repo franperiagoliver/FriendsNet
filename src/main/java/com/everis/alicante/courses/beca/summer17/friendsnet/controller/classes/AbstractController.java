@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.interfaces.Controller;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.Manager;
 
 @RestController
-public abstract class AbstractController<E extends FNEntity, ID extends Serializable> implements Controller<E, ID> {
+public abstract class AbstractController<E extends FNEntity, ID extends Serializable> {
 	
-	public abstract Manager<E, ID> getManager();
+	protected abstract Manager<E, ID> getManager();
 	
 	@GetMapping
 	public List<E> getAll(){

@@ -22,7 +22,7 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.P
 public class PostManagerImpl extends AbstractManager<Post, Long> implements PostManager {
 	
 	@Autowired
-	PostDAO postDao;
+	private PostDAO postDao;
 	
 	/*
 	 * (non-Javadoc)
@@ -37,12 +37,12 @@ public class PostManagerImpl extends AbstractManager<Post, Long> implements Post
 	}
 
 	@Override
-	public EntityDAO<Post, Long> getEntityDAO() {
-		return this.postDao;
+	public List<Post> getByPersonId(Long id) {
+		return this.postDao.getByPersonId(id);
 	}
 
 	@Override
-	public List<Post> getByPersonId(Long id) {
-		return this.postDao.getByPersonId(id);
+	protected EntityDAO<Post, Long> getEntityDAO() {
+		return this.postDao;
 	}
 }

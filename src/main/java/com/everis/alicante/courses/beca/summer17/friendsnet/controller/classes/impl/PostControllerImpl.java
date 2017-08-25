@@ -17,83 +17,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.interfaces.PostController;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.AbstractController;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
+import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.Manager;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.PostManager;
 
 /**
  * The Class PostController.
  */
-
+@RestController
 @RequestMapping("/post")
 @Transactional
-public class PostControllerImpl implements PostController {
+public class PostControllerImpl extends AbstractController<Post, Long> {
 
 	/** The manager. */
 	@Autowired
 	private PostManager manager;
 
-	/**
-	 * Gets the all.
-	 *
-	 * @return the all
-	 */
-
-	public List<Post> getAll() {
-		return (List<Post>) this.manager.findAll();
-	}
-
-	/**
-	 * Gets the by id.
-	 *
-	 * @param id
-	 *            the id
-	 * @return the by id
-	 */
-	
-	public Post getById(final Long id) {
-		return this.manager.findById(id);
-	}
-
-	/**
-	 * Creates the.
-	 *
-	 * @param post
-	 *            the post
-	 * @return the post
-	 */
-	
-	public Post create(final Post post) {
-		return this.manager.save(post);
-	}
-
-	/**
-	 * Gets the by person id.
-	 *
-	 * @param id
-	 *            the id
-	 * @return the by person id
-	 */
-	@Override
 	@GetMapping("/person/{id}")
 	public List<Post> getByPersonId(@PathVariable final Long id) {
-		return (List<Post>) this.manager.findById(id);
-	}
-
-	/**
-	 * Removes the.
-	 *
-	 * @param id
-	 *            the id
-	 */
-	public void remove(final Long id) {
-		this.manager.remove(manager.findById(id));
+		return (List<Post>) this.getManager().findById(id);
 	}
 
 	@Override
-	public Post addLike(Like like) {
-		return this.manager.addLike(like);
+	protected PostManager getManager() {
+		return manager;
 	}
 
 }

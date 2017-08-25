@@ -3,15 +3,12 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.main;
 
-import org.junit.runner.RunWith;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * The Class FriendsnetApplication.
  */
-@RunWith(SpringRunner.class)
 @SpringBootApplication
 public class FriendsnetApplication {
 

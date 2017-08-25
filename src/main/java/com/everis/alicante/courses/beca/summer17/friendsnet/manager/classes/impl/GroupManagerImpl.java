@@ -1,24 +1,25 @@
 /*
- * Created at 24-ago-2017 by Fran Periago
+ * Created at 25-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.manager.impl;
+package com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.GroupDAO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Group;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
-import com.everis.alicante.courses.beca.summer17.friendsnet.manager.PersonManager;
+import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager;
 
 /**
- * The Class PersonManager.
+ * The Class GroupManagerImpl.
  */
 @Service
-public class PersonManagerImpl implements PersonManager {
+public class GroupManagerImpl implements GroupManager {
 
-	/** The person dao. */
+	/** The group dao. */
 	@Autowired
-	private PersonDAO personDao;
+	private GroupDAO groupDao;
 
 	/*
 	 * (non-Javadoc)
@@ -28,8 +29,8 @@ public class PersonManagerImpl implements PersonManager {
 	 * )
 	 */
 	@Override
-	public Iterable<Person> findAll() {
-		return this.personDao.findAll();
+	public Iterable<Group> findAll() {
+		return this.groupDao.findAll();
 	}
 
 	/*
@@ -40,8 +41,8 @@ public class PersonManagerImpl implements PersonManager {
 	 * (java.io.Serializable)
 	 */
 	@Override
-	public Person findById(final Long id) {
-		return this.personDao.findById(id);
+	public Group findById(Long id) {
+		return this.groupDao.findById(id);
 	}
 
 	/*
@@ -51,8 +52,8 @@ public class PersonManagerImpl implements PersonManager {
 	 * findByIds(java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Person> findByIds(final Iterable<Long> ids) {
-		return this.personDao.findByIds(ids);
+	public Iterable<Group> findByIds(Iterable<Long> ids) {
+		return this.groupDao.findByIds(ids);
 	}
 
 	/*
@@ -60,11 +61,11 @@ public class PersonManagerImpl implements PersonManager {
 	 * 
 	 * @see
 	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#save(com
-	 * .everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.FNEntity)
+	 * .everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity)
 	 */
 	@Override
-	public Person save(final Person person) {
-		return this.personDao.save(person);
+	public Group save(Group group) {
+		return this.groupDao.save(group);
 	}
 
 	/*
@@ -75,8 +76,8 @@ public class PersonManagerImpl implements PersonManager {
 	 * java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Person> save(final Iterable<Person> persons) {
-		return this.personDao.save(persons);
+	public Iterable<Group> save(Iterable<Group> groups) {
+		return this.groupDao.save(groups);
 	}
 
 	/*
@@ -84,11 +85,12 @@ public class PersonManagerImpl implements PersonManager {
 	 * 
 	 * @see
 	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager#update(
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.FNEntity)
+	 * com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.
+	 * FNEntity)
 	 */
 	@Override
-	public Person update(final Person person) {
-		return this.personDao.update(person);
+	public Group update(Group group) {
+		return this.groupDao.update(group);
 	}
 
 	/*
@@ -99,8 +101,8 @@ public class PersonManagerImpl implements PersonManager {
 	 * java.lang.Iterable)
 	 */
 	@Override
-	public Iterable<Person> update(final Iterable<Person> persons) {
-		return this.personDao.update(persons);
+	public Iterable<Group> update(Iterable<Group> groups) {
+		return this.groupDao.update(groups);
 	}
 
 	/*
@@ -112,19 +114,19 @@ public class PersonManagerImpl implements PersonManager {
 	 * FNEntity)
 	 */
 	@Override
-	public void remove(Person person) {
-		this.personDao.remove(person);
+	public void remove(Group group) {
+		this.groupDao.remove(group);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.PersonManager#
-	 * relatePersons(java.lang.Long, java.lang.Iterable)
+	 * com.everis.alicante.courses.beca.summer17.friendsnet.manager.GroupManager#
+	 * addPersons(java.lang.Iterable)
 	 */
 	@Override
-	public Person relatePersons(Long personId, Iterable<Long> ids) {
-		return this.personDao.relatePersons(personId, ids);
+	public Group addPersons(Iterable<Person> persons) {
+		return this.groupDao.addPersons(persons);
 	}
 }

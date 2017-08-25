@@ -1,7 +1,7 @@
 /*
  * Created at 24-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.manager;
+package com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Group;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
-import com.everis.alicante.courses.beca.summer17.friendsnet.manager.PersonManager;
+import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.PersonManager;
 
 /**
  * The Class PersonController.

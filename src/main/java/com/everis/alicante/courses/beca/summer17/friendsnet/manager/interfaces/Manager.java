@@ -1,7 +1,7 @@
 /*
  * Created at 24-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.manager;
+package com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces;
 
 import java.io.Serializable;
 

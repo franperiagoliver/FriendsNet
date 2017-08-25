@@ -3,6 +3,9 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes.impl;
 
+import javax.persistence.EntityManager;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes.AbstractDAO;
@@ -15,6 +18,14 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Perso
  */
 @Service
 public class GroupDAOImpl extends AbstractDAO<Group, Long> implements GroupDAO {
+
+	/** The entity manager. */
+	@Autowired
+	EntityManager entityManager;
+
+	/** The group. */
+	@Autowired
+	Group group;
 
 	/*
 	 * (non-Javadoc)

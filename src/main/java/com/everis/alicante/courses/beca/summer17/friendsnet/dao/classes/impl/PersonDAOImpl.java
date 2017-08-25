@@ -3,6 +3,9 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes.impl;
 
+import javax.persistence.EntityManager;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes.AbstractDAO;
@@ -15,12 +18,20 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Perso
 @Service
 public class PersonDAOImpl extends AbstractDAO<Person, Long> implements PersonDAO {
 
+	/** The entity manager. */
+	@Autowired
+	EntityManager entityManager;
+
+	/** The person. */
+	@Autowired
+	Person person;
+
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see
 	 * com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO
-	 * #relatePersons(java.lang.Iterable)
+	 * #relatePersons(java.lang.Long, java.lang.Iterable)
 	 */
 	@Override
 	public Person relatePersons(Long personId, Iterable<Long> ids) {

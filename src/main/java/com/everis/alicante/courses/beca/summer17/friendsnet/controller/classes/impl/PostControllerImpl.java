@@ -1,7 +1,7 @@
 /*
  * Created at 25-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.controller;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.impl;
 
 import java.util.List;
 
@@ -10,34 +10,38 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.interfaces.EventController;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Event;
-import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.EventManager;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.interfaces.PostController;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
+import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.PostManager;
 
 /**
- * The Class EventController.
+ * The Class PostController.
  */
-@RequestMapping("/event")
+
+@RequestMapping("/post")
 @Transactional
-public class EventControllerImpl implements EventController {
+public class PostControllerImpl implements PostController {
 
 	/** The manager. */
 	@Autowired
-	private EventManager manager;
+	private PostManager manager;
 
 	/**
 	 * Gets the all.
 	 *
 	 * @return the all
 	 */
-	public List<Event> getAll() {
-		return (List<Event>) this.manager.findAll();
+
+	public List<Post> getAll() {
+		return (List<Post>) this.manager.findAll();
 	}
 
 	/**
@@ -47,19 +51,21 @@ public class EventControllerImpl implements EventController {
 	 *            the id
 	 * @return the by id
 	 */
-	public Event getById(final Long id) {
+	
+	public Post getById(final Long id) {
 		return this.manager.findById(id);
 	}
 
 	/**
 	 * Creates the.
 	 *
-	 * @param event
-	 *            the event
+	 * @param post
+	 *            the post
 	 * @return the post
 	 */
-	public Event create(final Event event) {
-		return this.manager.save(event);
+	
+	public Post create(final Post post) {
+		return this.manager.save(post);
 	}
 
 	/**
@@ -69,9 +75,10 @@ public class EventControllerImpl implements EventController {
 	 *            the id
 	 * @return the by person id
 	 */
+	@Override
 	@GetMapping("/person/{id}")
-	public List<Event> getByPersonId(@RequestParam final Long id) {
-		return (List<Event>) this.manager.findById(id);
+	public List<Post> getByPersonId(@PathVariable final Long id) {
+		return (List<Post>) this.manager.findById(id);
 	}
 
 	/**
@@ -84,23 +91,9 @@ public class EventControllerImpl implements EventController {
 		this.manager.remove(manager.findById(id));
 	}
 
-	/**
-	 * Adds the person.
-	 *
-	 * @param idPerson
-	 *            the id person
-	 * @param idEvent
-	 *            the id event
-	 * @return the event
-	 */
-	@PostMapping("/{id}/person/{idPerson}/add")
-	public Event addPerson(@ RequestBody List<Long> ids) {
-		return this.manager.addPerson(ids);
-	}
-
-
 	@Override
-	public Event addPersons(List<Long> ids) {
-		return this.manager.addPersons(ids);
+	public Post addLike(Like like) {
+		return this.manager.addLike(like);
 	}
+
 }

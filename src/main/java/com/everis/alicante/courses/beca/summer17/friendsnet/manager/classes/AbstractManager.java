@@ -1,4 +1,4 @@
-package com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.impl;
+package com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes;
 
 import java.io.Serializable;
 

@@ -12,6 +12,7 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.Entit
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.GroupDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Group;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
+import com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.AbstractManager;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager;
 
 /**

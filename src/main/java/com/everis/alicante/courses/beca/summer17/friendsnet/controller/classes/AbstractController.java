@@ -1,4 +1,4 @@
-package com.everis.alicante.courses.beca.summer17.friendsnet.controller;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes;
 
 import java.io.Serializable;
 import java.util.List;

@@ -12,6 +12,7 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.Entit
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PostDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
+import com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.AbstractManager;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.PostManager;
 
 /**

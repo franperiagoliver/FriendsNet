@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.EntityDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
+import com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.AbstractManager;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.PersonManager;
 
 /**

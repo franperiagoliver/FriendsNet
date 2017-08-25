@@ -23,10 +23,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-	
+
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	/**
 	 * Inits the.
 	 */
@@ -34,7 +34,7 @@ public class SwaggerConfig {
 	public void init() {
 		logger.info("Initializing SwaggerConfig...");
 	}
-	
+
 	/**
 	 * Api.
 	 *
@@ -42,16 +42,21 @@ public class SwaggerConfig {
 	 */
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("com.everis.alicante.courses.beca.summer17.friendsnet.controller")).paths(PathSelectors.any()).build().apiInfo(apiInfo());
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors
+						.basePackage("com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes"))
+				.paths(PathSelectors.any()).build().apiInfo(apiInfo());
 	}
-	
+
 	/**
 	 * Api info.
 	 *
 	 * @return the api info
 	 */
 	private ApiInfo apiInfo() {
-		ApiInfo apiInfo = new ApiInfo("Sample Application REST API", "The API exposes common functionallities to " + "manage the FriendsNet", "API TOS", "Terms of service", "franperiagoliver@gmail.com", "License of API", "API License URL");
+		ApiInfo apiInfo = new ApiInfo("Sample Application REST API",
+				"The API exposes common functionallities to " + "manage the FriendsNet", "API TOS", "Terms of service",
+				"franperiagoliver@gmail.com", "License of API", "API License URL");
 		return apiInfo;
 	}
 }

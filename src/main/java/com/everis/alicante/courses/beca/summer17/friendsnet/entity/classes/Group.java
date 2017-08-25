@@ -1,12 +1,12 @@
 /*
  * Created at 24-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.entity;
+package com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.FNEntity;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
 
 import lombok.Getter;
 import lombok.Setter;

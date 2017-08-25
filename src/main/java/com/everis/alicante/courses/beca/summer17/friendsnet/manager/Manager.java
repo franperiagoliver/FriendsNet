@@ -5,7 +5,7 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.manager;
 
 import java.io.Serializable;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.FNEntity;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
 
 /**
  * The Interface Manager.

@@ -5,6 +5,8 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces;
 
 import java.io.Serializable;
 
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
+
 /**
  * The Interface EntityDAO.
  *

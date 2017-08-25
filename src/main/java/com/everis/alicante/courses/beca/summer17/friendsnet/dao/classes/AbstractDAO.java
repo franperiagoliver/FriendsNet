@@ -15,7 +15,7 @@ import java.lang.reflect.ParameterizedType;
 import javax.persistence.EntityManager;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.EntityDAO;
-import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.FNEntity;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
 
 /**
  * The Class AbstractDAO.

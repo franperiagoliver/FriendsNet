@@ -1,7 +1,7 @@
 /*
  * Created at 27-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.entity.test;
+package com.everis.alicante.courses.beca.summer17.friendsnet.entity.tests;
 
 import java.util.Date;
 

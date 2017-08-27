@@ -31,13 +31,6 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.M
 public abstract class AbstractController<E extends FNEntity, ID extends Serializable> {
 
 	/**
-	 * Gets the manager.
-	 *
-	 * @return the manager
-	 */
-	protected abstract Manager<E, ID> getManager();
-
-	/**
 	 * Gets the all.
 	 *
 	 * @return the all
@@ -83,4 +76,11 @@ public abstract class AbstractController<E extends FNEntity, ID extends Serializ
 	public void remove(@PathVariable final ID id) {
 		this.getManager().remove(this.getManager().findById(id));
 	}
+
+	/**
+	 * Gets the manager.
+	 *
+	 * @return the manager
+	 */
+	protected abstract Manager<E, ID> getManager();
 }

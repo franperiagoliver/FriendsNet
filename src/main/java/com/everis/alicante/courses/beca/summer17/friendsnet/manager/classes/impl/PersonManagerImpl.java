@@ -6,7 +6,6 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.imp
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.EntityDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.AbstractManager;
@@ -21,7 +20,7 @@ public class PersonManagerImpl extends AbstractManager<Person, Long> implements 
 	/** The person dao. */
 	@Autowired
 	private PersonDAO personDao;
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -31,11 +30,11 @@ public class PersonManagerImpl extends AbstractManager<Person, Long> implements 
 	 */
 	@Override
 	public Person relatePersons(final Long personId, final Iterable<Long> ids) {
-		return this.personDao.relatePersons(personId, ids);
+		return this.getEntityDAO().relatePersons(personId, ids);
 	}
 
 	@Override
-	public EntityDAO<Person, Long> getEntityDAO() {
+	protected final PersonDAO getEntityDAO() {
 		return this.personDao;
 	}
 }

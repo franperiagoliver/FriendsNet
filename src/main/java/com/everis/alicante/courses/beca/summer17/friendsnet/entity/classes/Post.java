@@ -26,7 +26,8 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.PostTyp
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * The Class Post.
@@ -39,7 +40,12 @@ import lombok.Data;
  */
 @Entity
 @Table(name = "post")
-public @Data class Post implements FNEntity {
+@Getter
+@Setter
+public class Post implements FNEntity {
+
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = -190387273503499471L;
 
 	/** The id. */
 	@Id
@@ -68,15 +74,15 @@ public @Data class Post implements FNEntity {
 	private byte[] picture;
 
 	/** The like. */
-	@OneToOne(mappedBy = "post", fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "likeOfPerson", fetch = FetchType.EAGER)
 	@JsonIgnore
-	private Like Like;
+	private Like postOfLike;
 
 	/** The Post person. */
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "post_id", nullable = false)
 	@JsonIgnore
-	private Person post;
+	private Person postWritter;
 
 	/** The event. */
 	@ManyToOne(cascade = { CascadeType.ALL })

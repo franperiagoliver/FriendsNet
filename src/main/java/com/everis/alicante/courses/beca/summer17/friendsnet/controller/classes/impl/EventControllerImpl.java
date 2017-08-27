@@ -8,7 +8,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.AbstractController;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Event;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.EventManager;
-import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.Manager;
 
 /**
  * The Class EventController.
@@ -33,25 +31,49 @@ public class EventControllerImpl extends AbstractController<Event, Long> {
 	@Autowired
 	private EventManager manager;
 
-	
+	/**
+	 * Gets the by person id.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the by person id
+	 */
 	@GetMapping("/person/{id}")
 	public List<Event> getByPersonId(@RequestParam final Long id) {
-		return (List<Event>) this.manager.findById(id);
+		return (List<Event>) this.getManager().findById(id);
 	}
 
-	
+	/**
+	 * Adds the person.
+	 *
+	 * @param ids
+	 *            the ids
+	 * @return the event
+	 */
 	@PostMapping("/{id}/person/{idPerson}/add")
-	public Event addPerson(@ RequestBody List<Long> ids) {
-		return this.manager.addPerson(ids);
+	public Event addPerson(@RequestBody final List<Long> ids) {
+		return this.getManager().addPerson(ids);
 	}
 
-	public Event addPersons(List<Long> ids) {
-		return this.manager.addPersons(ids);
+	/**
+	 * Adds the persons.
+	 *
+	 * @param ids
+	 *            the ids
+	 * @return the event
+	 */
+	public Event addPersons(final List<Long> ids) {
+		return this.getManager().addPersons(ids);
 	}
 
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.
+	 * AbstractController#getManager()
+	 */
 	@Override
-	protected EventManager getManager() {
+	protected final EventManager getManager() {
 		return this.manager;
 	}
 }

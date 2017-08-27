@@ -8,7 +8,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.EntityDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PostDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
@@ -20,10 +19,11 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.P
  */
 @Service
 public class PostManagerImpl extends AbstractManager<Post, Long> implements PostManager {
-	
+
+	/** The post dao. */
 	@Autowired
 	private PostDAO postDao;
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -33,16 +33,28 @@ public class PostManagerImpl extends AbstractManager<Post, Long> implements Post
 	 */
 	@Override
 	public Post addLike(final Like like) {
-		return this.addLike(like);
+		return this.getEntityDAO().addLike(like);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.
+	 * PostManager#getByPersonId(java.lang.Long)
+	 */
 	@Override
-	public List<Post> getByPersonId(Long id) {
-		return this.postDao.getByPersonId(id);
+	public List<Post> getByPersonId(final Long id) {
+		return this.getEntityDAO().getByPersonId(id);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.
+	 * AbstractManager#getEntityDAO()
+	 */
 	@Override
-	protected EntityDAO<Post, Long> getEntityDAO() {
+	protected PostDAO getEntityDAO() {
 		return this.postDao;
 	}
 }

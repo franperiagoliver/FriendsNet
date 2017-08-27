@@ -26,14 +26,15 @@ import lombok.Setter;
 /**
  * The Class Person.
  */
-/**
- * Instantiates a new person.
- */
+
 @Entity
 @Table(name = "person")
 @Getter
 @Setter
 public class Person implements FNEntity {
+
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 4374421059150417639L;
 
 	/** The id. */
 	@Id
@@ -59,25 +60,25 @@ public class Person implements FNEntity {
 	/** The group. */
 	@OneToMany(mappedBy = "personInGroup", fetch = FetchType.EAGER)
 	@JsonIgnore
-	private Set<Group> groups = new HashSet<Group>();
+	private Set<Group> groups = new HashSet<>();
 
 	/** The persons. */
 	@OneToMany(mappedBy = "friends", fetch = FetchType.EAGER)
 	@JsonIgnore
-	private Set<Person> friends = new HashSet<Person>();
+	private Set<Person> friends = new HashSet<>();
 
 	/** The like. */
-	@OneToOne(mappedBy = "like", fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "likeOfPerson", fetch = FetchType.EAGER)
 	@JsonIgnore
-	private Like like;
+	private Like liker;
 
 	/** The post. */
-	@OneToOne(mappedBy = "post", fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "postWritter", fetch = FetchType.EAGER)
 	@JsonIgnore
-	private Post post;
+	private Post postWritter;
 
 	/** The events. */
 	@OneToMany(mappedBy = "personInEvent", fetch = FetchType.EAGER)
 	@JsonIgnore
-	private Set<Event> events = new HashSet<Event>();
+	private Set<Event> events = new HashSet<>();
 }

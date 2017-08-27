@@ -28,10 +28,10 @@ public class PersonTest {
 	private Long expectedId = 1L;
 
 	/** The expected name. */
-	private String expectedName = "";
+	private String expectedName = "Jerry";
 
 	/** The expected surname. */
-	private String expectedSurname = "";
+	private String expectedSurname = "Tom";
 
 	/** The expected picture. */
 	private byte[] expectedPicture = null;
@@ -60,11 +60,11 @@ public class PersonTest {
 		this.expectedPerson.setEvents(expectedEvents);
 		this.expectedPerson.setGroups(expectedGroups);
 		this.expectedPerson.setId(expectedId);
-		this.expectedPerson.setLike(expectedLike);
+		this.expectedPerson.setLiker(expectedLike);
 		this.expectedPerson.setName(expectedName);
 		this.expectedPerson.setSurname(expectedSurname);
 		this.expectedPerson.setPicture(expectedPicture);
-		this.expectedPerson.setPost(expectedPost);
+		this.expectedPerson.setPostWritter(expectedPost);
 		this.expectedPerson.setFriends(expectedFriends);
 	}
 
@@ -251,7 +251,7 @@ public class PersonTest {
 	@Test
 	public void testGetPost() {
 		// Act
-		final Post result = this.expectedPerson.getPost();
+		final Post result = this.expectedPerson.getPostWritter();
 		// Assert
 		Assert.assertEquals(expectedPost, result);
 	}
@@ -264,9 +264,9 @@ public class PersonTest {
 		// Arrange
 		final Person person = new Person();
 		// Act
-		person.setPost(expectedPost);
+		person.setPostWritter(expectedPost);
 		// Assert
-		Assert.assertEquals(expectedPost, person.getPost());
+		Assert.assertEquals(expectedPost, person.getPostWritter());
 	}
 
 	/**
@@ -275,7 +275,7 @@ public class PersonTest {
 	@Test
 	public void testGetLike() {
 		// Act
-		final Like result = this.expectedPerson.getLike();
+		final Like result = this.expectedPerson.getLiker();
 		// Assert
 		Assert.assertEquals(expectedLike, result);
 	}
@@ -288,8 +288,8 @@ public class PersonTest {
 		// Arrange
 		final Person person = new Person();
 		// Act
-		person.setLike(expectedLike);
+		person.setLiker(expectedLike);
 		// Assert
-		Assert.assertEquals(expectedLike, person.getLike());
+		Assert.assertEquals(expectedLike, person.getLiker());
 	}
 }

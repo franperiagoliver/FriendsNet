@@ -15,22 +15,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * The Class Group.
  */
-/**
- * Instantiates a new group.
- */
-/**
- * Instantiates a new group.
- */
 @Entity(name = "group_table")
 @Table(name = "group_table")
-public @Data class Group implements FNEntity {
+@Getter
+@Setter
+public class Group implements FNEntity {
+
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 8528264221546094527L;
 
 	/** The id. */
 	@Id
@@ -51,6 +50,5 @@ public @Data class Group implements FNEntity {
 	/** The person. */
 	@ManyToOne(cascade = { CascadeType.MERGE })
 	@JoinColumn(name = "person_id", nullable = false)
-	@JsonIgnore
 	private Person personInGroup;
 }

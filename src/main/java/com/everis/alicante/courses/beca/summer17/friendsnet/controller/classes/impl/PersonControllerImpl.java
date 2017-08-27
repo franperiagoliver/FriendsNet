@@ -52,7 +52,7 @@ public class PersonControllerImpl extends AbstractController<Person, Long> {
 	 * AbstractController#getManager()
 	 */
 	@Override
-	protected PersonManager getManager() {
-		return manager;
+	protected final PersonManager getManager() {
+		return this.manager;
 	}
 }

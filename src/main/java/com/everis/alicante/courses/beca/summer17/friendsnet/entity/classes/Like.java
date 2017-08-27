@@ -22,14 +22,20 @@ import javax.persistence.TemporalType;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.LikeType;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * The Class Like.
  */
 @Entity(name = "like_table")
 @Table(name = "like_table")
-public @Data class Like implements FNEntity {
+@Getter
+@Setter
+public class Like implements FNEntity {
+
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = -2603648111651479873L;
 
 	/** The id. */
 	@Id
@@ -49,9 +55,9 @@ public @Data class Like implements FNEntity {
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "post_id", nullable = false)
-	private Post post;
+	private Post likeOfPost;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "person_id", nullable = false)
-	private Person like;
+	private Person likeOfPerson;
 }

@@ -21,6 +21,13 @@ public interface PostManager extends Manager<Post, Long> {
 	 * @return the post
 	 */
 	Post addLike(final Like like);
-	
+
+	/**
+	 * Gets the by person id.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the by person id
+	 */
 	List<Post> getByPersonId(final Long id);
 }

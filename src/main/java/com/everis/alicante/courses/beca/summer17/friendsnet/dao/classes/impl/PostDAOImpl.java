@@ -3,11 +3,9 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes.AbstractDAO;
@@ -20,6 +18,8 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
  */
 @Service
 public class PostDAOImpl extends AbstractDAO<Post, Long> implements PostDAO {
+
+	private List<Post> listPosts = new ArrayList<>();
 
 	/*
 	 * (non-Javadoc)
@@ -34,10 +34,15 @@ public class PostDAOImpl extends AbstractDAO<Post, Long> implements PostDAO {
 		return null;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PostDAO#
+	 * getByPersonId(java.lang.Long)
+	 */
 	@Override
-	public List<Post> getByPersonId(Long id) {
-		return null;
+	public List<Post> getByPersonId(final Long id) {
+		return listPosts;
 	}
-	
-
 }

@@ -28,17 +28,21 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.EventTy
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * The Class Event.
  */
-/**
- * Instantiates a new event.
- */
 @Entity
 @Table(name = "event")
-public @Data class Event implements FNEntity {
+@Getter
+@Setter
+public class Event implements FNEntity {
+
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 339182197410746675L;
+
 	/** The id. */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -73,10 +77,11 @@ public @Data class Event implements FNEntity {
 	/** The events. */
 	@OneToMany(mappedBy = "postInEvent", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore
-	private Set<Post> posts = new HashSet<Post>();
+	private Set<Post> posts = new HashSet<>();
 
 	/** The person in event. */
 	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "person_id", nullable = false)
+	@JsonIgnore
 	private Person personInEvent;
 }

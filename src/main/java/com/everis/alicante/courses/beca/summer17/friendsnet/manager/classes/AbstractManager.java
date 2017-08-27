@@ -6,47 +6,47 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.Entit
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.Manager;
 
-public abstract class AbstractManager<E extends FNEntity, ID extends Serializable> implements Manager<E, ID>{
-	
+public abstract class AbstractManager<E extends FNEntity, ID extends Serializable> implements Manager<E, ID> {
+
 	protected abstract EntityDAO<E, ID> getEntityDAO();
-	
+
 	@Override
 	public Iterable<E> findAll() {
 		return this.getEntityDAO().findAll();
 	}
 
 	@Override
-	public E findById(ID id) {
+	public E findById(final ID id) {
 		return this.getEntityDAO().findById(id);
 	}
 
 	@Override
-	public Iterable<E> findByIds(Iterable<ID> ids) {
+	public Iterable<E> findByIds(final Iterable<ID> ids) {
 		return this.getEntityDAO().findByIds(ids);
 	}
 
 	@Override
-	public E save(E e) {
+	public E save(final E e) {
 		return this.getEntityDAO().save(e);
 	}
 
 	@Override
-	public Iterable<E> save(Iterable<E> es) {
+	public Iterable<E> save(final Iterable<E> es) {
 		return this.getEntityDAO().save(es);
 	}
 
 	@Override
-	public E update(E e) {
+	public E update(final E e) {
 		return this.getEntityDAO().update(e);
 	}
 
 	@Override
-	public Iterable<E> update(Iterable<E> es) {
+	public Iterable<E> update(final Iterable<E> es) {
 		return this.getEntityDAO().update(es);
 	}
 
 	@Override
-	public void remove(E e) {
+	public void remove(final E e) {
 		this.getEntityDAO().remove(e);
 	}
 

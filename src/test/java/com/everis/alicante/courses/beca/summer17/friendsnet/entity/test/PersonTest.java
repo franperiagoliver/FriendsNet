@@ -40,7 +40,7 @@ public class PersonTest {
 	private Set<Group> expectedGroups = new HashSet<Group>();
 
 	/** The expected persons. */
-	private Set<Person> expectedPersons = new HashSet<Person>();
+	private Set<Person> expectedFriends = new HashSet<Person>();
 
 	/** The expected events. */
 	private Set<Event> expectedEvents = new HashSet<Event>();
@@ -63,9 +63,9 @@ public class PersonTest {
 		this.expectedPerson.setLike(expectedLike);
 		this.expectedPerson.setName(expectedName);
 		this.expectedPerson.setSurname(expectedSurname);
-		this.expectedPerson.setPersons(expectedPersons);
 		this.expectedPerson.setPicture(expectedPicture);
 		this.expectedPerson.setPost(expectedPost);
+		this.expectedPerson.setFriends(expectedFriends);
 	}
 
 	/**
@@ -179,9 +179,9 @@ public class PersonTest {
 	@Test
 	public void testGetPersons() {
 		// Act
-		final Set<Person> result = this.expectedPerson.getPersons();
+		final Set<Person> result = this.expectedPerson.getFriends();
 		// Assert
-		Assert.assertEquals(expectedPersons, result);
+		Assert.assertEquals(expectedFriends, result);
 	}
 
 	/**
@@ -192,9 +192,9 @@ public class PersonTest {
 		// Arrange
 		final Person person = new Person();
 		// Act
-		person.setPersons(expectedPersons);
+		person.setFriends(expectedFriends);
 		// Assert
-		Assert.assertEquals(expectedPersons, person.getPersons());
+		Assert.assertEquals(expectedFriends, person.getFriends());
 	}
 
 	/**

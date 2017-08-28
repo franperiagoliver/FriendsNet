@@ -16,9 +16,9 @@ public interface PersonManager extends Manager<Person, Long> {
 	 *
 	 * @param personId
 	 *            the person id
-	 * @param ids
+	 * @param newFriendIds
 	 *            the ids
 	 * @return the person
 	 */
-	Person relatePersons(final Long personId, final Iterable<Long> ids);
+	Person relatePersons(final Long personId, final Iterable<Long> newFriendIds);
 }

@@ -33,16 +33,16 @@ public class PersonControllerImpl extends AbstractController<Person, Long> {
 	/**
 	 * Gets the all.
 	 *
-	 * @param id
+	 * @param personId
 	 *            the id
-	 * @param ids
+	 * @param newFriendsnewFriendsIds
 	 *            the ids
 	 * @return the all
 	 */
 
 	@PostMapping("/{id}/relate")
-	public Person relate(@PathVariable final Long id, @RequestBody final List<Long> ids) {
-		return this.getManager().relatePersons(id, ids);
+	public Person relate(@PathVariable final Long personId, @RequestBody final List<Long> newFriendsnewFriendsIds) {
+		return this.getManager().relatePersons(personId, newFriendsnewFriendsIds);
 	}
 
 	/*

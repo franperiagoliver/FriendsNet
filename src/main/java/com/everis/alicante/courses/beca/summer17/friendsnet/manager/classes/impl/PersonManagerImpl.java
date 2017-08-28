@@ -29,8 +29,8 @@ public class PersonManagerImpl extends AbstractManager<Person, Long> implements 
 	 * relatePersons(java.lang.Long, java.lang.Iterable)
 	 */
 	@Override
-	public Person relatePersons(final Long personId, final Iterable<Long> ids) {
-		return this.getEntityDAO().relatePersons(personId, ids);
+	public Person relatePersons(final Long personId, final Iterable<Long> newFriendsIds) {
+		return personDao.relatePersons(personId, newFriendsIds);
 	}
 
 	@Override

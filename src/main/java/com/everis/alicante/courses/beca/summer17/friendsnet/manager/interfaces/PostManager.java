@@ -4,6 +4,7 @@
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces;
 
 import java.util.List;
+import java.util.Set;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
@@ -20,7 +21,7 @@ public interface PostManager extends Manager<Post, Long> {
 	 *            the like
 	 * @return the post
 	 */
-	Post addLike(final Like like);
+	Post addLike(Like like, final Long idPost);
 
 	/**
 	 * Gets the by person id.
@@ -29,5 +30,5 @@ public interface PostManager extends Manager<Post, Long> {
 	 *            the id
 	 * @return the by person id
 	 */
-	List<Post> getByPersonId(final Long id);
+	Set<Post> getByPersonId(final Long personId);
 }

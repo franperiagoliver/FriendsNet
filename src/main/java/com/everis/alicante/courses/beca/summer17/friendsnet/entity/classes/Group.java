@@ -3,6 +3,9 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -48,7 +52,7 @@ public class Group implements FNEntity {
 	private byte[] picture;
 
 	/** The person. */
-	@ManyToOne(cascade = { CascadeType.MERGE })
+	@ManyToMany(cascade = { CascadeType.MERGE })
 	@JoinColumn(name = "person_id", nullable = false)
-	private Person personInGroup;
+	private Set<Person> personsInGroups = new HashSet<>();
 }

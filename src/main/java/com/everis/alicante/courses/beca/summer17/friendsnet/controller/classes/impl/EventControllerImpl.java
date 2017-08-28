@@ -3,16 +3,15 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.impl;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.AbstractController;
@@ -39,8 +38,8 @@ public class EventControllerImpl extends AbstractController<Event, Long> {
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}")
-	public List<Event> getByPersonId(@RequestParam final Long id) {
-		return (List<Event>) this.getManager().findById(id);
+	public Set<Event> getByPersonId(@PathVariable final Long personId) {
+		return this.getManager().getByPersonId(personId);
 	}
 
 	/**
@@ -51,19 +50,8 @@ public class EventControllerImpl extends AbstractController<Event, Long> {
 	 * @return the event
 	 */
 	@PostMapping("/{id}/person/{idPerson}/add")
-	public Event addPerson(@RequestBody final List<Long> ids) {
-		return this.getManager().addPerson(ids);
-	}
-
-	/**
-	 * Adds the persons.
-	 *
-	 * @param ids
-	 *            the ids
-	 * @return the event
-	 */
-	public Event addPersons(final List<Long> ids) {
-		return this.getManager().addPersons(ids);
+	public Event addPerson(@PathVariable final Long personId, @PathVariable final Long eventId) {
+		return this.getManager().addPerson(personId, eventId);
 	}
 
 	/*

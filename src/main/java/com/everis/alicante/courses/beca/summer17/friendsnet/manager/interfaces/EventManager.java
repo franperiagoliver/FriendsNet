@@ -3,7 +3,7 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Event;
 
@@ -13,22 +13,13 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Event
 public interface EventManager extends Manager<Event, Long> {
 
 	/**
-	 * Adds the persons.
-	 *
-	 * @param ids
-	 *            the ids
-	 * @return the event
-	 */
-	public Event addPersons(final List<Long> ids);
-
-	/**
 	 * Adds the person.
 	 *
 	 * @param ids
 	 *            the ids
 	 * @return the event
 	 */
-	public Event addPerson(final List<Long> ids);
+	public Event addPerson(final Long personId, final Long eventId);
 
 	/**
 	 * Gets the by person id.
@@ -37,5 +28,5 @@ public interface EventManager extends Manager<Event, Long> {
 	 *            the id
 	 * @return the by person id
 	 */
-	public List<Event> getByPersonId(final Long id);
+	public Set<Event> getByPersonId(final Long personId);
 }

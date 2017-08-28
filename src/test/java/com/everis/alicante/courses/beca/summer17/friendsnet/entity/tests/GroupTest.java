@@ -3,6 +3,9 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.entity.tests;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +31,7 @@ public class GroupTest {
 	private byte[] expectedPicture = null;
 
 	/** The expected person in group. */
-	private Person expectedPersonInGroup = new Person();
+	private Set<Person> expectedPersonsInGroups = new HashSet<>();
 
 	/**
 	 * Inits the.
@@ -38,7 +41,7 @@ public class GroupTest {
 		this.expectedGroup = new Group();
 		this.expectedGroup.setId(expectedId);
 		this.expectedGroup.setName(expectedName);
-		this.expectedGroup.setPersonInGroup(expectedPersonInGroup);
+		this.expectedGroup.setPersonsInGroups(expectedPersonsInGroups);
 		this.expectedGroup.setPicture(expectedPicture);
 	}
 
@@ -129,9 +132,9 @@ public class GroupTest {
 	@Test
 	public void TestGetPersonInGroup() {
 		// Act
-		final Person result = this.expectedGroup.getPersonInGroup();
+		final Set<Person> result = this.expectedGroup.getPersonsInGroups();
 		// Assert
-		Assert.assertEquals(expectedPersonInGroup, result);
+		Assert.assertEquals(expectedPersonsInGroups, result);
 	}
 
 	/**
@@ -142,8 +145,8 @@ public class GroupTest {
 		// Arrange
 		final Group group = new Group();
 		// Act
-		group.setPersonInGroup(expectedPersonInGroup);
+		group.setPersonsInGroups(expectedPersonsInGroups);
 		// Assert
-		Assert.assertEquals(expectedPersonInGroup, group.getPersonInGroup());
+		Assert.assertEquals(expectedPersonsInGroups, group.getPersonsInGroups());
 	}
 }

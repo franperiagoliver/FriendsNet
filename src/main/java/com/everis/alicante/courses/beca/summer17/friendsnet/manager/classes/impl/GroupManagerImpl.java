@@ -4,11 +4,13 @@
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.GroupDAO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Group;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.AbstractManager;
@@ -24,56 +26,59 @@ public class GroupManagerImpl extends AbstractManager<Group, Long> implements Gr
 	@Autowired
 	private GroupDAO groupDao;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.
-	 * GroupManager#addPersons(java.lang.Iterable)
+	/** The person dao. */
+	@Autowired
+	private PersonDAO personDao;
+
+	/* (non-Javadoc)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager#addPersons(java.lang.Iterable, java.lang.Long)
 	 */
 	@Override
-	public Group addPersons(final Iterable<Person> persons) {
-		return this.getEntityDAO().addPersons(persons);
+	public Group addPersons(final Set<Long> personIds, final Long groupId) {
+		final Set<Person> persons = (Set<Person>) this.personDao.findByIds(personIds);
+		final Group group = this.getEntityDAO().findById(groupId);
+		group.setPersonsInGroups(persons);
+		this.getEntityDAO().save(group);
+		return group;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.
-	 * GroupManager#relate(java.lang.Long, java.util.List)
+	/* (non-Javadoc)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager#relate(java.lang.Long, java.util.List)
 	 */
 	@Override
-	public Group relate(final Long id, final List<Long> ids) {
-		return this.getEntityDAO().relate(id, ids);
+	public Group relate(final Long groupId, final Set<Long> personIds) {
+		final Group group = this.getEntityDAO().findById(groupId);
+		final Set<Person> persons = (Set<Person>) personDao.findByIds(personIds);
+		group.getPersonsInGroups().addAll(persons);
+		this.getEntityDAO().save(group);
+		return group;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.
-	 * GroupManager#getByPersonId(java.lang.Long)
+
+	/* (non-Javadoc)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager#getByPersonId(java.lang.Long)
 	 */
 	@Override
-	public List<Group> getByPersonId(final Long id) {
-		return this.getEntityDAO().getByPersonId(id);
+	public Set<Group> getByPersonId(final Long personId) {
+		final Person person = this.personDao.findById(personId);
+		final Set<Group> listGroups = person.getGroups();
+		return listGroups;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.
-	 * GroupManager#addPerson(com.everis.alicante.courses.beca.summer17.friendsnet.
-	 * entity.classes.Person)
+	/* (non-Javadoc)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager#addPerson(java.lang.Long, java.lang.Long)
 	 */
 	@Override
-	public Group addPerson(final Person person) {
-		return this.getEntityDAO().addPerson(person);
+	public Group addPerson(final Long personId, final Long groupId) {
+		final Person person = this.personDao.findById(personId);
+		final Group group = this.getEntityDAO().findById(groupId);
+		group.setPersonsInGroups((Set<Person>) person);
+		this.getEntityDAO().save(group);
+		return group;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.
-	 * AbstractManager#getEntityDAO()
+	/* (non-Javadoc)
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.AbstractManager#getEntityDAO()
 	 */
 	@Override
 	protected final GroupDAO getEntityDAO() {

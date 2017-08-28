@@ -3,7 +3,7 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.impl;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -41,8 +41,8 @@ public class PersonControllerImpl extends AbstractController<Person, Long> {
 	 */
 
 	@PostMapping("/{id}/relate")
-	public Person relate(@PathVariable final Long personId, @RequestBody final List<Long> newFriendsnewFriendsIds) {
-		return this.getManager().relatePersons(personId, newFriendsnewFriendsIds);
+	public Person relate(@PathVariable final Long personId, @RequestBody final Set<Long> newFriendsIds) {
+		return this.getManager().relatePersons(personId, newFriendsIds);
 	}
 
 	/*

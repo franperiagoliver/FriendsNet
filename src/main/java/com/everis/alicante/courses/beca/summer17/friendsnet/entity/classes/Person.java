@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -58,7 +59,7 @@ public class Person implements FNEntity {
 	private byte[] picture;
 
 	/** The group. */
-	@OneToMany(mappedBy = "personInGroup", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "personsInGroups", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<Group> groups = new HashSet<>();
 
@@ -68,15 +69,15 @@ public class Person implements FNEntity {
 	private Set<Person> friends = new HashSet<>();
 
 	/** The like. */
-	@OneToOne(mappedBy = "likeOfPerson", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "likeOfPerson", fetch = FetchType.EAGER)
 	@JsonIgnore
-	private Like liker;
+	private Set<Like> likes = new HashSet<>();
 
 	/** The post. */
-	@OneToOne(mappedBy = "postWritter", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "postWritter", fetch = FetchType.EAGER)
 	@JsonIgnore
-	private Post postWritter;
-
+	private Set<Post> posts = new HashSet<>();
+	
 	/** The events. */
 	@OneToMany(mappedBy = "personInEvent", fetch = FetchType.EAGER)
 	@JsonIgnore

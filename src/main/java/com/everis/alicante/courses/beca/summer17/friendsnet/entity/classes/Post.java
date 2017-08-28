@@ -79,7 +79,7 @@ public class Post implements FNEntity {
 	private Like postOfLike;
 
 	/** The Post person. */
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(cascade = { CascadeType.MERGE })
 	@JoinColumn(name = "post_id", nullable = false)
 	@JsonIgnore
 	private Person postWritter;

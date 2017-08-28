@@ -5,6 +5,7 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -57,7 +59,7 @@ public class Like implements FNEntity {
 	@JoinColumn(name = "post_id", nullable = false)
 	private Post likeOfPost;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "person_id", nullable = false)
 	private Person likeOfPerson;
 }

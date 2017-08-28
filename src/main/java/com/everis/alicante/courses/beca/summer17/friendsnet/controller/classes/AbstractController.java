@@ -48,7 +48,7 @@ public abstract class AbstractController<E extends FNEntity, ID extends Serializ
 	 * @return the by id
 	 */
 	@GetMapping("/{id}")
-	public E getById(final ID id) {
+	public E getById(@PathVariable final ID id) {
 		return this.getManager().findById(id);
 
 	}

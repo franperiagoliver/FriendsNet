@@ -4,6 +4,7 @@
 package com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.AbstractController;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.PostManager;
 
@@ -37,8 +39,18 @@ public class PostControllerImpl extends AbstractController<Post, Long> {
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}")
-	public List<Post> getByPersonId(@PathVariable final Long id) {
-		return (List<Post>) this.getManager().findById(id);
+	public Set<Post> getByPersonId(@PathVariable final Long personId) {
+		return this.getManager().getByPersonId(personId);
+	}
+	
+	/**
+	 * Adds the like.
+	 *
+	 * @param like the like
+	 * @return the post
+	 */
+	public Post addLike(Like like, final Long postId) {
+		return this.getManager().addLike(like, postId);
 	}
 
 	/*

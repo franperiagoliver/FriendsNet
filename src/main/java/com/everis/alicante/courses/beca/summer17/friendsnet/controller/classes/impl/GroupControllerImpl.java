@@ -4,6 +4,7 @@
 package com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.AbstractController;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Group;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager;
 
 /**
@@ -39,8 +41,8 @@ public class GroupControllerImpl extends AbstractController<Group, Long> {
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}/")
-	public Group getByPersonId(final Long id) {
-		return this.getManager().findById(id);
+	public Set<Group> getByPersonId(final Long id) {
+		return this.getManager().getByPersonId(id);
 	}
 
 	/**
@@ -53,8 +55,28 @@ public class GroupControllerImpl extends AbstractController<Group, Long> {
 	 * @return the group
 	 */
 	@PostMapping("/{id}/relate")
-	public Group relate(@PathVariable final Long id, @RequestBody final List<Long> ids) {
+	public Group relate(@PathVariable final Long id, @RequestBody final Set<Long> ids) {
 		return this.getManager().relate(id, ids);
+	}
+	
+	/**
+	 * Adds the person.
+	 *
+	 * @param person the person
+	 * @return the group
+	 */
+	public Group addPerson(final Long personId, final Long groupId) {
+		return this.getManager().addPerson(personId, groupId);
+	}
+	
+	/**
+	 * Adds the persons.
+	 *
+	 * @param persons the persons
+	 * @return the group
+	 */
+	public Group addPersons(final Set<Long> personIds, final Long groupId) {
+		return this.getManager().addPersons(personIds, groupId);
 	}
 
 	/*

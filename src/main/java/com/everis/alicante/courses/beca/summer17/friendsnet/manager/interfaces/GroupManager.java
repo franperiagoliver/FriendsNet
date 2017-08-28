@@ -3,10 +3,9 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Group;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
 
 /**
  * The Interface GroupManager.
@@ -20,7 +19,7 @@ public interface GroupManager extends Manager<Group, Long> {
 	 *            the persons
 	 * @return the group
 	 */
-	Group addPersons(final Iterable<Person> persons);
+	Group addPersons(final Set<Long> personIds, final Long groupId);
 
 	/**
 	 * Relate.
@@ -31,7 +30,7 @@ public interface GroupManager extends Manager<Group, Long> {
 	 *            the ids
 	 * @return the group
 	 */
-	public Group relate(final Long id, final List<Long> ids);
+	public Group relate(final Long id, final Set<Long> ids);
 
 	/**
 	 * Gets the by person id.
@@ -40,7 +39,7 @@ public interface GroupManager extends Manager<Group, Long> {
 	 *            the id
 	 * @return the by person id
 	 */
-	public List<Group> getByPersonId(final Long id);
+	public Set<Group> getByPersonId(final Long id);
 
 	/**
 	 * Adds the person.
@@ -49,5 +48,5 @@ public interface GroupManager extends Manager<Group, Long> {
 	 *            the person
 	 * @return the group
 	 */
-	public Group addPerson(final Person person);
+	public Group addPerson(final Long personId, final Long groupId);
 }

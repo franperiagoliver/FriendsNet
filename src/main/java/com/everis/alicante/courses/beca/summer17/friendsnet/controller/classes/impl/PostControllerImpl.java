@@ -11,12 +11,14 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.AbstractController;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.LikeType;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.PostManager;
 
 /**
@@ -39,7 +41,7 @@ public class PostControllerImpl extends AbstractController<Post, Long> {
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}")
-	public Set<Post> getByPersonId(@PathVariable final Long personId) {
+	public Set<Post> getByPersonId(@PathVariable("id") final Long personId) {
 		return this.getManager().getByPersonId(personId);
 	}
 	
@@ -49,8 +51,9 @@ public class PostControllerImpl extends AbstractController<Post, Long> {
 	 * @param like the like
 	 * @return the post
 	 */
-	public Post addLike(Like like, final Long postId) {
-		return this.getManager().addLike(like, postId);
+	@PostMapping("/{id}/person/{idPerson}/like/{typeLike}/add")
+	public Like addLike(@PathVariable("id") final Long postId, @PathVariable("idPerson") final Long personId, @PathVariable("typeLike") final LikeType likeType) {
+		return this.getManager().addLike(postId, personId, likeType);
 	}
 
 	/*

@@ -38,7 +38,7 @@ public class EventControllerImpl extends AbstractController<Event, Long> {
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}")
-	public Set<Event> getByPersonId(@PathVariable final Long personId) {
+	public Set<Event> getByPersonId(@PathVariable("id") final Long personId) {
 		return this.getManager().getByPersonId(personId);
 	}
 
@@ -50,7 +50,7 @@ public class EventControllerImpl extends AbstractController<Event, Long> {
 	 * @return the event
 	 */
 	@PostMapping("/{id}/person/{idPerson}/add")
-	public Event addPerson(@PathVariable final Long personId, @PathVariable final Long eventId) {
+	public Event addPerson(@PathVariable("idPerson") final Long personId, @PathVariable("id") final Long eventId) {
 		return this.getManager().addPerson(personId, eventId);
 	}
 

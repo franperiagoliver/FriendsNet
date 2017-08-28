@@ -3,6 +3,7 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces;
 
+import java.util.List;
 import java.util.Set;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
@@ -18,9 +19,9 @@ public interface PersonManager extends Manager<Person, Long> {
 	 *
 	 * @param personId
 	 *            the person id
-	 * @param newFriendIds
+	 * @param newFriendsIds
 	 *            the ids
 	 * @return the person
 	 */
-	Person relatePersons(final Long personId, final Set<Long> newFriendIds);
+	Person relatePersons(final Long personId, final Long newFriendsIds);
 }

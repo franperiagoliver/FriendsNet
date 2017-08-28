@@ -8,6 +8,7 @@ import java.util.Set;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.LikeType;
 
 /**
  * The Interface PostManager.
@@ -21,7 +22,7 @@ public interface PostManager extends Manager<Post, Long> {
 	 *            the like
 	 * @return the post
 	 */
-	Post addLike(Like like, final Long idPost);
+	Like addLike(final Long postId, final Long personId, final LikeType likeType);
 
 	/**
 	 * Gets the by person id.

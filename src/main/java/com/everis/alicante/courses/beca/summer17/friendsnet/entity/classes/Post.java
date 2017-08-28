@@ -70,7 +70,7 @@ public class Post implements FNEntity {
 
 	/** The picture. */
 	@Lob
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private byte[] picture;
 
 	/** The like. */
@@ -80,13 +80,13 @@ public class Post implements FNEntity {
 
 	/** The Post person. */
 	@ManyToOne(cascade = { CascadeType.MERGE })
-	@JoinColumn(name = "post_id", nullable = false)
+	@JoinColumn(name = "post_id", nullable = true)
 	@JsonIgnore
 	private Person postWritter;
 
 	/** The event. */
 	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "event_id", nullable = false)
+	@JoinColumn(name = "event_id", nullable = true)
 	@JsonIgnore
 	private Event postInEvent;
 }

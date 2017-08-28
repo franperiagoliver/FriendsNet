@@ -34,7 +34,7 @@ public class GroupManagerImpl extends AbstractManager<Group, Long> implements Gr
 	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager#addPersons(java.lang.Iterable, java.lang.Long)
 	 */
 	@Override
-	public Group addPersons(final Set<Long> personIds, final Long groupId) {
+	public Group addPersons(final List<Long> personIds, final Long groupId) {
 		final Set<Person> persons = (Set<Person>) this.personDao.findByIds(personIds);
 		final Group group = this.getEntityDAO().findById(groupId);
 		group.setPersonsInGroups(persons);
@@ -46,12 +46,12 @@ public class GroupManagerImpl extends AbstractManager<Group, Long> implements Gr
 	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager#relate(java.lang.Long, java.util.List)
 	 */
 	@Override
-	public Group relate(final Long groupId, final Set<Long> personIds) {
+	public Group relate(final Long groupId, final Long personId) {
 		final Group group = this.getEntityDAO().findById(groupId);
-		final Set<Person> persons = (Set<Person>) personDao.findByIds(personIds);
-		group.getPersonsInGroups().addAll(persons);
-		this.getEntityDAO().save(group);
-		return group;
+		final Person person = personDao.findById(personId);
+		group.getPersonsInGroups().add(person);
+		person.getGroups().add(group);
+		return this.getEntityDAO().save(group);
 	}
 
 

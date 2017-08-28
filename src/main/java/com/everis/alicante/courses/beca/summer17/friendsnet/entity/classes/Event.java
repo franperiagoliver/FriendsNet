@@ -71,7 +71,7 @@ public class Event implements FNEntity {
 
 	/** The picture. */
 	@Lob
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private byte[] picture;
 
 	/** The events. */
@@ -81,7 +81,7 @@ public class Event implements FNEntity {
 
 	/** The person in event. */
 	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "person_id", nullable = false)
+	@JoinColumn(name = "person_id", nullable = true)
 	@JsonIgnore
 	private Person personInEvent;
 }

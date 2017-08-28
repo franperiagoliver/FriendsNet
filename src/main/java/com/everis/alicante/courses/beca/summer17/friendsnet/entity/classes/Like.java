@@ -56,10 +56,10 @@ public class Like implements FNEntity {
 	private LikeType type;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "post_id", nullable = false)
+	@JoinColumn(name = "post_id", nullable = true)
 	private Post likeOfPost;
 
 	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "person_id", nullable = false)
+	@JoinColumn(name = "person_id", nullable = true)
 	private Person likeOfPerson;
 }

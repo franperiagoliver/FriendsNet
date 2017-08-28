@@ -55,7 +55,7 @@ public class Person implements FNEntity {
 
 	/** The picture. */
 	@Lob
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private byte[] picture;
 
 	/** The group. */

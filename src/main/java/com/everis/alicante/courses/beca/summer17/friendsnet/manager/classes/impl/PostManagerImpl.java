@@ -9,11 +9,13 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.LikeDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PersonDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.PostDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.LikeType;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.AbstractManager;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.PostManager;
 
@@ -30,6 +32,9 @@ public class PostManagerImpl extends AbstractManager<Post, Long> implements Post
 	/** The person dao. */
 	@Autowired
 	private PersonDAO personDao;
+	
+	@Autowired
+	private LikeDAO likeDao;
 
 	/*
 	 * (non-Javadoc)
@@ -39,12 +44,14 @@ public class PostManagerImpl extends AbstractManager<Post, Long> implements Post
 	 * entity.classes.Like)
 	 */
 	@Override
-	public Post addLike(Like like, final Long postId) {
-		final Post post = this.getEntityDAO().findById(postId);
-		like = post.getPostOfLike();
-		post.setPostOfLike(like);
-		this.getEntityDAO().save(post);
-		return post;
+	public Like addLike(final Long postId, final Long personId, final LikeType likeType) {
+		final Post post = getEntityDAO().findById(postId);
+		final Person person = personDao.findById(personId);
+		final Like like = new Like();
+		like.setLikeOfPerson(person);
+		like.setLikeOfPost(post);
+		like.setType(likeType);
+		return likeDao.save(like);
 	}
 
 	/*

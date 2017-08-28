@@ -55,8 +55,8 @@ public class GroupControllerImpl extends AbstractController<Group, Long> {
 	 * @return the group
 	 */
 	@PostMapping("/{id}/relate")
-	public Group relate(@PathVariable final Long id, @RequestBody final Set<Long> ids) {
-		return this.getManager().relate(id, ids);
+	public Group relate(@PathVariable("id") final Long groupId, @RequestBody final Long personId) {
+		return this.getManager().relate(groupId, personId);
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public class GroupControllerImpl extends AbstractController<Group, Long> {
 	 * @param persons the persons
 	 * @return the group
 	 */
-	public Group addPersons(final Set<Long> personIds, final Long groupId) {
+	public Group addPersons(final List<Long> personIds, final Long groupId) {
 		return this.getManager().addPersons(personIds, groupId);
 	}
 

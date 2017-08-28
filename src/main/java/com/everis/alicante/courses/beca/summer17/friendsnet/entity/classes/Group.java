@@ -48,11 +48,11 @@ public class Group implements FNEntity {
 
 	/** The picture. */
 	@Lob
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private byte[] picture;
 
 	/** The person. */
 	@ManyToMany(cascade = { CascadeType.MERGE })
-	@JoinColumn(name = "person_id", nullable = false)
+	@JoinColumn(name = "person_id", nullable = true)
 	private Set<Person> personsInGroups = new HashSet<>();
 }

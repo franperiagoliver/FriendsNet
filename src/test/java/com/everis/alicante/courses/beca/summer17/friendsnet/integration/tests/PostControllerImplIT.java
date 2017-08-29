@@ -1,6 +1,3 @@
-/*
- * Created at 29-ago-2017 by Fran Periago.
- */
 package com.everis.alicante.courses.beca.summer17.friendsnet.integration.tests;
 
 import org.json.JSONException;
@@ -23,14 +20,11 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 
-/**
- * The Class PersonControllerImplIT.
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
-public class PersonControllerImplIT {
+public class PostControllerImplIT {
 
 	/** The port. */
 	@LocalServerPort
@@ -50,20 +44,30 @@ public class PersonControllerImplIT {
 
 	}
 
-	/**
-	 * Test get all.
-	 *
-	 * @throws JSONException
-	 *             the JSON exception
-	 */
 	@Test
-	@DatabaseSetup("classpath:initial-person.xml")
+	@DatabaseSetup("classpath:initial-post.xml")
 	public void testGetAll() throws JSONException {
 		// Act
-		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/person"), HttpMethod.GET, null,
+		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/post"), HttpMethod.GET, null,
 				String.class);
 		// Assert
-		JSONAssert.assertEquals("[{'name':'Adrian', 'surname':'Sanchez'}]", response.getBody(), false);
+		JSONAssert.assertEquals("[{'creationdate':'2017-08-29T08:23:08.938Z','text':'Hola','type':'STATUS'}]",
+				response.getBody(), false);
+	}
+
+	@Test
+	public void testGetById() {
+
+	}
+
+	@Test
+	public void testCreate() {
+
+	}
+
+	@Test
+	public void testRemove() {
+
 	}
 
 	/**
@@ -76,4 +80,5 @@ public class PersonControllerImplIT {
 	private String createURLWithPort(String uri) {
 		return "http://localhost:" + port + uri;
 	}
+
 }

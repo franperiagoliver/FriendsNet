@@ -10,13 +10,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,7 +30,20 @@ import lombok.Setter;
  */
 @Entity(name = "like_table")
 @Table(name = "like_table")
+
+/**
+ * Gets the like of person.
+ *
+ * @return the like of person
+ */
 @Getter
+
+/**
+ * Sets the like of person.
+ *
+ * @param likeOfPerson
+ *            the new like of person
+ */
 @Setter
 public class Like implements FNEntity {
 
@@ -55,10 +66,12 @@ public class Like implements FNEntity {
 	@Column(nullable = false)
 	private LikeType type;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	/** The like of post. */
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "post_id", nullable = true)
 	private Post likeOfPost;
 
+	/** The like of person. */
 	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "person_id", nullable = true)
 	private Person likeOfPerson;

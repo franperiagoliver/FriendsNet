@@ -16,8 +16,10 @@ public interface GroupManager extends Manager<Group, Long> {
 	/**
 	 * Adds the persons.
 	 *
-	 * @param persons
-	 *            the persons
+	 * @param personIds
+	 *            the person ids
+	 * @param groupId
+	 *            the group id
 	 * @return the group
 	 */
 	Group addPersons(final List<Long> personIds, final Long groupId);
@@ -25,10 +27,10 @@ public interface GroupManager extends Manager<Group, Long> {
 	/**
 	 * Relate.
 	 *
-	 * @param id
-	 *            the id
-	 * @param ids
-	 *            the ids
+	 * @param personId
+	 *            the person id
+	 * @param groupId
+	 *            the group id
 	 * @return the group
 	 */
 	public Group relate(final Long personId, final Long groupId);
@@ -45,8 +47,10 @@ public interface GroupManager extends Manager<Group, Long> {
 	/**
 	 * Adds the person.
 	 *
-	 * @param person
-	 *            the person
+	 * @param personId
+	 *            the person id
+	 * @param groupId
+	 *            the group id
 	 * @return the group
 	 */
 	public Group addPerson(final Long personId, final Long groupId);

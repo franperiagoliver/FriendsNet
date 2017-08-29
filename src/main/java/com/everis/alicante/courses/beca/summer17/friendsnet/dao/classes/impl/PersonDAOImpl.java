@@ -3,9 +3,6 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes.impl;
 
-import java.util.Set;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.classes.AbstractDAO;

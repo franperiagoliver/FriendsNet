@@ -15,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
@@ -30,7 +29,20 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "person")
+
+/**
+ * Gets the events.
+ *
+ * @return the events
+ */
 @Getter
+
+/**
+ * Sets the events.
+ *
+ * @param events
+ *            the new events
+ */
 @Setter
 public class Person implements FNEntity {
 
@@ -77,7 +89,7 @@ public class Person implements FNEntity {
 	@OneToMany(mappedBy = "postWritter", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<Post> posts = new HashSet<>();
-	
+
 	/** The events. */
 	@OneToMany(mappedBy = "personInEvent", fetch = FetchType.EAGER)
 	@JsonIgnore

@@ -36,7 +36,20 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = "event")
+
+/**
+ * Gets the person in event.
+ *
+ * @return the person in event
+ */
 @Getter
+
+/**
+ * Sets the person in event.
+ *
+ * @param personInEvent
+ *            the new person in event
+ */
 @Setter
 public class Event implements FNEntity {
 
@@ -80,7 +93,7 @@ public class Event implements FNEntity {
 	private Set<Post> posts = new HashSet<>();
 
 	/** The person in event. */
-	@ManyToOne(cascade = { CascadeType.ALL })
+	@ManyToOne(cascade = { CascadeType.MERGE })
 	@JoinColumn(name = "person_id", nullable = true)
 	@JsonIgnore
 	private Person personInEvent;

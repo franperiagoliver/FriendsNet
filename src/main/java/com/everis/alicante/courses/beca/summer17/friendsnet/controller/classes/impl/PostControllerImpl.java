@@ -3,7 +3,6 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.impl;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -36,23 +35,29 @@ public class PostControllerImpl extends AbstractController<Post, Long> {
 	/**
 	 * Gets the by person id.
 	 *
-	 * @param id
-	 *            the id
+	 * @param personId
+	 *            the person id
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}")
 	public Set<Post> getByPersonId(@PathVariable("id") final Long personId) {
 		return this.getManager().getByPersonId(personId);
 	}
-	
+
 	/**
 	 * Adds the like.
 	 *
-	 * @param like the like
+	 * @param postId
+	 *            the post id
+	 * @param personId
+	 *            the person id
+	 * @param likeType
+	 *            the like type
 	 * @return the post
 	 */
 	@PostMapping("/{id}/person/{idPerson}/like/{typeLike}/add")
-	public Like addLike(@PathVariable("id") final Long postId, @PathVariable("idPerson") final Long personId, @PathVariable("typeLike") final LikeType likeType) {
+	public Like addLike(@PathVariable("id") final Long postId, @PathVariable("idPerson") final Long personId,
+			@PathVariable("typeLike") final LikeType likeType) {
 		return this.getManager().addLike(postId, personId, likeType);
 	}
 

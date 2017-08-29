@@ -4,6 +4,8 @@
 package com.everis.alicante.courses.beca.summer17.friendsnet.entity.tests;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -39,7 +41,7 @@ public class PostTest {
 	private byte[] expectedPicture = null;
 
 	/** The expected post of like. */
-	private Like expectedPostOfLike = new Like();
+	private Set<Like> expectedPostLikes = new HashSet<>();
 
 	/** The expected post writter. */
 	private Person expectedPostWritter = new Person();
@@ -59,7 +61,7 @@ public class PostTest {
 		this.expectedPost.setCreationDate(expectedCreationDate);
 		this.expectedPost.setType(expectedType);
 		this.expectedPost.setPicture(expectedPicture);
-		this.expectedPost.setPostOfLike(expectedPostOfLike);
+		this.expectedPost.setPostLikes(expectedPostLikes);
 		this.expectedPost.setPostWritter(expectedPostWritter);
 		this.expectedPost.setPostInEvent(expectedPostInEvent);
 	}
@@ -134,9 +136,9 @@ public class PostTest {
 	@Test
 	public void testGetPostOfLike() {
 		// Act
-		final Like result = this.expectedPost.getPostOfLike();
+		final Set<Like> result = this.expectedPost.getPostLikes();
 		// Assert
-		Assert.assertEquals(expectedPostOfLike, result);
+		Assert.assertEquals(expectedPostLikes, result);
 	}
 
 	/**
@@ -234,9 +236,9 @@ public class PostTest {
 		// Arrange
 		final Post post = new Post();
 		// Act
-		post.setPostOfLike(expectedPostOfLike);
+		post.setPostLikes(expectedPostLikes);
 		// Assert
-		Assert.assertEquals(expectedPostOfLike, post.getPostOfLike());
+		Assert.assertEquals(expectedPostLikes, post.getPostLikes());
 	}
 
 	/**

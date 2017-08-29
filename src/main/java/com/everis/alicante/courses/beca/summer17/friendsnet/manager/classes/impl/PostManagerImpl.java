@@ -3,7 +3,6 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.impl;
 
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +27,12 @@ public class PostManagerImpl extends AbstractManager<Post, Long> implements Post
 	/** The post dao. */
 	@Autowired
 	private PostDAO postDao;
-	
+
 	/** The person dao. */
 	@Autowired
 	private PersonDAO personDao;
-	
+
+	/** The like dao. */
 	@Autowired
 	private LikeDAO likeDao;
 
@@ -63,8 +63,7 @@ public class PostManagerImpl extends AbstractManager<Post, Long> implements Post
 	@Override
 	public Set<Post> getByPersonId(final Long personId) {
 		final Person person = this.personDao.findById(personId);
-		final Set<Post> listPosts = person.getPosts();
-		return listPosts;
+		return person.getPosts();
 	}
 
 	/*

@@ -4,6 +4,8 @@
 package com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,7 +42,20 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = "post")
+
+/**
+ * Gets the post in event.
+ *
+ * @return the post in event
+ */
 @Getter
+
+/**
+ * Sets the post in event.
+ *
+ * @param postInEvent
+ *            the new post in event
+ */
 @Setter
 public class Post implements FNEntity {
 
@@ -74,18 +89,18 @@ public class Post implements FNEntity {
 	private byte[] picture;
 
 	/** The like. */
-	@OneToOne(mappedBy = "likeOfPerson", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "likeOfPost", fetch = FetchType.EAGER)
 	@JsonIgnore
-	private Like postOfLike;
+	private Set<Like> postLikes = new HashSet<>();
 
 	/** The Post person. */
-	@ManyToOne(cascade = { CascadeType.MERGE })
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "post_id", nullable = true)
 	@JsonIgnore
 	private Person postWritter;
 
 	/** The event. */
-	@ManyToOne(cascade = { CascadeType.ALL })
+	@ManyToOne(cascade = { CascadeType.MERGE })
 	@JoinColumn(name = "event_id", nullable = true)
 	@JsonIgnore
 	private Event postInEvent;

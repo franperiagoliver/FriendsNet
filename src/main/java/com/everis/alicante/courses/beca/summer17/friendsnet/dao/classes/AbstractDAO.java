@@ -98,6 +98,7 @@ public abstract class AbstractDAO<E extends FNEntity, ID extends Serializable> i
 	 * com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.EntityDAO
 	 * #findByIds(java.lang.Iterable)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public Iterable<E> findByIds(final Iterable<ID> ids) {
 		return (Iterable<E>) entityManager.find(persistentClass, ids);
@@ -166,5 +167,4 @@ public abstract class AbstractDAO<E extends FNEntity, ID extends Serializable> i
 	public void remove(final E e) {
 		entityManager.remove(e);
 	}
-
 }

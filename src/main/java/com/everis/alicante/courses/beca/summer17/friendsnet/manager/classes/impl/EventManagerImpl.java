@@ -3,7 +3,6 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.impl;
 
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,33 +24,37 @@ public class EventManagerImpl extends AbstractManager<Event, Long> implements Ev
 	/** The event dao. */
 	@Autowired
 	private EventDAO eventDao;
-	
+
 	/** The person dao. */
 	@Autowired
 	private PersonDAO personDao;
 
-	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.EventManager#addPerson(java.lang.Long, java.lang.Long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.
+	 * EventManager#addPerson(java.lang.Long, java.lang.Long)
 	 */
 	@Override
 	public Event addPerson(Long personId, Long eventId) {
 		final Person person = this.personDao.findById(personId);
 		final Event event = this.getEntityDAO().findById(eventId);
 		event.setPersonInEvent(person);
-		this.getEntityDAO().save(event);
-		return event;
+		return this.getEntityDAO().save(event);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.EventManager#getByPersonId(java.lang.Long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.
+	 * EventManager#getByPersonId(java.lang.Long)
 	 */
 	@Override
 	public Set<Event> getByPersonId(Long personId) {
 		final Person person = this.personDao.findById(personId);
-		final Set<Event> listEvents = person.getEvents();
-		return listEvents;
+		return person.getEvents();
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 

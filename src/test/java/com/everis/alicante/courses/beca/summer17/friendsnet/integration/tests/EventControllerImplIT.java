@@ -24,13 +24,13 @@ import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 
 /**
- * The Class PersonControllerImplIT.
+ * The Class EventControllerImplIT.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
-public class PersonControllerImplIT {
+public class EventControllerImplIT {
 
 	/** The port. */
 	@LocalServerPort
@@ -57,13 +57,36 @@ public class PersonControllerImplIT {
 	 *             the JSON exception
 	 */
 	@Test
-	@DatabaseSetup("classpath:initial-person.xml")
+	@DatabaseSetup("classpath:initial-event.xml")
 	public void testGetAll() throws JSONException {
 		// Act
-		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/person"), HttpMethod.GET, null,
+		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/event"), HttpMethod.GET, null,
 				String.class);
 		// Assert
-		JSONAssert.assertEquals("[{'name':'Adrian', 'surname':'Sanchez'}]", response.getBody(), false);
+		JSONAssert.assertEquals(
+				"[{'name'='Cumple', 'startingdate'='2017-08-29T08:23:08.938Z', 'endingdate'='2017-08-29T08:23:08.938Z', 'type'='GENERAL'}]",
+				response.getBody(), false);
+	}
+
+	/**
+	 * Test get by id.
+	 */
+	@Test
+	public void testGetById() {
+	}
+
+	/**
+	 * Test create.
+	 */
+	@Test
+	public void testCreate() {
+	}
+
+	/**
+	 * Test remove.
+	 */
+	@Test
+	public void testRemove() {
 	}
 
 	/**

@@ -3,9 +3,6 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces;
 
-import java.util.List;
-import java.util.Set;
-
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
 
 /**

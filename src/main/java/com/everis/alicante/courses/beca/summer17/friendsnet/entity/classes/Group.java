@@ -15,10 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -28,7 +28,20 @@ import lombok.Setter;
  */
 @Entity(name = "group_table")
 @Table(name = "group_table")
+
+/**
+ * Gets the persons in groups.
+ *
+ * @return the persons in groups
+ */
 @Getter
+
+/**
+ * Sets the persons in groups.
+ *
+ * @param personsInGroups
+ *            the new persons in groups
+ */
 @Setter
 public class Group implements FNEntity {
 
@@ -54,5 +67,6 @@ public class Group implements FNEntity {
 	/** The person. */
 	@ManyToMany(cascade = { CascadeType.MERGE })
 	@JoinColumn(name = "person_id", nullable = true)
+	@JsonIgnore
 	private Set<Person> personsInGroups = new HashSet<>();
 }

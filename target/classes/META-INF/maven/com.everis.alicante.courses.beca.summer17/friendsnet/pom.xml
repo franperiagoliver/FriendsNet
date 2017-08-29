@@ -50,7 +50,6 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.16.16</version>
 		</dependency>
 		<!-- Swagger - Springfox -->
 		<dependency>
@@ -90,6 +89,10 @@
 			<version>1.3.0</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-twitter</artifactId>
+        </dependency>
 
 	</dependencies>
 

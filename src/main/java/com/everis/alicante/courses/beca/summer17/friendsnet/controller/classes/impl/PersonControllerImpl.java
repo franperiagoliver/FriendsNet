@@ -3,9 +3,6 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.controller.classes.impl;
 
-import java.util.List;
-import java.util.Set;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +33,8 @@ public class PersonControllerImpl extends AbstractController<Person, Long> {
 	 *
 	 * @param personId
 	 *            the id
-	 * @param newFriendsnewFriendsIds
-	 *            the ids
+	 * @param newFriendId
+	 *            the new friend id
 	 * @return the all
 	 */
 

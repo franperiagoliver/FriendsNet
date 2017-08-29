@@ -33,8 +33,8 @@ public class EventControllerImpl extends AbstractController<Event, Long> {
 	/**
 	 * Gets the by person id.
 	 *
-	 * @param id
-	 *            the id
+	 * @param personId
+	 *            the person id
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}")
@@ -45,8 +45,10 @@ public class EventControllerImpl extends AbstractController<Event, Long> {
 	/**
 	 * Adds the person.
 	 *
-	 * @param ids
-	 *            the ids
+	 * @param personId
+	 *            the person id
+	 * @param eventId
+	 *            the event id
 	 * @return the event
 	 */
 	@PostMapping("/{id}/person/{idPerson}/add")

@@ -30,20 +30,25 @@ public class GroupManagerImpl extends AbstractManager<Group, Long> implements Gr
 	@Autowired
 	private PersonDAO personDao;
 
-	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager#addPersons(java.lang.Iterable, java.lang.Long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.
+	 * GroupManager#addPersons(java.lang.Iterable, java.lang.Long)
 	 */
 	@Override
 	public Group addPersons(final List<Long> personIds, final Long groupId) {
 		final Set<Person> persons = (Set<Person>) this.personDao.findByIds(personIds);
 		final Group group = this.getEntityDAO().findById(groupId);
 		group.setPersonsInGroups(persons);
-		this.getEntityDAO().save(group);
-		return group;
+		return this.getEntityDAO().save(group);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager#relate(java.lang.Long, java.util.List)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.
+	 * GroupManager#relate(java.lang.Long, java.util.List)
 	 */
 	@Override
 	public Group relate(final Long groupId, final Long personId) {
@@ -54,31 +59,38 @@ public class GroupManagerImpl extends AbstractManager<Group, Long> implements Gr
 		return this.getEntityDAO().save(group);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager#getByPersonId(java.lang.Long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.
+	 * GroupManager#getByPersonId(java.lang.Long)
 	 */
 	@Override
 	public Set<Group> getByPersonId(final Long personId) {
 		final Person person = this.personDao.findById(personId);
-		final Set<Group> listGroups = person.getGroups();
-		return listGroups;
+		return person.getGroups();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.GroupManager#addPerson(java.lang.Long, java.lang.Long)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.interfaces.
+	 * GroupManager#addPerson(java.lang.Long, java.lang.Long)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public Group addPerson(final Long personId, final Long groupId) {
 		final Person person = this.personDao.findById(personId);
 		final Group group = this.getEntityDAO().findById(groupId);
 		group.setPersonsInGroups((Set<Person>) person);
-		this.getEntityDAO().save(group);
-		return group;
+		return this.getEntityDAO().save(group);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.AbstractManager#getEntityDAO()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.
+	 * AbstractManager#getEntityDAO()
 	 */
 	@Override
 	protected final GroupDAO getEntityDAO() {

@@ -3,9 +3,6 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.impl;
 
-import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +20,7 @@ public class PersonManagerImpl extends AbstractManager<Person, Long> implements 
 	/** The person dao. */
 	@Autowired
 	private PersonDAO personDao;
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -39,6 +37,12 @@ public class PersonManagerImpl extends AbstractManager<Person, Long> implements 
 		return this.getEntityDAO().save(friend);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.
+	 * AbstractManager#getEntityDAO()
+	 */
 	@Override
 	protected final PersonDAO getEntityDAO() {
 		return this.personDao;

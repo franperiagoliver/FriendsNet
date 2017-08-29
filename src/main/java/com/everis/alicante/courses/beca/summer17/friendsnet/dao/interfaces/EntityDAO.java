@@ -5,6 +5,8 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces;
 
 import java.io.Serializable;
 
+import org.springframework.stereotype.Service;
+
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FNEntity;
 
 /**
@@ -15,6 +17,7 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.interfaces.FN
  * @param <ID>
  *            the generic type
  */
+@Service
 public interface EntityDAO<E extends FNEntity, ID extends Serializable> {
 
 	/**
@@ -22,7 +25,7 @@ public interface EntityDAO<E extends FNEntity, ID extends Serializable> {
 	 *
 	 * @return the iterable
 	 */
-	public Iterable<E> findAll();
+	Iterable<E> findAll();
 
 	/**
 	 * Find by id.
@@ -31,7 +34,7 @@ public interface EntityDAO<E extends FNEntity, ID extends Serializable> {
 	 *            the id
 	 * @return the e
 	 */
-	public E findById(final ID id);
+	E findOne(ID id);
 
 	/**
 	 * Save.
@@ -40,7 +43,7 @@ public interface EntityDAO<E extends FNEntity, ID extends Serializable> {
 	 *            the ids
 	 * @return the e
 	 */
-	public Iterable<E> findByIds(final Iterable<ID> ids);
+	Iterable<E> findAll(Iterable<ID> ids);
 
 	/**
 	 * Save.
@@ -49,7 +52,7 @@ public interface EntityDAO<E extends FNEntity, ID extends Serializable> {
 	 *            the e
 	 * @return the e
 	 */
-	public E save(final E e);
+	<S extends E> S save(S entity);
 
 	/**
 	 * Save.
@@ -58,25 +61,7 @@ public interface EntityDAO<E extends FNEntity, ID extends Serializable> {
 	 *            the es
 	 * @return the iterable
 	 */
-	public Iterable<E> save(final Iterable<E> es);
-
-	/**
-	 * Update.
-	 *
-	 * @param e
-	 *            the e
-	 * @return the e
-	 */
-	public E update(final E e);
-
-	/**
-	 * Update.
-	 *
-	 * @param es
-	 *            the es
-	 * @return the iterable
-	 */
-	public Iterable<E> update(final Iterable<E> es);
+	<S extends E> Iterable<S> save(Iterable<S> es);
 
 	/**
 	 * Removes the.
@@ -84,5 +69,5 @@ public interface EntityDAO<E extends FNEntity, ID extends Serializable> {
 	 * @param e
 	 *            the e
 	 */
-	public void remove(final E e);
+	void delete(E e);
 }

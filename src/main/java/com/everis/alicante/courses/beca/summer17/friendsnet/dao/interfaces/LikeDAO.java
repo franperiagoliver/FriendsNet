@@ -3,11 +3,15 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
+
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
 
 /**
  * The Interface LikeDAO.
  */
-public interface LikeDAO extends EntityDAO<Like, Long> {
+@Service
+public interface LikeDAO extends CrudRepository<Like, Long>, EntityDAO<Like, Long> {
 
 }

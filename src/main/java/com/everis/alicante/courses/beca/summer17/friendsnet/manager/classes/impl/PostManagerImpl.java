@@ -45,8 +45,8 @@ public class PostManagerImpl extends AbstractManager<Post, Long> implements Post
 	 */
 	@Override
 	public Like addLike(final Long postId, final Long personId, final LikeType likeType) {
-		final Post post = getEntityDAO().findById(postId);
-		final Person person = personDao.findById(personId);
+		final Post post = getEntityDAO().findOne(postId);
+		final Person person = personDao.findOne(personId);
 		final Like like = new Like();
 		like.setLikeOfPerson(person);
 		like.setLikeOfPost(post);
@@ -62,7 +62,7 @@ public class PostManagerImpl extends AbstractManager<Post, Long> implements Post
 	 */
 	@Override
 	public Set<Post> getByPersonId(final Long personId) {
-		final Person person = this.personDao.findById(personId);
+		final Person person = this.personDao.findOne(personId);
 		return person.getPosts();
 	}
 

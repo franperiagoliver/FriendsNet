@@ -30,8 +30,8 @@ public class PersonManagerImpl extends AbstractManager<Person, Long> implements 
 	 */
 	@Override
 	public Person relatePersons(final Long personId, final Long newFriendId) {
-		final Person person = this.getEntityDAO().findById(personId);
-		final Person friend = this.getEntityDAO().findById(newFriendId);
+		final Person person = this.getEntityDAO().findOne(personId);
+		final Person friend = this.getEntityDAO().findOne(newFriendId);
 		person.getFriends().add(friend);
 		friend.getFriends().add(person);
 		return this.getEntityDAO().save(friend);

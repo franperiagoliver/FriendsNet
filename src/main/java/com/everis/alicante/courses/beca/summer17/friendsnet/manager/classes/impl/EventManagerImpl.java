@@ -6,6 +6,7 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.manager.classes.imp
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.interfaces.EventDAO;
@@ -37,8 +38,8 @@ public class EventManagerImpl extends AbstractManager<Event, Long> implements Ev
 	 */
 	@Override
 	public Event addPerson(Long personId, Long eventId) {
-		final Person person = this.personDao.findById(personId);
-		final Event event = this.getEntityDAO().findById(eventId);
+		final Person person = this.personDao.findOne(personId);
+		final Event event = this.getEntityDAO().findOne(eventId);
 		event.setPersonInEvent(person);
 		return this.getEntityDAO().save(event);
 	}
@@ -50,8 +51,9 @@ public class EventManagerImpl extends AbstractManager<Event, Long> implements Ev
 	 * EventManager#getByPersonId(java.lang.Long)
 	 */
 	@Override
+	@Query("SELECT")
 	public Set<Event> getByPersonId(Long personId) {
-		final Person person = this.personDao.findById(personId);
+		final Person person = this.personDao.findOne(personId);
 		return person.getEvents();
 	}
 

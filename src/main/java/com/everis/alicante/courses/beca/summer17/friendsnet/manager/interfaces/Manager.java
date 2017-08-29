@@ -22,7 +22,7 @@ public interface Manager<E extends FNEntity, ID extends Serializable> {
 	 *
 	 * @return the iterable
 	 */
-	public Iterable<E> findAll();
+	Iterable<E> findAll();
 
 	/**
 	 * Find by id.
@@ -31,7 +31,7 @@ public interface Manager<E extends FNEntity, ID extends Serializable> {
 	 *            the id
 	 * @return the e
 	 */
-	public E findById(final ID id);
+	E findById(final ID id);
 
 	/**
 	 * Save.
@@ -40,7 +40,7 @@ public interface Manager<E extends FNEntity, ID extends Serializable> {
 	 *            the ids
 	 * @return the e
 	 */
-	public Iterable<E> findByIds(final Iterable<ID> ids);
+	Iterable<E> findByIds(final Iterable<ID> ids);
 
 	/**
 	 * Save.
@@ -49,7 +49,7 @@ public interface Manager<E extends FNEntity, ID extends Serializable> {
 	 *            the e
 	 * @return the e
 	 */
-	public E save(final E e);
+	E save(final E e);
 
 	/**
 	 * Save.
@@ -58,7 +58,7 @@ public interface Manager<E extends FNEntity, ID extends Serializable> {
 	 *            the es
 	 * @return the iterable
 	 */
-	public Iterable<E> save(final Iterable<E> es);
+	Iterable<E> save(final Iterable<E> es);
 
 	/**
 	 * Update.
@@ -67,7 +67,7 @@ public interface Manager<E extends FNEntity, ID extends Serializable> {
 	 *            the e
 	 * @return the e
 	 */
-	public E update(final E e);
+	E update(final E e);
 
 	/**
 	 * Update.
@@ -76,7 +76,7 @@ public interface Manager<E extends FNEntity, ID extends Serializable> {
 	 *            the es
 	 * @return the iterable
 	 */
-	public Iterable<E> update(final Iterable<E> es);
+	Iterable<E> update(final Iterable<E> es);
 
 	/**
 	 * Removes the.
@@ -84,5 +84,5 @@ public interface Manager<E extends FNEntity, ID extends Serializable> {
 	 * @param e
 	 *            the e
 	 */
-	public void remove(final E e);
+	void remove(final E e);
 }

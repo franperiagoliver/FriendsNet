@@ -21,7 +21,7 @@ public interface EventManager extends Manager<Event, Long> {
 	 *            the event id
 	 * @return the event
 	 */
-	public Event addPerson(final Long personId, final Long eventId);
+	Event addPerson(final Long personId, final Long eventId);
 
 	/**
 	 * Gets the by person id.
@@ -30,5 +30,5 @@ public interface EventManager extends Manager<Event, Long> {
 	 *            the person id
 	 * @return the by person id
 	 */
-	public Set<Event> getByPersonId(final Long personId);
+	Set<Event> getByPersonId(final Long personId);
 }

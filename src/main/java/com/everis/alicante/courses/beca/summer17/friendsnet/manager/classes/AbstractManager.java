@@ -45,7 +45,7 @@ public abstract class AbstractManager<E extends FNEntity, ID extends Serializabl
 	 */
 	@Override
 	public E findById(final ID id) {
-		return this.getEntityDAO().findById(id);
+		return this.getEntityDAO().findOne(id);
 	}
 
 	/*
@@ -56,7 +56,7 @@ public abstract class AbstractManager<E extends FNEntity, ID extends Serializabl
 	 */
 	@Override
 	public Iterable<E> findByIds(final Iterable<ID> ids) {
-		return this.getEntityDAO().findByIds(ids);
+		return this.getEntityDAO().findAll(ids);
 	}
 
 	/*
@@ -91,7 +91,7 @@ public abstract class AbstractManager<E extends FNEntity, ID extends Serializabl
 	 */
 	@Override
 	public E update(final E e) {
-		return this.getEntityDAO().update(e);
+		return this.getEntityDAO().save(e);
 	}
 
 	/*
@@ -102,7 +102,7 @@ public abstract class AbstractManager<E extends FNEntity, ID extends Serializabl
 	 */
 	@Override
 	public Iterable<E> update(final Iterable<E> es) {
-		return this.getEntityDAO().update(es);
+		return this.getEntityDAO().save(es);
 	}
 
 	/*
@@ -114,6 +114,6 @@ public abstract class AbstractManager<E extends FNEntity, ID extends Serializabl
 	 */
 	@Override
 	public void remove(final E e) {
-		this.getEntityDAO().remove(e);
+		this.getEntityDAO().delete(e);
 	}
 }

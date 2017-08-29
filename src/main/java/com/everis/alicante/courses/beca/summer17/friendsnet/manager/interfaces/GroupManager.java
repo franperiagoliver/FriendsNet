@@ -33,7 +33,7 @@ public interface GroupManager extends Manager<Group, Long> {
 	 *            the group id
 	 * @return the group
 	 */
-	public Group relate(final Long personId, final Long groupId);
+	Group relate(final Long personId, final Long groupId);
 
 	/**
 	 * Gets the by person id.
@@ -42,7 +42,7 @@ public interface GroupManager extends Manager<Group, Long> {
 	 *            the id
 	 * @return the by person id
 	 */
-	public Set<Group> getByPersonId(final Long id);
+	Set<Group> getByPersonId(final Long id);
 
 	/**
 	 * Adds the person.
@@ -53,5 +53,5 @@ public interface GroupManager extends Manager<Group, Long> {
 	 *            the group id
 	 * @return the group
 	 */
-	public Group addPerson(final Long personId, final Long groupId);
+	Group addPerson(final Long personId, final Long groupId);
 }

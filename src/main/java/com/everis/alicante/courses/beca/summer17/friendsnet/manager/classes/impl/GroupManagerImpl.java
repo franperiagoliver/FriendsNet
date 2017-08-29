@@ -38,8 +38,8 @@ public class GroupManagerImpl extends AbstractManager<Group, Long> implements Gr
 	 */
 	@Override
 	public Group addPersons(final List<Long> personIds, final Long groupId) {
-		final Set<Person> persons = (Set<Person>) this.personDao.findByIds(personIds);
-		final Group group = this.getEntityDAO().findById(groupId);
+		final Set<Person> persons = (Set<Person>) this.personDao.findAll(personIds);
+		final Group group = this.getEntityDAO().findOne(groupId);
 		group.setPersonsInGroups(persons);
 		return this.getEntityDAO().save(group);
 	}
@@ -52,8 +52,8 @@ public class GroupManagerImpl extends AbstractManager<Group, Long> implements Gr
 	 */
 	@Override
 	public Group relate(final Long groupId, final Long personId) {
-		final Group group = this.getEntityDAO().findById(groupId);
-		final Person person = personDao.findById(personId);
+		final Group group = this.getEntityDAO().findOne(groupId);
+		final Person person = personDao.findOne(personId);
 		group.getPersonsInGroups().add(person);
 		person.getGroups().add(group);
 		return this.getEntityDAO().save(group);
@@ -67,7 +67,7 @@ public class GroupManagerImpl extends AbstractManager<Group, Long> implements Gr
 	 */
 	@Override
 	public Set<Group> getByPersonId(final Long personId) {
-		final Person person = this.personDao.findById(personId);
+		final Person person = this.personDao.findOne(personId);
 		return person.getGroups();
 	}
 
@@ -80,8 +80,8 @@ public class GroupManagerImpl extends AbstractManager<Group, Long> implements Gr
 	@SuppressWarnings("unchecked")
 	@Override
 	public Group addPerson(final Long personId, final Long groupId) {
-		final Person person = this.personDao.findById(personId);
-		final Group group = this.getEntityDAO().findById(groupId);
+		final Person person = this.personDao.findOne(personId);
+		final Group group = this.getEntityDAO().findOne(groupId);
 		group.setPersonsInGroups((Set<Person>) person);
 		return this.getEntityDAO().save(group);
 	}

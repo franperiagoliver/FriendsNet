@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <Person name="Adrian" surname="Sanchez"/>
+    <Person id="1" name="Adrian" surname="Sanchez"/>
+    <Person id="2" name="Fran" surname="Periago"/>
 </dataset>

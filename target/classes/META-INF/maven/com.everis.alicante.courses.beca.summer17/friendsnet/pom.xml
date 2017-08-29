@@ -7,6 +7,14 @@
 	<artifactId>friendsnet</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
+	
+	<developers>
+		<developer>
+			<name>Fran Periago</name>
+			<email>franperiagoliver@gmail.com</email>
+			<organizationUrl>www.franperiagoliver.com</organizationUrl>
+		</developer>
+	</developers>
 
 	<name>friendsnet</name>
 	<description>Demo project for Spring Boot</description>

@@ -9,12 +9,8 @@ spring:
   jpa:
    hibernate:
      ddl-auto: create-drop
-  social:
-    twitter:
-      app-id: ohe5yZQF0t3dUJkKTu8H6wQPr
-      app-secret: 9AIpIOAknFZrslt2kTeUj3beHbcEFgIKwP5V3Jb8o41pWUDexX
 logging:
   level:
     org.springframework: INFO
 server:
-  port: 8080
+  port: 8080           

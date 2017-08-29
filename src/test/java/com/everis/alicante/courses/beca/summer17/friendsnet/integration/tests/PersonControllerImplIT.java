@@ -22,6 +22,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.ExpectedDatabase;
 
 /**
  * The Class PersonControllerImplIT.
@@ -63,7 +64,39 @@ public class PersonControllerImplIT {
 		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/person"), HttpMethod.GET, null,
 				String.class);
 		// Assert
-		JSONAssert.assertEquals("[{'name':'Adrian', 'surname':'Sanchez'}]", response.getBody(), false);
+		JSONAssert.assertEquals("[{'id':1, 'name':'Adrian', 'surname':'Sanchez'},{'id':2, 'name':'Fran', 'surname':'Periago'}]", response.getBody(), false);
+	}
+	
+	@Test
+	@DatabaseSetup("classpath:initial-person.xml")
+	public void testGetId() throws JSONException {
+		// Act
+		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/person/1"), HttpMethod.GET, null,
+				String.class);
+		// Assert
+		JSONAssert.assertEquals("{'id':1, 'name':'Adrian', 'surname':'Sanchez'}", response.getBody(), false);
+	}
+	
+	@Test
+	@DatabaseSetup("classpath:initial-person.xml")
+	@ExpectedDatabase("classpath:after-saving-person.xml")
+	public void testCreate() throws JSONException {
+		// Act
+		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/person/"), HttpMethod.POST, null,
+				String.class);
+		// Assert
+		JSONAssert.assertEquals("{'id':3, 'name':'Maria', 'surname':'Oliver'}", response.getBody(), false);
+	}
+	
+	@Test
+	@DatabaseSetup("classpath:initial-person.xml")
+	@ExpectedDatabase("classpath:after-deleting-person.xml")
+	public void testRemove() throws JSONException {
+		// Act
+		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/person/"), HttpMethod.DELETE, null,
+				String.class);
+		// Assert
+		JSONAssert.assertEquals("{}", response.getBody(), false);
 	}
 
 	/**

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Event id="1" name="Cumple" type="GENERAL"/>
+    <Event id="2" name="Fiesta" type="GENERAL"/>
+    <Event id="3" name="Boda" type="GENERAL"/>
+</dataset>

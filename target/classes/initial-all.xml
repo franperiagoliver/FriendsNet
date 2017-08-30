@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<Person id="1" name="Antonio" surname="Sanchez" />
+	<Person id="2" name="Fran" surname="Periago" />
+	<Person id="3" name="Maria" surname="Lopez" />
+	<Person id="4" name="Juana" surname="Loca" />
+	
+	<Group_table id="1" name="Molon" />
+	<Group_table id="2" name="Melon" />
+	
+	<Post id="1" text="Hola" type="STATUS" />
+	<Post id="2" text="Caracola" type="STATUS" />
+	
+	<Like_table id="1" type="COOL" />
+	<Like_table id="2" type="COOL" />
+	
+	<Event id="1" name="Cumple" type="GENERAL" />
+	<Event id="2" name="Fiesta" type="GENERAL" />
+	
+	<Post id="1" text="Hola" type="STATUS" />
+	<Post id="2" text="Caracola" type="STATUS" />
+</dataset>

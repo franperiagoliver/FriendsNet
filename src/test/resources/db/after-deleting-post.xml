@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Post id="1" text="Hola" type="STATUS"/>
+    <Post id="2" text="Caracola" type="STATUS"/>
+</dataset>

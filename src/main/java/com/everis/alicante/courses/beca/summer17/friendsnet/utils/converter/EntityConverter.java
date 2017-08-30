@@ -9,10 +9,14 @@ public interface EntityConverter {
 	/**
 	 * Fill t.
 	 *
-	 * @param <F>         the type parameter
-	 * @param <T>         the type parameter
-	 * @param source      the source
-	 * @param destination the destination
+	 * @param <F>
+	 *            the type parameter
+	 * @param <T>
+	 *            the type parameter
+	 * @param source
+	 *            the source
+	 * @param destination
+	 *            the destination
 	 * @return the t
 	 */
 	<F, T> T fill(F source, T destination);
@@ -20,11 +24,16 @@ public interface EntityConverter {
 	/**
 	 * Convert list.
 	 *
-	 * @param <F>      the type parameter
-	 * @param <T>      the type parameter
-	 * @param fromList the from list
-	 * @param toClass  the to class
-	 * @param filters  the filters
+	 * @param <F>
+	 *            the type parameter
+	 * @param <T>
+	 *            the type parameter
+	 * @param fromList
+	 *            the from list
+	 * @param toClass
+	 *            the to class
+	 * @param filters
+	 *            the filters
 	 * @return the list
 	 */
 	@SuppressWarnings("unchecked")
@@ -33,12 +42,17 @@ public interface EntityConverter {
 	/**
 	 * Convert t.
 	 *
-	 * @param <F>     the type parameter
-	 * @param <T>     the type parameter
-	 * @param from    the from
-	 * @param toClass the to class
-	 * @param filters the filters
+	 * @param <F>
+	 *            the type parameter
+	 * @param <T>
+	 *            the type parameter
+	 * @param from
+	 *            the from
+	 * @param toClass
+	 *            the to class
+	 * @param filters
+	 *            the filters
 	 * @return the t
 	 */
-	<F, T> T convert(F from, Class<T> toClass, ConversionFilter<T>... filters);
+	<F, T> T convert(F from, Class<T> toClass, @SuppressWarnings("unchecked") ConversionFilter<T>... filters);
 }

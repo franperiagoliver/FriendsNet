@@ -74,7 +74,7 @@ public class Post implements FNEntity {
 
 	/** The creation date. */
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false, length = 255)
+	@Column(nullable = true, length = 255)
 	private Date creationDate;
 
 	/** The type. */

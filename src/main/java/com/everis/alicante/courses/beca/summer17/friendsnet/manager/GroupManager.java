@@ -43,15 +43,4 @@ public interface GroupManager extends Manager<Group, Long> {
 	 * @return the by person id
 	 */
 	Set<Group> getByPersonId(final Long id);
-
-	/**
-	 * Adds the person.
-	 *
-	 * @param personId
-	 *            the person id
-	 * @param groupId
-	 *            the group id
-	 * @return the group
-	 */
-	Group addPerson(final Long personId, final Long groupId);
 }

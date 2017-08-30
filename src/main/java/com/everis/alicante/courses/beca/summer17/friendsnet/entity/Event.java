@@ -63,17 +63,17 @@ public class Event implements FNEntity {
 
 	/** The name. */
 	@Lob
-	@Column(nullable = false, length = 255)
+	@Column(nullable = true, length = 255)
 	private String name;
 
 	/** The starting date. */
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false, length = 255)
+	@Column(nullable = true, length = 255)
 	private Date startingDate;
 
 	/** The ending date. */
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false, length = 255)
+	@Column(nullable = true, length = 255)
 	private Date endingDate;
 
 	/** The type. */

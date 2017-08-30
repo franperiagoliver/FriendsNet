@@ -48,9 +48,13 @@ public class PostManagerImpl extends AbstractManager<Post, Long> implements Post
 		final Post post = getEntityDAO().findOne(postId);
 		final Person person = personDao.findOne(personId);
 		final Like like = new Like();
+		final Set<Like> likes = post.getPostLikes();
+		post.setPostLikes(likes);
 		like.setLikeOfPerson(person);
 		like.setLikeOfPost(post);
 		like.setType(likeType);
+		likes.add(like);
+		postDao.save(post);
 		return likeDao.save(like);
 	}
 

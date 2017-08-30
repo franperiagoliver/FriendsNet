@@ -6,12 +6,15 @@ package com.everis.alicante.courses.beca.summer17.friendsnet.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -19,6 +22,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,6 +47,7 @@ import lombok.Setter;
  *            the new events
  */
 @Setter
+@EqualsAndHashCode(callSuper = false, exclude = { "friends", "groups", "events", "likes", "posts", "friendsOfFriends" })
 public class Person implements FNEntity {
 
 	/** The Constant serialVersionUID. */
@@ -75,9 +80,15 @@ public class Person implements FNEntity {
 	private Set<Group> groups = new HashSet<>();
 
 	/** The persons. */
-	@OneToMany(mappedBy = "friends", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "friendsOfFriends", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<Person> friends = new HashSet<>();
+
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "friends", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = {
+			@JoinColumn(name = "friend_id") })
+	@JsonIgnore
+	private Set<Person> friendsOfFriends;
 
 	/** The like. */
 	@OneToMany(mappedBy = "likeOfPerson", fetch = FetchType.EAGER)

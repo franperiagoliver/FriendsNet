@@ -1,7 +1,7 @@
 /*
  * Created at 30-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.controllertests.domaintests;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain;
 
 import org.junit.Assert;
 import org.junit.Before;

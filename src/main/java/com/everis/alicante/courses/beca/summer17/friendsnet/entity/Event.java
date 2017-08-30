@@ -18,7 +18,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -92,8 +92,8 @@ public class Event implements FNEntity {
 	private Set<Post> posts = new HashSet<>();
 
 	/** The person in event. */
-	@ManyToOne(cascade = { CascadeType.MERGE })
+	@ManyToMany(cascade = { CascadeType.MERGE })
 	@JoinColumn(name = "person_id", nullable = true)
 	@JsonIgnore
-	private Person personInEvent;
+	private Set<Person> personsInEvent;
 }

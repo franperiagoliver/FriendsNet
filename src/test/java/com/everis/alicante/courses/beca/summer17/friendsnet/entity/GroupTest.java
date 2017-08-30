@@ -1,7 +1,7 @@
 /*
  * Created at 25-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.entitytests;
+package com.everis.alicante.courses.beca.summer17.friendsnet.entity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,9 +9,6 @@ import java.util.Set;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Group;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 
 /**
  * The Class PersonTest.
@@ -49,7 +46,7 @@ public class GroupTest {
 	 * Test person.
 	 */
 	@Test
-	public void testPerson() {
+	public void testGroup() {
 		// Assert
 		Assert.assertNotNull(expectedGroup);
 	}
@@ -130,7 +127,7 @@ public class GroupTest {
 	 * Test get person in group.
 	 */
 	@Test
-	public void TestGetPersonInGroup() {
+	public void TestGetPersonsInGroup() {
 		// Act
 		final Set<Person> result = this.expectedGroup.getPersonsInGroups();
 		// Assert
@@ -141,7 +138,7 @@ public class GroupTest {
 	 * Test set person in group.
 	 */
 	@Test
-	public void TestSetPersonInGroup() {
+	public void TestSetPersonsInGroup() {
 		// Arrange
 		final Group group = new Group();
 		// Act

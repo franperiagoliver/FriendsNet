@@ -3,6 +3,7 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager.impl;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +38,10 @@ public class EventManagerImpl extends AbstractManager<Event, Long> implements Ev
 	 * EventManager#addPerson(java.lang.Long, java.lang.Long)
 	 */
 	@Override
-	public Event addPerson(Long personId, Long eventId) {
-		final Person person = this.personDao.findOne(personId);
+	public Event addPersons(final List<Long> personsId, final Long eventId) {
+		final Set<Person> persons = (Set<Person>) this.personDao.findAll(personsId);
 		final Event event = this.getEntityDAO().findOne(eventId);
-		event.setPersonInEvent(person);
+		event.getPersonsInEvent().addAll(persons);
 		return this.getEntityDAO().save(event);
 	}
 

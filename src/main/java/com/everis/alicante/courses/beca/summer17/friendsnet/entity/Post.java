@@ -88,7 +88,7 @@ public class Post implements FNEntity {
 	private byte[] picture;
 
 	/** The like. */
-	@OneToMany(mappedBy = "likeOfPost", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "postOfLike", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<Like> postLikes = new HashSet<>();
 

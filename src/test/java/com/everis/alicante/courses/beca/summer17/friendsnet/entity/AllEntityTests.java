@@ -1,4 +1,4 @@
-package com.everis.alicante.courses.beca.summer17.friendsnet.entitytests;
+package com.everis.alicante.courses.beca.summer17.friendsnet.entity;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

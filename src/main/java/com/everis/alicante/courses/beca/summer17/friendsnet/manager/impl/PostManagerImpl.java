@@ -50,8 +50,8 @@ public class PostManagerImpl extends AbstractManager<Post, Long> implements Post
 		final Like like = new Like();
 		final Set<Like> likes = post.getPostLikes();
 		post.setPostLikes(likes);
-		like.setLikeOfPerson(person);
-		like.setLikeOfPost(post);
+		like.setPersonOfLike(person);
+		like.setPostOfLike(post);
 		like.setType(likeType);
 		likes.add(like);
 		postDao.save(post);

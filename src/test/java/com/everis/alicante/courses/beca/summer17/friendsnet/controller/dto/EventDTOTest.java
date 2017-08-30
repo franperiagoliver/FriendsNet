@@ -1,7 +1,7 @@
 /*
  * Created at 27-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.entitytests;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller.dto;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -11,18 +11,17 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Event;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Post;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.EventDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.PersonDTO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.EventType;
 
 /**
  * The Class EventTest.
  */
-public class EventTest {
+public class EventDTOTest {
 
 	/** The expected event. */
-	private Event expectedEvent;
+	private EventDTO expectedEventDTO;
 
 	/** The expected id. */
 	private Long expectedId = 1L;
@@ -42,35 +41,31 @@ public class EventTest {
 	/** The expected picture. */
 	private byte[] expectedPicture = null;
 
-	/** The expected posts. */
-	private Set<Post> expectedPosts = new HashSet<>();
-
 	/** The expected person in event. */
-	private Person expectedPersonInEvent = new Person();
+	private Set<PersonDTO> expectedPersonsInEvent = new HashSet();
 
 	/**
 	 * Inits the.
 	 */
 	@Before
 	public void init() {
-		this.expectedEvent = new Event();
-		this.expectedEvent.setEndingDate(expectedEndingDate);
-		this.expectedEvent.setId(expectedId);
-		this.expectedEvent.setPicture(expectedPicture);
-		this.expectedEvent.setName(expectedName);
-		this.expectedEvent.setPersonInEvent(expectedPersonInEvent);
-		this.expectedEvent.setPosts(expectedPosts);
-		this.expectedEvent.setStartingDate(expectedStartingDate);
-		this.expectedEvent.setType(expectedType);
+		this.expectedEventDTO = new EventDTO();
+		this.expectedEventDTO.setEndingDate(expectedEndingDate);
+		this.expectedEventDTO.setId(expectedId);
+		this.expectedEventDTO.setPicture(expectedPicture);
+		this.expectedEventDTO.setName(expectedName);
+		this.expectedEventDTO.setPersonsInEvent(expectedPersonsInEvent);
+		this.expectedEventDTO.setStartingDate(expectedStartingDate);
+		this.expectedEventDTO.setEventType(expectedType);
 	}
 
 	/**
 	 * Test event.
 	 */
 	@Test
-	public void testEvent() {
+	public void testEventDTO() {
 		// Assert
-		Assert.assertNotNull(expectedEvent);
+		Assert.assertNotNull(expectedEventDTO);
 	}
 
 	/**
@@ -79,7 +74,7 @@ public class EventTest {
 	@Test
 	public void testGetId() {
 		// Act
-		final Long result = this.expectedEvent.getId();
+		final Long result = this.expectedEventDTO.getId();
 		// Assert
 		Assert.assertEquals(expectedId, result);
 	}
@@ -90,7 +85,7 @@ public class EventTest {
 	@Test
 	public void testGetName() {
 		// Act
-		final String result = this.expectedEvent.getName();
+		final String result = this.expectedEventDTO.getName();
 		// Assert
 		Assert.assertEquals(expectedName, result);
 	}
@@ -101,7 +96,7 @@ public class EventTest {
 	@Test
 	public void testGetStartingDate() {
 		// Act
-		final Date result = this.expectedEvent.getStartingDate();
+		final Date result = this.expectedEventDTO.getStartingDate();
 		// Assert
 		Assert.assertEquals(expectedStartingDate, result);
 	}
@@ -112,7 +107,7 @@ public class EventTest {
 	@Test
 	public void testGetEndingDate() {
 		// Act
-		final Date result = this.expectedEvent.getEndingDate();
+		final Date result = this.expectedEventDTO.getEndingDate();
 		// Assert
 		Assert.assertEquals(expectedEndingDate, result);
 	}
@@ -121,9 +116,9 @@ public class EventTest {
 	 * Test get type.
 	 */
 	@Test
-	public void testGetType() {
+	public void testGetEventType() {
 		// Act
-		final EventType result = this.expectedEvent.getType();
+		final EventType result = this.expectedEventDTO.getEventType();
 		// Assert
 		Assert.assertEquals(expectedType, result);
 	}
@@ -134,31 +129,20 @@ public class EventTest {
 	@Test
 	public void testGetPicture() {
 		// Act
-		final byte[] result = this.expectedEvent.getPicture();
+		final byte[] result = this.expectedEventDTO.getPicture();
 		// Assert
 		Assert.assertEquals(expectedPicture, result);
-	}
-
-	/**
-	 * Test get posts.
-	 */
-	@Test
-	public void testGetPosts() {
-		// Act
-		final Set<Post> result = this.expectedEvent.getPosts();
-		// Assert
-		Assert.assertEquals(expectedPosts, result);
 	}
 
 	/**
 	 * Test get person in event.
 	 */
 	@Test
-	public void testGetPersonInEvent() {
+	public void testGetPersonsInEvent() {
 		// Act
-		final Person result = this.expectedEvent.getPersonInEvent();
+		final Set<PersonDTO> result = this.expectedEventDTO.getPersonsInEvent();
 		// Assert
-		Assert.assertEquals(expectedPersonInEvent, result);
+		Assert.assertEquals(expectedPersonsInEvent, result);
 	}
 
 	/**
@@ -167,7 +151,7 @@ public class EventTest {
 	@Test
 	public void testSetId() {
 		// Arrange
-		final Event event = new Event();
+		final EventDTO event = new EventDTO();
 		// Act
 		event.setId(expectedId);
 		// Assert
@@ -180,7 +164,7 @@ public class EventTest {
 	@Test
 	public void testSetName() {
 		// Arrange
-		final Event event = new Event();
+		final EventDTO event = new EventDTO();
 		// Act
 		event.setName(expectedName);
 		// Assert
@@ -193,7 +177,7 @@ public class EventTest {
 	@Test
 	public void testSetStartingDate() {
 		// Arrange
-		final Event event = new Event();
+		final EventDTO event = new EventDTO();
 		// Act
 		event.setStartingDate(expectedStartingDate);
 		// Assert
@@ -206,7 +190,7 @@ public class EventTest {
 	@Test
 	public void testSetEndingDate() {
 		// Arrange
-		final Event event = new Event();
+		final EventDTO event = new EventDTO();
 		// Act
 		event.setEndingDate(expectedEndingDate);
 		// Assert
@@ -217,13 +201,13 @@ public class EventTest {
 	 * Test set type.
 	 */
 	@Test
-	public void testSetType() {
+	public void testSetEventType() {
 		// Arrange
-		final Event event = new Event();
+		final EventDTO event = new EventDTO();
 		// Act
-		event.setType(expectedType);
+		event.setEventType(expectedType);
 		// Assert
-		Assert.assertEquals(expectedType, event.getType());
+		Assert.assertEquals(expectedType, event.getEventType());
 	}
 
 	/**
@@ -232,7 +216,7 @@ public class EventTest {
 	@Test
 	public void testSetPicture() {
 		// Arrange
-		final Event event = new Event();
+		final EventDTO event = new EventDTO();
 		// Act
 		event.setPicture(expectedPicture);
 		// Assert
@@ -240,28 +224,15 @@ public class EventTest {
 	}
 
 	/**
-	 * Test set posts.
-	 */
-	@Test
-	public void testSetPosts() {
-		// Arrange
-		final Event event = new Event();
-		// Act
-		event.setPosts(expectedPosts);
-		// Assert
-		Assert.assertEquals(expectedPosts, event.getPosts());
-	}
-
-	/**
 	 * Test set person in event.
 	 */
 	@Test
-	public void testSetPersonInEvent() {
+	public void testSetPersonsInEvent() {
 		// Arrange
-		final Event event = new Event();
+		final EventDTO event = new EventDTO();
 		// Act
-		event.setPersonInEvent(expectedPersonInEvent);
+		event.setPersonsInEvent(expectedPersonsInEvent);
 		// Assert
-		Assert.assertEquals(expectedPersonInEvent, event.getPersonInEvent());
+		Assert.assertEquals(expectedPersonsInEvent, event.getPersonsInEvent());
 	}
 }

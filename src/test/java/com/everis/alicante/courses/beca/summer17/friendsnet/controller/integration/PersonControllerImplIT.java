@@ -1,7 +1,7 @@
 /*
  * Created at 29-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.integrationtests;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller.integration;
 
 import org.json.JSONException;
 import org.junit.Before;
@@ -22,9 +22,8 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.dao.EventDAO;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Event;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.EventType;
+import com.everis.alicante.courses.beca.summer17.friendsnet.dao.PersonDAO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
@@ -32,21 +31,21 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 /**
- * The Class EventControllerImplIT.
+ * The Class PersonControllerImplIT.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
-public class EventControllerImplIT {
+public class PersonControllerImplIT {
 
 	/** The port. */
 	@LocalServerPort
 	private int port;
 
-	/** The event dao. */
+	/** The person dao. */
 	@Autowired
-	private EventDAO eventDao;
+	private PersonDAO personDao;
 
 	/** The rest template. */
 	TestRestTemplate restTemplate = new TestRestTemplate();
@@ -73,14 +72,14 @@ public class EventControllerImplIT {
 	 *             the JSON exception
 	 */
 	@Test
-	@DatabaseSetup("classpath:db/initial-event.xml")
+	@DatabaseSetup("classpath:db/initial-person.xml")
 	public void testFindAll() throws JSONException {
 		// Act
-		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/event"), HttpMethod.GET, null,
+		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/person"), HttpMethod.GET, null,
 				String.class);
 		// Assert
 		JSONAssert.assertEquals(
-				"[{'id':1, 'name':'Cumple', 'type':'GENERAL'},{'id'=2, 'name'='Fiesta', 'type':'GENERAL'}]",
+				"[{'id':1, 'name':'Antonio', 'surname':'Sanchez'},{'id'=2, 'name'='Fran', 'surname':'Periago'},{'id'=3, 'name'='Maria', 'surname':'Lopez'},{'id'=4, 'name'='Juana', 'surname':'Loca'}]",
 				response.getBody(), false);
 	}
 
@@ -91,13 +90,15 @@ public class EventControllerImplIT {
 	 *             the JSON exception
 	 */
 	@Test
-	@DatabaseSetup("classpath:db/initial-event.xml")
+	@DatabaseSetup("classpath:db/initial-person.xml")
 	public void testGetById() throws JSONException {
+		// Arrange
+
 		// Act
-		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/event/2"), HttpMethod.GET, null,
+		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/person/4"), HttpMethod.GET, null,
 				String.class);
 		// Assert
-		JSONAssert.assertEquals("{'id'=2, 'name'='Fiesta', 'type':'GENERAL'}", response.getBody(), false);
+		JSONAssert.assertEquals("{'id'=4, 'name'='Juana', 'surname':'Loca'}", response.getBody(), false);
 	}
 
 	/**
@@ -107,21 +108,21 @@ public class EventControllerImplIT {
 	 *             the JSON exception
 	 */
 	@Test
-	@DatabaseSetup("classpath:db/initial-event.xml")
-	@ExpectedDatabase(value = "classpath:db/after-creating-event.xml", assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@DatabaseSetup("classpath:db/initial-person.xml")
+	@ExpectedDatabase(value = "classpath:db/after-creating-person.xml", assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testCreate() throws JSONException {
 		// Arrange
-		Event event = new Event();
-		event.setName("Boda");
-		event.setType(EventType.GENERAL);
-		eventDao.save(event);
-		HttpEntity<Event> entity = new HttpEntity<Event>(event, headers);
+		Person person = new Person();
+		person.setName("Miguel");
+		person.setSurname("Oliver");
+		personDao.save(person);
+		HttpEntity<Person> entity = new HttpEntity<Person>(person, headers);
 
 		// Act
-		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/event"), HttpMethod.POST, entity,
+		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/person"), HttpMethod.POST, entity,
 				String.class);
 		// Assert
-		JSONAssert.assertEquals("{'id'=3, 'name'='Boda', 'type':'GENERAL'}", response.getBody(), false);
+		JSONAssert.assertEquals("{'id'=5, 'name'='Miguel', 'surname':'Oliver'}", response.getBody(), false);
 	}
 
 	/**
@@ -131,11 +132,11 @@ public class EventControllerImplIT {
 	 *             the JSON exception
 	 */
 	@Test
-	@DatabaseSetup("classpath:db/initial-event.xml")
-	@ExpectedDatabase(value = "classpath:db/after-deleting-event.xml", assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@DatabaseSetup("classpath:db/initial-person.xml")
+	@ExpectedDatabase(value = "classpath:db/after-deleting-person.xml", assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testRemove() throws JSONException {
 		// Act
-		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/event/3"), HttpMethod.DELETE, null,
+		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/person/5"), HttpMethod.DELETE, null,
 				String.class);
 		// Assert
 		JSONAssert.assertEquals("{}", response.getBody(), false);

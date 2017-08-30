@@ -1,7 +1,7 @@
 /*
  * Created at 27-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.entitytests;
+package com.everis.alicante.courses.beca.summer17.friendsnet.entity;
 
 import java.util.Date;
 
@@ -9,9 +9,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Like;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Post;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.LikeType;
 
 /**
@@ -32,10 +29,10 @@ public class LikeTest {
 	private LikeType expectedType = LikeType.COOL;
 
 	/** The expected post like. */
-	private Post expectedLikeofPost = new Post();
+	private Post expectedPostOfLike = new Post();
 
 	/** The expected person like. */
-	private Person expectedLiker = new Person();
+	private Person expectedPersonOfLike = new Person();
 
 	/**
 	 * Inits the.
@@ -45,8 +42,8 @@ public class LikeTest {
 		this.expectedLike = new Like();
 		this.expectedLike.setCreationDate(expectedCreationDate);
 		this.expectedLike.setId(expectedId);
-		this.expectedLike.setLikeOfPerson(expectedLiker);
-		this.expectedLike.setLikeOfPost(expectedLikeofPost);
+		this.expectedLike.setPersonOfLike(expectedPersonOfLike);
+		this.expectedLike.setPostOfLike(expectedPostOfLike);
 		this.expectedLike.setType(expectedType);
 	}
 
@@ -89,9 +86,9 @@ public class LikeTest {
 	@Test
 	public void testGetPostLike() {
 		// Act
-		final Post result = this.expectedLike.getLikeOfPost();
+		final Post result = this.expectedLike.getPostOfLike();
 		// Assert
-		Assert.assertEquals(expectedLikeofPost, result);
+		Assert.assertEquals(expectedPostOfLike, result);
 	}
 
 	/**
@@ -100,9 +97,9 @@ public class LikeTest {
 	@Test
 	public void testGetPersonLike() {
 		// Act
-		final Person result = this.expectedLike.getLikeOfPerson();
+		final Person result = this.expectedLike.getPersonOfLike();
 		// Assert
-		Assert.assertEquals(expectedLiker, result);
+		Assert.assertEquals(expectedPersonOfLike, result);
 	}
 
 	/**
@@ -152,9 +149,9 @@ public class LikeTest {
 		// Arrange
 		final Like like = new Like();
 		// Act
-		like.setLikeOfPost(expectedLikeofPost);
+		like.setPostOfLike(expectedPostOfLike);
 		// Assert
-		Assert.assertEquals(expectedLikeofPost, like.getLikeOfPost());
+		Assert.assertEquals(expectedPostOfLike, like.getPostOfLike());
 	}
 
 	/**
@@ -165,9 +162,9 @@ public class LikeTest {
 		// Arrange
 		final Like like = new Like();
 		// Act
-		like.setLikeOfPerson(expectedLiker);
+		like.setPersonOfLike(expectedPersonOfLike);
 		// Assert
-		Assert.assertEquals(expectedLiker, like.getLikeOfPerson());
+		Assert.assertEquals(expectedPersonOfLike, like.getPersonOfLike());
 	}
 
 	/**

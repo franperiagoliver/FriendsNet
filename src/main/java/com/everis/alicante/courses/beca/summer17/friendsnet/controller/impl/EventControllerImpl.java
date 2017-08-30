@@ -3,6 +3,7 @@
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.controller.impl;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.controller.AbstractController;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.EventDTO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Event;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.EventManager;
+import com.everis.alicante.courses.beca.summer17.friendsnet.utils.converter.EntityConverter;
 
 /**
  * The Class EventController.
@@ -30,6 +33,10 @@ public class EventControllerImpl extends AbstractController<Event, Long> {
 	@Autowired
 	private EventManager manager;
 
+	/** The entity converter. */
+	@Autowired
+	private EntityConverter entityConverter;
+
 	/**
 	 * Gets the by person id.
 	 *
@@ -38,22 +45,25 @@ public class EventControllerImpl extends AbstractController<Event, Long> {
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}")
-	public Set<Event> getByPersonId(@PathVariable("id") final Long personId) {
-		return this.getManager().getByPersonId(personId);
+	public Set<EventDTO> getByPersonId(@PathVariable("id") final Long personId) {
+		final Set<Event> events = this.getManager().getByPersonId(personId);
+		return (Set<EventDTO>) entityConverter.convert(events, EventDTO.class);
 	}
 
 	/**
 	 * Adds the person.
 	 *
-	 * @param personId
-	 *            the person id
+	 * @param personsId
+	 *            the persons id
 	 * @param eventId
 	 *            the event id
 	 * @return the event
 	 */
-	@PostMapping("/{id}/person/{idPerson}/add")
-	public Event addPerson(@PathVariable("idPerson") final Long personId, @PathVariable("id") final Long eventId) {
-		return this.getManager().addPerson(personId, eventId);
+	@PostMapping("/{id}/person/{idPersons}/add")
+	public EventDTO addPersons(@PathVariable("idPersons") final List<Long> personsId,
+			@PathVariable("id") final Long eventId) {
+		final Event event = this.getManager().addPersons(personsId, eventId);
+		return entityConverter.convert(event, EventDTO.class);
 	}
 
 	/*

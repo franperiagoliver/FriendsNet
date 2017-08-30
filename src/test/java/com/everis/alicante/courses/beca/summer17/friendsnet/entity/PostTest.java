@@ -1,7 +1,7 @@
 /*
  * Created at 27-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.entitytests;
+package com.everis.alicante.courses.beca.summer17.friendsnet.entity;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -11,10 +11,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Event;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Like;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Post;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.PostType;
 
 /**
@@ -134,7 +130,7 @@ public class PostTest {
 	 * Test get post of like.
 	 */
 	@Test
-	public void testGetPostOfLike() {
+	public void testGetPostLikes() {
 		// Act
 		final Set<Like> result = this.expectedPost.getPostLikes();
 		// Assert
@@ -232,7 +228,7 @@ public class PostTest {
 	 * Test set post of like.
 	 */
 	@Test
-	public void testSetPostOfLike() {
+	public void testSetPostLikes() {
 		// Arrange
 		final Post post = new Post();
 		// Act

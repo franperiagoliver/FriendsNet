@@ -1,7 +1,7 @@
 /*
  * Created at 25-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.entitytests;
+package com.everis.alicante.courses.beca.summer17.friendsnet.entity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,12 +9,6 @@ import java.util.Set;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Event;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Group;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Like;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Post;
 
 /**
  * The Class PersonTest.
@@ -37,16 +31,16 @@ public class PersonTest {
 	private byte[] expectedPicture = null;
 
 	/** The expected groups. */
-	private Set<Group> expectedGroups = new HashSet<Group>();
+	private Set<Group> expectedGroups = new HashSet<>();
 
 	/** The expected persons. */
-	private Set<Person> expectedFriends = new HashSet<Person>();
+	private Set<Person> expectedFriends = new HashSet<>();
 
 	/** The expected friends of friends. */
-	private Set<Person> expectedFriendsOfFriends = new HashSet<Person>();
+	private Set<Person> expectedFriendsOfFriends = new HashSet<>();
 
 	/** The expected events. */
-	private Set<Event> expectedEvents = new HashSet<Event>();
+	private Set<Event> expectedEvents = new HashSet<>();
 
 	/** The expected like. */
 	private Set<Like> expectedLikes = new HashSet<>();
@@ -253,7 +247,7 @@ public class PersonTest {
 	 * Test get post.
 	 */
 	@Test
-	public void testGetPost() {
+	public void testGetPosts() {
 		// Act
 		final Set<Post> result = this.expectedPerson.getPosts();
 		// Assert
@@ -264,7 +258,7 @@ public class PersonTest {
 	 * Test set post.
 	 */
 	@Test
-	public void testSetPost() {
+	public void testSetPosts() {
 		// Arrange
 		final Person person = new Person();
 		// Act
@@ -277,7 +271,7 @@ public class PersonTest {
 	 * Test get like.
 	 */
 	@Test
-	public void testGetLike() {
+	public void testGetLikes() {
 		// Act
 		final Set<Like> result = this.expectedPerson.getLikes();
 		// Assert
@@ -288,7 +282,7 @@ public class PersonTest {
 	 * Test set like.
 	 */
 	@Test
-	public void testSetLike() {
+	public void testSetLikes() {
 		// Arrange
 		final Person person = new Person();
 		// Act

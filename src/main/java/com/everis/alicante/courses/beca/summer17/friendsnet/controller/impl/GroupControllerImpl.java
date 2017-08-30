@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.controller.AbstractController;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.GroupDTO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Group;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.GroupManager;
+import com.everis.alicante.courses.beca.summer17.friendsnet.utils.converter.EntityConverter;
 
 /**
  * The Class GroupController.
@@ -32,6 +34,10 @@ public class GroupControllerImpl extends AbstractController<Group, Long> {
 	@Autowired
 	private GroupManager manager;
 
+	/** The entity converter. */
+	@Autowired
+	private EntityConverter entityConverter;
+
 	/**
 	 * Gets the by person id.
 	 *
@@ -40,8 +46,9 @@ public class GroupControllerImpl extends AbstractController<Group, Long> {
 	 * @return the by person id
 	 */
 	@GetMapping("/person/{id}/")
-	public Set<Group> getByPersonId(final Long id) {
-		return this.getManager().getByPersonId(id);
+	public Set<GroupDTO> getByPersonId(final Long id) {
+		final Set<Group> groups = this.getManager().getByPersonId(id);
+		return (Set<GroupDTO>) entityConverter.convert(groups, GroupDTO.class);
 	}
 
 	/**
@@ -54,8 +61,9 @@ public class GroupControllerImpl extends AbstractController<Group, Long> {
 	 * @return the group
 	 */
 	@PostMapping("/{id}/relate")
-	public Group relate(@PathVariable("id") final Long groupId, @RequestBody final Long personId) {
-		return this.getManager().relate(groupId, personId);
+	public GroupDTO relate(@PathVariable("id") final Long groupId, @RequestBody final Long personId) {
+		final Group group = this.getManager().relate(groupId, personId);
+		return entityConverter.convert(group, GroupDTO.class);
 	}
 
 	/**
@@ -68,9 +76,10 @@ public class GroupControllerImpl extends AbstractController<Group, Long> {
 	 * @return the group
 	 */
 	@PostMapping("/{id}/person/{idPersons}/add")
-	public Group addPersons(@PathVariable("idPersons") final List<Long> personIds,
+	public GroupDTO addPersons(@PathVariable("idPersons") final List<Long> personIds,
 			@PathVariable("id") final Long groupId) {
-		return this.getManager().addPersons(personIds, groupId);
+		final Group groups = this.getManager().addPersons(personIds, groupId);
+		return entityConverter.convert(groups, GroupDTO.class);
 	}
 
 	/*

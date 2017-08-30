@@ -20,6 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.LikeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -57,7 +58,7 @@ public class Like implements FNEntity {
 
 	/** The creation date. */
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false, length = 255)
+	@Column(nullable = true, length = 255)
 	private Date creationDate;
 
 	/** The type. */
@@ -68,10 +69,12 @@ public class Like implements FNEntity {
 	/** The like of post. */
 	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "post_id", nullable = true)
-	private Post likeOfPost;
+	@JsonIgnore
+	private Post postOfLike;
 
 	/** The like of person. */
 	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "person_id", nullable = true)
-	private Person likeOfPerson;
+	@JsonIgnore
+	private Person personOfLike;
 }

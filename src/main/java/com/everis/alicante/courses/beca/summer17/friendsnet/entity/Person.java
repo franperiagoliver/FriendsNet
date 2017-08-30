@@ -91,7 +91,7 @@ public class Person implements FNEntity {
 	private Set<Person> friendsOfFriends;
 
 	/** The like. */
-	@OneToMany(mappedBy = "likeOfPerson", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "personOfLike", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<Like> likes = new HashSet<>();
 
@@ -101,7 +101,7 @@ public class Person implements FNEntity {
 	private Set<Post> posts = new HashSet<>();
 
 	/** The events. */
-	@OneToMany(mappedBy = "personInEvent", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "personsInEvent", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<Event> events = new HashSet<>();
 }

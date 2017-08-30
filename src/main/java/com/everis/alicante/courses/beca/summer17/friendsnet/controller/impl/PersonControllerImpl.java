@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.controller.AbstractController;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.PersonDTO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.PersonManager;
+import com.everis.alicante.courses.beca.summer17.friendsnet.utils.converter.EntityConverter;
 
 /**
  * The Class PersonController.
@@ -28,6 +30,10 @@ public class PersonControllerImpl extends AbstractController<Person, Long> {
 	@Autowired
 	private PersonManager manager;
 
+	/** The entity converter. */
+	@Autowired
+	private EntityConverter entityConverter;
+
 	/**
 	 * Gets the all.
 	 *
@@ -39,8 +45,9 @@ public class PersonControllerImpl extends AbstractController<Person, Long> {
 	 */
 
 	@PostMapping("/{id}/relate")
-	public Person relate(@PathVariable("id") final Long personId, @RequestBody final Long newFriendId) {
-		return this.getManager().relatePersons(personId, newFriendId);
+	public PersonDTO relate(@PathVariable("id") final Long personId, @RequestBody final Long newFriendId) {
+		final Person person = this.getManager().relatePersons(personId, newFriendId);
+		return entityConverter.convert(person, PersonDTO.class);
 	}
 
 	/*

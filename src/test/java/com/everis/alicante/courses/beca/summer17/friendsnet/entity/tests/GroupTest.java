@@ -10,8 +10,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Group;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Group;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 
 /**
  * The Class PersonTest.

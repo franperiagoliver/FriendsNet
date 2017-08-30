@@ -10,11 +10,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Event;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Group;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Like;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Person;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.classes.Post;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Event;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Group;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Like;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Post;
 
 /**
  * The Class PersonTest.

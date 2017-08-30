@@ -11,13 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.everis.alicante.courses.beca.summer17.friendsnet.controller.AbstractController;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.PersonLike;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Like;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Post;
-import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.LikeType;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.PostManager;
 
 /**
@@ -49,16 +50,13 @@ public class PostControllerImpl extends AbstractController<Post, Long> {
 	 *
 	 * @param postId
 	 *            the post id
-	 * @param personId
-	 *            the person id
-	 * @param likeType
-	 *            the like type
+	 * @param personLike
+	 *            the person like
 	 * @return the post
 	 */
-	@PostMapping("/{id}/person/{idPerson}/like/{typeLike}/add")
-	public Like addLike(@PathVariable("id") final Long postId, @PathVariable("idPerson") final Long personId,
-			@PathVariable("typeLike") final LikeType likeType) {
-		return this.getManager().addLike(postId, personId, likeType);
+	@PostMapping("/{idPost}/like")
+	public Like addLike(@PathVariable("idPost") final Long postId, @RequestBody PersonLike personLike) {
+		return this.getManager().addLike(postId, personLike.getIdPerson(), personLike.getLikeType());
 	}
 
 	/*

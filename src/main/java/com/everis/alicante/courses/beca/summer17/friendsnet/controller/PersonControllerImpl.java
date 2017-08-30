@@ -1,7 +1,7 @@
 /*
  * Created at 24-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.controller.impl;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller;
 
 import javax.transaction.Transactional;
 
@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.AbstractController;
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.PersonDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.PersonDTO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.PersonManager;
 import com.everis.alicante.courses.beca.summer17.friendsnet.utils.converter.EntityConverter;
@@ -24,15 +23,16 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.utils.converter.Enti
 @RestController
 @RequestMapping("/person")
 @Transactional
-public class PersonControllerImpl extends AbstractController<Person, Long> {
+public class PersonControllerImpl extends AbstractController<Person, PersonDTO, Long> {
 
 	/** The person manager. */
 	@Autowired
 	private PersonManager manager;
 
-	/** The entity converter. */
-	@Autowired
-	private EntityConverter entityConverter;
+	
+	public PersonControllerImpl() {
+		super(Person.class, PersonDTO.class);
+	}
 
 	/**
 	 * Gets the all.
@@ -47,7 +47,7 @@ public class PersonControllerImpl extends AbstractController<Person, Long> {
 	@PostMapping("/{id}/relate")
 	public PersonDTO relate(@PathVariable("id") final Long personId, @RequestBody final Long newFriendId) {
 		final Person person = this.getManager().relatePersons(personId, newFriendId);
-		return entityConverter.convert(person, PersonDTO.class);
+		return super.getEntityConverter().convert(person, PersonDTO.class);
 	}
 
 	/*

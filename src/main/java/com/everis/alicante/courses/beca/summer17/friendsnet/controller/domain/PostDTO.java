@@ -1,7 +1,7 @@
 /*
  * Created at 30-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain;
 
 import java.util.Date;
 import java.util.Set;
@@ -64,7 +64,7 @@ import lombok.Setter;
  *            the new post type
  */
 @Setter
-public class PostDTO {
+public class PostDTO implements FNDTO{
 
 	/** The id. */
 	private Long id;

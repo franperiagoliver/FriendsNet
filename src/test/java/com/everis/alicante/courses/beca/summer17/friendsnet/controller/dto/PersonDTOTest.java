@@ -10,9 +10,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.EventDTO;
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.GroupDTO;
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.PersonDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.EventDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.GroupDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.PersonDTO;
 
 /**
  * The Class PersonTest.

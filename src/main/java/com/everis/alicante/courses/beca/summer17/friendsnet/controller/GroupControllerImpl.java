@@ -1,7 +1,7 @@
 /*
  * Created at 25-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.controller.impl;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller;
 
 import java.util.List;
 import java.util.Set;
@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.AbstractController;
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.GroupDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.EventDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.GroupDTO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Group;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.GroupManager;
 import com.everis.alicante.courses.beca.summer17.friendsnet.utils.converter.EntityConverter;
+
+import antlr.debug.Event;
 
 /**
  * The Class GroupController.
@@ -28,15 +30,16 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.utils.converter.Enti
 @RestController
 @RequestMapping("/group")
 @Transactional
-public class GroupControllerImpl extends AbstractController<Group, Long> {
+public class GroupControllerImpl extends AbstractController<Group, GroupDTO, Long> {
 
 	/** The manager. */
 	@Autowired
 	private GroupManager manager;
 
-	/** The entity converter. */
-	@Autowired
-	private EntityConverter entityConverter;
+	protected GroupControllerImpl() {
+		super(Group.class, GroupDTO.class);
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * Gets the by person id.
@@ -48,7 +51,7 @@ public class GroupControllerImpl extends AbstractController<Group, Long> {
 	@GetMapping("/person/{id}/")
 	public Set<GroupDTO> getByPersonId(final Long id) {
 		final Set<Group> groups = this.getManager().getByPersonId(id);
-		return (Set<GroupDTO>) entityConverter.convert(groups, GroupDTO.class);
+		return (Set<GroupDTO>) super.getEntityConverter().convert(groups, GroupDTO.class);
 	}
 
 	/**
@@ -63,7 +66,7 @@ public class GroupControllerImpl extends AbstractController<Group, Long> {
 	@PostMapping("/{id}/relate")
 	public GroupDTO relate(@PathVariable("id") final Long groupId, @RequestBody final Long personId) {
 		final Group group = this.getManager().relate(groupId, personId);
-		return entityConverter.convert(group, GroupDTO.class);
+		return super.getEntityConverter().convert(group, GroupDTO.class);
 	}
 
 	/**
@@ -79,7 +82,7 @@ public class GroupControllerImpl extends AbstractController<Group, Long> {
 	public GroupDTO addPersons(@PathVariable("idPersons") final List<Long> personIds,
 			@PathVariable("id") final Long groupId) {
 		final Group groups = this.getManager().addPersons(personIds, groupId);
-		return entityConverter.convert(groups, GroupDTO.class);
+		return super.getEntityConverter().convert(groups, GroupDTO.class);
 	}
 
 	/*

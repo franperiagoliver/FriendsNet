@@ -1,4 +1,4 @@
-package com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain;
 
 import java.util.Date;
 import java.util.Set;
@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class EventDTO {
+public class EventDTO implements FNDTO {
 
 	private Long id;
 	private String name;

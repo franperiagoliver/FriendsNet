@@ -1,7 +1,7 @@
 /*
  * Created at 30-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +20,7 @@ import lombok.Setter;
  *            the new picture
  */
 @Setter
-public class GroupDTO {
+public class GroupDTO implements FNDTO {
 
 	/** The id. */
 	private Long id;

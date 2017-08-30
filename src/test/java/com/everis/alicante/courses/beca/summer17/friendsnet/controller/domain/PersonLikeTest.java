@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.PersonLike;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.PersonLikeDTO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.LikeType;
 
 /**
@@ -16,7 +16,7 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.LikeTyp
 public class PersonLikeTest {
 
 	/** The expected person like. */
-	private PersonLike expectedPersonLike;
+	private PersonLikeDTO expectedPersonLike;
 
 	/** The expected id. */
 	private Long expectedId = 1L;
@@ -29,7 +29,7 @@ public class PersonLikeTest {
 	 */
 	@Before
 	public void init() {
-		this.expectedPersonLike = new PersonLike();
+		this.expectedPersonLike = new PersonLikeDTO();
 		this.expectedPersonLike.setIdPerson(expectedId);
 		this.expectedPersonLike.setLikeType(expectedType);
 	}
@@ -71,7 +71,7 @@ public class PersonLikeTest {
 	@Test
 	public void testSetIdPerson() {
 		// Arrange
-		final PersonLike personLike = new PersonLike();
+		final PersonLikeDTO personLike = new PersonLikeDTO();
 		// Act
 		personLike.setIdPerson(expectedId);
 		// Assert
@@ -84,7 +84,7 @@ public class PersonLikeTest {
 	@Test
 	public void testSetLikeType() {
 		// Arrange
-		final PersonLike personLike = new PersonLike();
+		final PersonLikeDTO personLike = new PersonLikeDTO();
 		// Act
 		personLike.setLikeType(expectedType);
 		// Assert

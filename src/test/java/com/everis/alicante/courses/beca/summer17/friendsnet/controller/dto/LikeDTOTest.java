@@ -7,8 +7,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.LikeDTO;
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.PersonDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.LikeDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.PersonDTO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.LikeType;
 
 /**

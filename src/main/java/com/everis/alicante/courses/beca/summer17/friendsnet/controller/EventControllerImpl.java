@@ -1,7 +1,7 @@
 /*
  * Created at 25-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.controller.impl;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller;
 
 import java.util.List;
 import java.util.Set;
@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.AbstractController;
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.EventDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.EventDTO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Event;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.EventManager;
 import com.everis.alicante.courses.beca.summer17.friendsnet.utils.converter.EntityConverter;
@@ -27,16 +26,16 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.utils.converter.Enti
 @RestController
 @RequestMapping("/event")
 @Transactional
-public class EventControllerImpl extends AbstractController<Event, Long> {
+public class EventControllerImpl extends AbstractController<Event, EventDTO, Long> {
 
 	/** The manager. */
 	@Autowired
 	private EventManager manager;
 
-	/** The entity converter. */
-	@Autowired
-	private EntityConverter entityConverter;
-
+	protected EventControllerImpl() {
+		super(Event.class, EventDTO.class);
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * Gets the by person id.
 	 *
@@ -47,7 +46,7 @@ public class EventControllerImpl extends AbstractController<Event, Long> {
 	@GetMapping("/person/{id}")
 	public Set<EventDTO> getByPersonId(@PathVariable("id") final Long personId) {
 		final Set<Event> events = this.getManager().getByPersonId(personId);
-		return (Set<EventDTO>) entityConverter.convert(events, EventDTO.class);
+		return (Set<EventDTO>) super.getEntityConverter().convert(events, EventDTO.class);
 	}
 
 	/**
@@ -63,7 +62,7 @@ public class EventControllerImpl extends AbstractController<Event, Long> {
 	public EventDTO addPersons(@PathVariable("idPersons") final List<Long> personsId,
 			@PathVariable("id") final Long eventId) {
 		final Event event = this.getManager().addPersons(personsId, eventId);
-		return entityConverter.convert(event, EventDTO.class);
+		return super.getEntityConverter().convert(event, EventDTO.class);
 	}
 
 	/*

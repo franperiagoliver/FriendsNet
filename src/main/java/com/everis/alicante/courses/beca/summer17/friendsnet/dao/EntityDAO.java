@@ -54,6 +54,7 @@ public interface EntityDAO<E extends FNEntity, ID extends Serializable> {
 	 */
 	<S extends E> S save(S entity);
 
+
 	/**
 	 * Save.
 	 *

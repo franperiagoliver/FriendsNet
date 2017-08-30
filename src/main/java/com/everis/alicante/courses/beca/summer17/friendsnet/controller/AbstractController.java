@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,20 +16,50 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.FNDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.PersonDTO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.FNEntity;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.Manager;
+import com.everis.alicante.courses.beca.summer17.friendsnet.utils.converter.EntityConverter;
 
 /**
  * The Class AbstractController.
  *
- * @param <E>
- *            the element type
- * @param <ID>
- *            the generic type
+ * @param <E>            the element type
+ * @param <DTO> the generic type
+ * @param <ID>            the generic type
  */
 @RestController
 @Transactional
-public abstract class AbstractController<E extends FNEntity, ID extends Serializable> {
+public abstract class AbstractController<E extends FNEntity, DTO extends FNDTO, ID extends Serializable> {
+
+	/**
+	 * Gets the manager.
+	 *
+	 * @return the manager
+	 */
+	protected abstract Manager<E, ID> getManager();
+
+	/** The e class. */
+	private final Class<E> eClass;
+	
+	/** The dto class. */
+	private final Class<DTO> dtoClass;
+
+	/** The entity converter. */
+	@Autowired
+	private EntityConverter entityConverter;
+
+	/**
+	 * Instantiates a new abstract controller.
+	 *
+	 * @param eClass the e class
+	 * @param dtoClass the dto class
+	 */
+	protected AbstractController(final Class<E> eClass, final Class<DTO> dtoClass) {
+		this.eClass = eClass;
+		this.dtoClass = dtoClass;
+	}
 
 	/**
 	 * Gets the all.
@@ -36,8 +67,8 @@ public abstract class AbstractController<E extends FNEntity, ID extends Serializ
 	 * @return the all
 	 */
 	@GetMapping
-	public List<E> getAll() {
-		return (List<E>) this.getManager().findAll();
+	public List<DTO> getAll() {
+		return this.getEntityConverter().convert((List<E>) this.getManager().findAll(), dtoClass);
 	}
 
 	/**
@@ -48,8 +79,8 @@ public abstract class AbstractController<E extends FNEntity, ID extends Serializ
 	 * @return the by id
 	 */
 	@GetMapping("/{id}")
-	public E getById(@PathVariable final ID id) {
-		return this.getManager().findById(id);
+	public DTO getById(@PathVariable final ID id) {
+		return this.getEntityConverter().convert((E) this.getManager().findById(id), dtoClass);
 
 	}
 
@@ -61,8 +92,8 @@ public abstract class AbstractController<E extends FNEntity, ID extends Serializ
 	 * @return the e
 	 */
 	@PostMapping
-	public E create(@RequestBody final E e) {
-		return this.getManager().save(e);
+	public DTO create(@RequestBody final E e) {
+		return this.getEntityConverter().convert((E) this.getManager().save(e), dtoClass);
 
 	}
 
@@ -78,9 +109,11 @@ public abstract class AbstractController<E extends FNEntity, ID extends Serializ
 	}
 
 	/**
-	 * Gets the manager.
+	 * Gets the entity converter.
 	 *
-	 * @return the manager
+	 * @return the entity converter
 	 */
-	protected abstract Manager<E, ID> getManager();
+	protected EntityConverter getEntityConverter() {
+		return this.entityConverter;
+	}
 }

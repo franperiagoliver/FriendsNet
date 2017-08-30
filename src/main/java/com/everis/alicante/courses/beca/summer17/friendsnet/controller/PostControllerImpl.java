@@ -1,7 +1,7 @@
 /*
  * Created at 25-ago-2017 by Fran Periago.
  */
-package com.everis.alicante.courses.beca.summer17.friendsnet.controller.impl;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller;
 
 import java.util.Set;
 
@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.AbstractController;
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.PersonLike;
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.LikeDTO;
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.PostDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.GroupDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.LikeDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.PersonLikeDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.PostDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Group;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Like;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Post;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.PostManager;
@@ -30,16 +31,16 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.utils.converter.Enti
 @RestController
 @RequestMapping("/post")
 @Transactional
-public class PostControllerImpl extends AbstractController<Post, Long> {
+public class PostControllerImpl extends AbstractController<Post, PostDTO, Long> {
 
 	/** The manager. */
 	@Autowired
 	private PostManager manager;
 
-	/** The entity converter. */
-	@Autowired
-	private EntityConverter entityConverter;
-
+	protected PostControllerImpl() {
+		super(Post.class, PostDTO.class);
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * Gets the by person id.
 	 *
@@ -50,7 +51,7 @@ public class PostControllerImpl extends AbstractController<Post, Long> {
 	@GetMapping("/person/{id}")
 	public Set<Post> getByPersonId(@PathVariable("id") final Long personId) {
 		final Set<Post> posts = this.getManager().getByPersonId(personId);
-		return (Set<Post>) entityConverter.convert(posts, PostDTO.class);
+		return (Set<Post>) super.getEntityConverter().convert(posts, PostDTO.class);
 	}
 
 	/**
@@ -63,9 +64,9 @@ public class PostControllerImpl extends AbstractController<Post, Long> {
 	 * @return the post
 	 */
 	@PostMapping("/{idPost}/like")
-	public LikeDTO addLike(@PathVariable("idPost") final Long postId, @RequestBody PersonLike personLike) {
+	public LikeDTO addLike(@PathVariable("idPost") final Long postId, @RequestBody PersonLikeDTO personLike) {
 		final Like like = this.getManager().addLike(postId, personLike.getIdPerson(), personLike.getLikeType());
-		return entityConverter.convert(like, LikeDTO.class);
+		return super.getEntityConverter().convert(like, LikeDTO.class);
 	}
 
 	/*

@@ -4,6 +4,7 @@
 package com.everis.alicante.courses.beca.summer17.friendsnet.manager;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,8 +13,11 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.data.repository.CrudRepository;
 
+import com.everis.alicante.courses.beca.summer17.friendsnet.dao.EntityDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.dao.PersonDAO;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Person;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.impl.PersonManagerImpl;
@@ -28,7 +32,6 @@ public class PersonManagerImplTest {
 	@InjectMocks
 	private PersonManagerImpl personManagerImpl;
 
-	/** The person DAO mock. */
 	@Mock
 	private PersonDAO personDAOMock;
 
@@ -53,7 +56,6 @@ public class PersonManagerImplTest {
 		// Arrange
 		Iterable<Person> expectPersons = new ArrayList<Person>();
 		Mockito.when(personDAOMock.findAll()).thenReturn(expectPersons);
-
 		// Act
 		Iterable<Person> persons = personManagerImpl.findAll();
 		// Assert
@@ -72,5 +74,30 @@ public class PersonManagerImplTest {
 		Person expectedPersonId = personManagerImpl.findById(1L);
 		// Assert
 		Assert.assertEquals(person, expectedPersonId);
+	}
+
+	@Test
+	public void testCreate() {
+		// Arrange
+		Person newPerson = new Person();
+		Person expected = new Person();
+		Mockito.when(personDAOMock.save(newPerson)).thenReturn(expected);
+		// Act
+		Person result = personManagerImpl.save(newPerson);
+		// Assert
+		Assert.assertEquals(expected, result);
+	}
+	
+
+	@Test
+	public void testCreateIterable() {
+		// Arrange
+		Iterable<Person> newPerson = new HashSet<>();
+		Iterable<Person> expected = new HashSet<>();
+		Mockito.when(personDAOMock.save(newPerson)).thenReturn(expected);
+		// Act
+		Iterable<Person> result = personManagerImpl.save(newPerson);
+		// Assert
+		Assert.assertEquals(expected, result);
 	}
 }

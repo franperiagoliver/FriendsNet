@@ -19,7 +19,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.impl.EventControllerImpl;
 import com.everis.alicante.courses.beca.summer17.friendsnet.entity.Event;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.EventManager;
 import com.everis.alicante.courses.beca.summer17.friendsnet.manager.impl.EventManagerImpl;

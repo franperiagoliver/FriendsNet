@@ -1,5 +1,5 @@
 /*
- * Created at 29-ago-2017 by Fran Periago.
+ * Created at 30-ago-2017 by Fran Periago.
  */
 package com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain;
 
@@ -9,24 +9,23 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Gets the like type.
+ * Gets the person of like.
  *
- * @return the like type
+ * @return the person of like
  */
 @Getter
 
 /**
- * Sets the like type.
+ * Sets the person of like.
  *
- * @param likeType
- *            the new like type
+ * @param PersonOfLike the new person of like
  */
 @Setter
-public class PersonLike {
-
-	/** The id person. */
-	private Long idPerson;
+public class LikeDTO implements FNDTO {
 
 	/** The like type. */
 	private LikeType likeType;
+
+	/** The like of person. */
+	private PersonDTO PersonOfLike;
 }

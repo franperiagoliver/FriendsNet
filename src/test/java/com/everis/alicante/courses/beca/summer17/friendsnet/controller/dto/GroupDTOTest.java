@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.dto.GroupDTO;
+import com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain.GroupDTO;
 
 /**
  * The Class PersonTest.

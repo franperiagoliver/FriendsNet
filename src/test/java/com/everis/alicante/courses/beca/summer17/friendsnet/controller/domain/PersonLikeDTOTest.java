@@ -13,7 +13,7 @@ import com.everis.alicante.courses.beca.summer17.friendsnet.entity.enums.LikeTyp
 /**
  * The Class PersonLikeTest.
  */
-public class PersonLikeTest {
+public class PersonLikeDTOTest {
 
 	/** The expected person like. */
 	private PersonLikeDTO expectedPersonLike;

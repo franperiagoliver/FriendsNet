@@ -1,4 +1,4 @@
-package com.everis.alicante.courses.beca.summer17.friendsnet.controller.dto;
+package com.everis.alicante.courses.beca.summer17.friendsnet.controller.domain;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

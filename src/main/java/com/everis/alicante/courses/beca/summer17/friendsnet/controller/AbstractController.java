@@ -92,9 +92,9 @@ public abstract class AbstractController<E extends FNEntity, DTO extends FNDTO, 
 	 * @return the e
 	 */
 	@PostMapping
-	public DTO create(@RequestBody final E e) {
-		return this.getEntityConverter().convert((E) this.getManager().save(e), dtoClass);
-
+	public E create(@RequestBody final DTO dtoClass) {
+		 final E eClass = entityConverter.convert(dtoClass, this.eClass);
+	        return getManager().save(eClass);
 	}
 
 	/**

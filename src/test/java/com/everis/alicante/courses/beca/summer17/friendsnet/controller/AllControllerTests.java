@@ -5,8 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ EventControllerImplTest.class, GroupControllerImplTest.class, PersonControllerImplTest.class,
-		PostControllerImplTest.class })
+@SuiteClasses({ EventControllerImplTest.class, GroupControllerImplTest.class, AbstractControllerTest.class,
+		PostControllerImplTest.class, AbstractControllerTest.class })
 public class AllControllerTests {
 
 }
